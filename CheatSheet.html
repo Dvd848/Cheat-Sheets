@@ -599,9 +599,9 @@ function populate_data(data_type, data_url, parse_func)
                     <a href="javascript:void(0)" class="${command_class}">${DOMPurify.sanitize( escapeHtml(item.command))}</a>
                     <dl class="description">
                         <dt>Command</dt>
-                            <dd class="command_plaintext">${DOMPurify.sanitize( nl2br(escapeHtml(item.command)))}</dd>
+                            <dd class="command_plaintext">${DOMPurify.sanitize(nl2br(escapeHtml(item.command)))}</dd>
                         <dt>Description</dt>
-                            <dd class="description_content">${DOMPurify.sanitize( marked.parse(escapeHtml(item.desc)))}</dd>
+                            <dd class="description_content">${DOMPurify.sanitize(marked.parse(item.desc))}</dd>
                         <dt>More Information</dt>
             `;
             
