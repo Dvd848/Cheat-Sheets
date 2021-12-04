@@ -3,127 +3,145 @@
 <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <title>Cheat Sheet</title>
-   <!--
+    <!--
     Copyright 2018
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and 
+    associated documentation files (the "Software"), to deal in the Software without restriction, including 
+    without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
+    copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the 
+    following conditions:
 
-    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+    The above copyright notice and this permission notice shall be included in all copies or substantial 
+    portions of the Software.
 
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-   -->
-   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-   <style>
-      body {
-         font-family: Arial;
-         background: #F0F0F0;
-      }
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT 
+    TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT 
+    SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN 
+    AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
+    THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+    -->
 
-      #wrapper {
-         border: 1px solid black;
-         margin: 10px;
-         padding: 10px;
-         background: white;
-      }
-      
-      .hide {
-         display: none;
-      }
+    <style>
+        body {
+            font-family: Arial;
+            background: #F0F0F0;
+        }
+
+        #wrapper {
+            border: 1px solid black;
+            margin: 10px;
+            padding: 10px;
+            background: white;
+        }
+
+        .hide {
+            display: none;
+        }
             
-      h1 {
-         text-align: center;
-      }
-      
-      .infoBox {
-         border: 1px solid gray;
-         margin: 10px ;
-         padding: 10px;
-         /*width: 60%;*/
-         background:    #E8E8E8  ;
-      }
-      
-      #file_a {
-         display: none;
-      }
-      
-      .highlight {
-         background-color: yellow;
-      }
-      
-      .infoBox > div {
-         margin-top: 20px;
-      }
-      
-      .infoBox label {
-         width: 350px;
-         display: inline-block;
-      }
-      
-      .description {
-         margin: 10px;
-         border: 1px solid gray;
-         padding: 10px;
-         display: none;
-      }
-      
-      dt {
-         text-decoration: underline;
-         font-weight: bold;
-         padding: 5px;
-         margin: 5px;
-      }
-      
-      .output {
-         display: block;
-         unicode-bidi: embed;
-         font-family: monospace;
-         white-space: pre;
-         overflow-y: hidden;
-         overflow-x: scroll;
-         /*font-size: 13px;*/
-      }
-      
-      li, ul {
-         margin: 10px 0 10px 0;
-      }
-      
-      #loading {
-         text-align: center;
-         /*display: none;*/
-      }
-      
-      a:hover {
-         color: red;
-      }
-      
-      a.command {
-         text-decoration: none;
-      }
-      
-      a {
-         color: blue;
-      }
-      
-      #warning {
-         background: red;
-         color: yellow;
-         font-weight: bold;
-         text-align: center;
-         padding: 5px;
-         margin: 0;
-      }
-      
-      .desc {
-         padding: 5px 0;
-         font-size: 0.9em;
-         color: gray;
-      }
+        h1 {
+            text-align: center;
+        }
 
-      a.starred:after {
-         margin-left: 5px;
-         content: url('data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAMCAMAAACOacfrAAAAllBMVEUAAADWowDSoADWpADToQDXpADWowD/xADWpADXpAD/4pX/wwD/xhX/01r/3H//xhT/xhn/zUTesC//5qb/xyT/z0rerBT/23r/xxr/5J7eryT/yzn/z03eriT/0ErerRX/3H7/0E3/23n/zDnfrRX/5J3ltjT/yi3/yizltzX/2XD/yCv/xxn/ySv/2G//0FHeqw/erBCqx4jJAAAABnRSTlMAlpmWmZaw2bhvAAAAdklEQVR4XkWONxLEMAwDSdsHUpJzuJxzDv//3I2swlthCwxAPQymAW0wyKje1nFIUNX9Z2JgwISTtXnXrnNrZyCe76rDVMpFtVwxUbJJnRNx6TjyzeRYiEgRhPh8EXHXW5jE/fFE+XojWPY1bH6Z9hbDNyJ/7g/bEgZW4Ft2UwAAAABJRU5ErkJggg==');
-      }
+        .infoBox {
+            border: 1px solid gray;
+            margin: 10px ;
+            padding: 10px;
+            /*width: 60%;*/
+            background:    #E8E8E8  ;
+        }
+
+        #file_a {
+            display: none;
+        }
+
+        .highlight {
+            background-color: yellow;
+        }
+
+        .infoBox > div {
+            margin-top: 20px;
+        }
+
+        .infoBox label {
+            width: 350px;
+            display: inline-block;
+        }
+
+        .description {
+            margin: 10px;
+            border: 1px solid gray;
+            padding: 10px;
+            display: none;
+        }
+
+        dt {
+            text-decoration: underline;
+            font-weight: bold;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        .output {
+            display: block;
+            unicode-bidi: embed;
+            font-family: monospace;
+            white-space: pre;
+            overflow-y: hidden;
+            overflow-x: scroll;
+            /*font-size: 13px;*/
+        }
+
+        li, ul {
+            margin: 10px 0 10px 0;
+        }
+
+        #loading {
+            text-align: center;
+            /*display: none;*/
+        }
+
+        a:hover {
+            color: red;
+        }
+
+        a.command {
+            text-decoration: none;
+        }
+
+        a {
+            color: blue;
+        }
+
+        #warning {
+            background: red;
+            color: yellow;
+            font-weight: bold;
+            text-align: center;
+            padding: 5px;
+            margin: 0;
+        }
+
+        .desc {
+            padding: 5px 0;
+            font-size: 0.9em;
+            color: gray;
+        }
+
+        /*
+        a.starred:after {
+            margin-left: 5px;
+            content: url('data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAMCAMAAACOacfrAAAAllBMVEUAAADWowDSoADWpADToQDXpADWowD/xADWpADXp\
+                                                AD/4pX/wwD/xhX/01r/3H//xhT/xhn/zUTesC//5qb/xyT/z0rerBT/23r/xxr/5J7eryT/yzn/z03eriT/0ErerRX/3H\
+                                                7/0E3/23n/zDnfrRX/5J3ltjT/yi3/yizltzX/2XD/yCv/xxn/ySv/2G//0FHeqw/erBCqx4jJAAAABnRSTlMAlpmWmZa\
+                                                w2bhvAAAAdklEQVR4XkWONxLEMAwDSdsHUpJzuJxzDv//3I2swlthCwxAPQymAW0wyKje1nFIUNX9Z2JgwISTtXnXrnNr\
+                                                ZyCe76rDVMpFtVwxUbJJnRNx6TjyzeRYiEgRhPh8EXHXW5jE/fFE+XojWPY1bH6Z9hbDNyJ/7g/bEgZW4Ft2UwAAAABJR\
+                                                U5ErkJggg==');
+        }
+        */
    </style>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.es6.min.js" crossorigin="anonymous" 
+            integrity="sha512-jZSRKDD86PmExf0ZoXQEMxhtxvLtOxo2xMJwgnx3VE/5VT5c8LCsnvut4wK3fIdFyO4szlbz/2tpg+xulnJDyQ=="></script>
 </head>
 <body>
    <div id="warning">
@@ -138,7 +156,7 @@
             <input type="submit" value="Search!" />
          </form>
       </div>
-      <div style="">
+      <div>
          <label>View Mode: </label>
          <select id="view_mode">
             <option value="vm_summary">Summarized</option>
@@ -152,125 +170,49 @@
       <ul id="container"></ul>
       
       <div id="loading">
-         <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH+GkNyZWF0ZWQgd2l0aCBhamF4bG9hZC5pbmZvACH5BAAKAAAAIf8LTkVUU0NBUEUyLjADAQAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQACgABACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkEAAoAAgAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkEAAoAAwAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkEAAoABAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQACgAFACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQACgAGACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAAKAAcALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+         <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH+GkNyZWF0ZWQgd2l0aCBhamF4bG9hZC5pbmZvACH5BAAKAAAAIf8LTkVUU0NBUEUyL
+                                         jADAQAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQACgABACwAAAAAEAAQAA
+                                         ADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkEAAoAAgAsAAAAABAAEAAAAzYIujIjK8pByJDMlFY
+                                         vBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkEAAoAAwAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdh
+                                         HBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkEAAoABAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6Twfw
+                                         yYsGo/IpFKSAAAh+QQACgAFACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQACg
+                                         AGACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAAKAAcALAAAAAAQABAAAAMyCLr
+                                         c/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
       </div>
    </div>
    
 <script>
-// Highlight Search Words: http://bartaz.github.io/sandbox.js/jquery.highlight.html
-/*
-* jQuery Highlight plugin
-*
-* Based on highlight v3 by Johann Burkard
-* http://johannburkard.de/blog/programming/javascript/highlight-javascript-text-higlighting-jquery-plugin.html
-*
-* Code a little bit refactored and cleaned (in my humble opinion).
-* Most important changes:
-* - has an option to highlight only entire words (wordsOnly - false by default),
-* - has an option to be case sensitive (caseSensitive - false by default)
-* - highlight element tag and class names can be specified in options
-*
-* Usage:
-* // wrap every occurrance of text 'lorem' in content
-* // with <span class='highlight'> (default options)
-* $('#content').highlight('lorem');
-*
-* // search for and highlight more terms at once
-* // so you can save some time on traversing DOM
-* $('#content').highlight(['lorem', 'ipsum']);
-* $('#content').highlight('lorem ipsum');
-*
-* // search only for entire word 'lorem'
-* $('#content').highlight('lorem', { wordsOnly: true });
-*
-* // don't ignore case during search of term 'lorem'
-* $('#content').highlight('lorem', { caseSensitive: true });
-*
-* // wrap every occurrance of term 'ipsum' in content
-* // with <em class='important'>
-* $('#content').highlight('ipsum', { element: 'em', className: 'important' });
-*
-* // remove default highlight
-* $('#content').unhighlight();
-*
-* // remove custom highlight
-* $('#content').unhighlight({ element: 'em', className: 'important' });
-*
-*
-* Copyright (c) 2009 Bartek Szopka
-*
-* Licensed under MIT license.
-*
-*/
-jQuery.extend({
-    highlight: function (node, re, nodeName, className) {
-        if (node.nodeType === 3) {
-            var match = node.data.match(re);
-            if (match) {
-                var highlight = document.createElement(nodeName || 'span');
-                highlight.className = className || 'highlight';
-                var wordNode = node.splitText(match.index);
-                wordNode.splitText(match[0].length);
-                var wordClone = wordNode.cloneNode(true);
-                highlight.appendChild(wordClone);
-                wordNode.parentNode.replaceChild(highlight, wordNode);
-                return 1; //skip added node in parent
-            }
-        } else if ((node.nodeType === 1 && node.childNodes) && // only element nodes that have children
-                    !/(script|style)/i.test(node.tagName) && // ignore script and style nodes
-                    !(node.tagName === nodeName.toUpperCase() && node.className === className)) { // skip if already highlighted
-                        for (var i = 0; i < node.childNodes.length; i++) {
-                            i += jQuery.highlight(node.childNodes[i], re, nodeName, className);
-                        }
-        }
-        return 0;
-    }
-});
-
-jQuery.fn.unhighlight = function (options) {
-    var settings = { className: 'highlight', element: 'span' };
-    jQuery.extend(settings, options);
-    return this.find(settings.element + "." + settings.className).each(function () {
-        var parent = this.parentNode;
-        parent.replaceChild(this.firstChild, this);
-        parent.normalize();
-    }).end();
-};
-
-jQuery.fn.highlight = function (words, options) {
-    var settings = { className: 'highlight', element: 'span', caseSensitive: false, wordsOnly: false };
-    jQuery.extend(settings, options);
-    if (words.constructor === String) {
-        words = [words];
-    }
-    words = jQuery.grep(words, function(word, i){
-        return word != '';
-    });
-    words = jQuery.map(words, function(word, i) {
-        return word.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-    });
-    if (words.length == 0) { return this; };
-    var flag = settings.caseSensitive ? "" : "i";
-    var pattern = "(" + words.join("|") + ")";
-    if (settings.wordsOnly) {
-        pattern = "\\b" + pattern + "\\b";
-    }
-    var re = new RegExp(pattern, flag);
-    return this.each(function () {
-        jQuery.highlight(this, re, settings.element, settings.className);
-    });
-};
 
 // -----------------------------------------------------------------------------------
 
-//http://stackoverflow.com/questions/2308134/trim-in-javascript-not-working-in-ie
-if(typeof String.prototype.trim !== 'function') {
-  String.prototype.trim = function() {
-    return this.replace(/^\s+|\s+$/g, ''); 
-  }
+
+/**
+ * https://stackoverflow.com/questions/494143/
+ * @param {String} HTML representing a single element
+ * @return {Element}
+ */
+ function htmlToElement(html) {
+    var template = document.createElement('template');
+    html = html.trim(); // Never return a text node of whitespace as the result
+    template.innerHTML = html;
+    return template.content.firstChild;
 }
 
-//http://stackoverflow.com/questions/7467840/nl2br-equivalent-in-javascript
+/*!
+ * Get all siblings of an element
+ * (c) 2021 Chris Ferdinandi, MIT License, https://gomakethings.com
+ * @param  {Node}  elem The element
+ * @return {Array}      The siblings
+ */
+ function getSiblings (elem) {
+	return Array.from(elem.parentNode.children).filter(function (sibling) {
+		return sibling !== elem;
+	});
+}
+
+
+
+//http://stackoverflow.com/questions/7467840/
 function nl2br (str, is_xhtml) {
     var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
     return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
@@ -280,20 +222,10 @@ function br2nl (str) {
     return (str + '').replace(/<\s*br\s*\/?\s*>/gi, '\r\n');
 }
 
-//https://stackoverflow.com/questions/502366/structs-in-javascript
-function makeStruct(names) {
-    var names = names.split(' ');
-    var count = names.length;
-    function constructor() {
-        for (var i = 0; i < count; i++) {
-            this[names[i]] = arguments[i];
-        }
-    }
-    constructor.count = count;
-    return constructor;
-}
+// https://stackoverflow.com/questions/502366/
+const Struct = (...keys) => ((...v) => keys.reduce((o, k, i) => {o[k] = v[i]; return o} , {}))
 
-//https://stackoverflow.com/questions/1787322/htmlspecialchars-equivalent-in-javascript
+//https://stackoverflow.com/questions/1787322/
 function escapeHtml(text) {
     var map = {
         '&': '&amp;',
@@ -310,73 +242,134 @@ function escapeHtml(text) {
 
     return text.replace(/[&<>"']/g, function(m) { return map[m]; });
 }
-</script>
 
-<script>
-var CheatSheetItem = makeStruct("cat subcat weight is_starred command desc more_info output");
+// https://codepen.io/ivanwebstudio/pen/OJVzPBL
+const slideUp = (target, duration = 500) => {
+    target.style.transitionProperty = 'height, margin, padding';
+    target.style.transitionDuration = duration + 'ms';
+    target.style.boxSizing = 'border-box';
+    target.style.height = target.offsetHeight + 'px';
+    target.offsetHeight;
+    target.style.overflow = 'hidden';
+    target.style.height = 0;
+    target.style.paddingTop = 0;
+    target.style.paddingBottom = 0;
+    target.style.marginTop = 0;
+    target.style.marginBottom = 0;
+    window.setTimeout(() => {
+        target.style.display = 'none';
+        target.style.removeProperty('height');
+        target.style.removeProperty('padding-top');
+        target.style.removeProperty('padding-bottom');
+        target.style.removeProperty('margin-top');
+        target.style.removeProperty('margin-bottom');
+        target.style.removeProperty('overflow');
+        target.style.removeProperty('transition-duration');
+        target.style.removeProperty('transition-property');
+    }, duration);
+}
+
+const slideDown = (target, duration = 500) => {
+    target.style.removeProperty('display');
+    let display = window.getComputedStyle(target).display;
+
+    if (display === 'none') {
+        display = 'block';
+    }
+
+    target.style.display = display;
+    const height = target.offsetHeight;
+    target.style.overflow = 'hidden';
+    target.style.height = 0;
+    target.style.paddingTop = 0;
+    target.style.paddingBottom = 0;
+    target.style.marginTop = 0;
+    target.style.marginBottom = 0;
+    target.offsetHeight;
+    target.style.boxSizing = 'border-box';
+    target.style.transitionProperty = "height, margin, padding";
+    target.style.transitionDuration = duration + 'ms';
+    target.style.height = height + 'px';
+    target.style.removeProperty('padding-top');
+    target.style.removeProperty('padding-bottom');
+    target.style.removeProperty('margin-top');
+    target.style.removeProperty('margin-bottom');
+    window.setTimeout(() => {
+        target.style.removeProperty('height');
+        target.style.removeProperty('overflow');
+        target.style.removeProperty('transition-duration');
+        target.style.removeProperty('transition-property');
+    }, duration);
+}
+const slideToggle = (target, duration = 500) => {
+    if (window.getComputedStyle(target).display === 'none') {
+        return slideDown(target, duration);
+    } else {
+        return slideUp(target, duration);
+    }
+}
+
+const CheatSheetItem = Struct("cat", "subcat", "weight", "is_starred", "command", "desc", "more_info", "output")
 
 function filter()
 {
-   $("#container").hide();
-   $("#loading").show();
-   
-   $("#wrapper").unhighlight();
-   
-   var text = $("#filter").val();
-   //text = text.trim();
-   
-   if (text != "")
-   {
-      $("#wrapper li").each(function(){
-         var li_text = $(this).text();
-         if (new RegExp(text, "i").test(li_text))
-         {
-            $(this).highlight(text);
-            $(this).children(".description").slideDown();
-         }
-         else
-         {
-            $(this).children(".description").slideUp();
-         }
-      });
-   }
-   else
-   {
-      $("#wrapper li").each(function(){
-         $(this).children(".description").slideUp();
-      });
-   }
-   
-   setTimeout(function(){
-      $("#loading").hide();
-      $("#container").show();
-   }, 500);
+    document.getElementById("container").hidden = true;
+    document.getElementById("loading").hidden = false;
+
+    new Mark(document.getElementById("wrapper")).unmark();
+
+    const text = document.getElementById("filter").value;
+
+    if (text != "")
+    {
+        Array.from(document.getElementById("wrapper").getElementsByTagName("li")).forEach(function(element){
+            const li_text = element.textContent;
+            if (new RegExp(text, "i").test(li_text))
+            {
+                new Mark(element).mark(text);
+                Array.from(element.getElementsByClassName("description") || []).forEach(function(child){
+                    slideDown(child)
+                });
+            }
+            else
+            {
+                Array.from(element.getElementsByClassName("description") || []).forEach(function(child){
+                    slideUp(child)
+                });
+            }
+        });
+    }
+    else
+    {
+        Array.from(document.getElementById("wrapper").getElementsByTagName("li")).forEach(function(element){
+            Array.from(element.getElementsByClassName("description") || []).forEach(function(child){
+                slideUp(child)
+            });
+        });
+    }
+
+    setTimeout(function(){
+        document.getElementById("container").hidden = false;
+        document.getElementById("loading").hidden = true;
+    }, 500);
    
 };
 
 function expand_and_collapse(anchor)
 {
-   var elem = $(anchor).siblings().filter(".description");
-   if (elem.is(":visible"))
-   {
-      elem.slideUp();
-   }
-   else
-   {
-      elem.slideDown();
-   }
+    const element = getSiblings(anchor).filter(el => el.classList.contains("description"))[0];
+    slideToggle(element);
 };
 
 function setViewMode()
 {
-   var vm = $("#view_mode").val();
-   if (vm == "vm_with_desc")
-   {
-      $("#container dl.description").each(
-         function()
-         {
-            var li = $(this).closest("li");
-            var text = $(this).children("dd.description_content").text();
+    const view_mode = document.getElementById("view_mode").value;
+    if (view_mode == "vm_with_desc")
+    {
+        document.getElementById("container").querySelectorAll("dl.description").forEach(function(element)
+        {
+            const li = element.closest("li");
+            let text = element.querySelector("dd.description_content").textContent;
             if (text && text.length > 0)
             {
                 text = text.trim();
@@ -391,99 +384,51 @@ function setViewMode()
                     text = text.substring(0, text.length - 1);
                 }
             }
-            li.children("a:first").after("<div class='desc'>" + text + "</div>");
-         }
-      );
-   }
-   else if (vm == "vm_summary")
-   {
-      $("#container div.desc").remove();
-   }
+            li.querySelector("a:first-child").after(htmlToElement(`<div class='desc'>${text}</div>`));
+        });
+    }
+    else if (view_mode == "vm_summary")
+    {
+        document.getElementById("container").querySelectorAll("div.desc").forEach(function(element)
+        {
+            element.remove(); 
+        });
+    }
 };
 
 function start()
 {
-   //$("#warning").hide();
-   $("#filter_form").bind('submit', function(e)
-   {
-      filter();
-      e.preventDefault();
-      e.stopPropagation();
-      return false;
-   });
-   
-   $(".command").click(function(){expand_and_collapse(this)});
-   
-   $("#view_mode").change(function(){setViewMode();});
-   setViewMode();
-   
-};
-
-/*
- * See https://docs.microsoft.com/en-us/sharepoint/dev/general-development/sample-uri-for-excel-services-rest-api
- * URL will be similar to:
- * https://www.my_sharepoint.com/sites/MY_SITE/_vti_bin/ExcelRest.aspx/Shared%20Documents/Directory1/Directory2/SpreadSheet.xlsx/model/Tables('cheat_sheet')
- *
- */
-function parse_data_from_sharepoint(data)
-{
-    var ret = [];
-    
-    var div = $("<div>").html(data);
-    var table = $(div).find("table:first"); 
-    
-    /*
-    //get rid of styling from all elements  
-    table.removeAttr("style").removeAttr("class").removeAttr("cellpadding").removeAttr("cellspacing").addClass("display");  
-    $('tr', table).removeAttr("style").removeAttr("class");  
-    $('td', table).removeAttr("style").removeAttr("class");  
-    $('div', table).removeAttr("style").removeAttr("class");  
-    */
-    
-    // Remove the blank first column and row  
-    $('tr', table).first().remove();  
-    $('tr td:first-child', table).remove();  
-    
-    $('tr', table).first().remove();  
-
-    table.children('tbody:first').children("tr").each(function() 
+    document.getElementById("filter_form").addEventListener('submit', function(e)
     {
-        var tds = $(this).children("td");
-       
-        var field_cat           = $(tds.get(0)).text().trim();
-        var field_subcat        = $(tds.get(1)).text().trim();
-        var field_weight        = 0;
-        var field_is_starred    = $(tds.get(2)).text().trim().toLowerCase() == "yes" ? true : false;
-        var field_command       = $(tds.get(3)).text();
-        var field_desc          = $(tds.get(4)).children("div:first").html();
-        var field_more_info     = $(tds.get(5)).text();
-        var field_output        = $(tds.get(6)).children("div:first").html();
-        
-        if (field_desc)
-        {
-            field_desc = br2nl(field_desc.replace(/(\r\n|\n|\r)/gm,""));
-        }
-
-        if (field_output)
-        {
-            field_output = br2nl(field_output.replace(/(\r\n|\n|\r)/gm,""));//.replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/&/g,'&amp;');
-        }
-       
-        var csi = new CheatSheetItem(field_cat, field_subcat, field_weight, field_is_starred, 
-                                    field_command, field_desc, field_more_info,
-                                    field_output);
-        ret.push(csi);
+        filter();
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
     });
-    
-    return ret;
+
+    Array.from(document.getElementsByClassName("command") || []).forEach(function(element) 
+    {
+        element.addEventListener('click', function() 
+        {
+            expand_and_collapse(this);
+        });
+    });
+
+    document.getElementById("view_mode").addEventListener("change", function()
+    {
+        setViewMode();
+    });
+
+    setViewMode();
 };
+
 
 /*
  * See https://stackoverflow.com/questions/30082277/accessing-a-new-style-public-google-sheet-as-json
  */
 function parse_data_from_google_drive(data)
 {
-    var ret = [];
+    let ret = [];
 
     if (!data || !data.values || !Array.isArray(data.values))
     {
@@ -492,7 +437,7 @@ function parse_data_from_google_drive(data)
     }
     
     
-    $.each(data.values, function(index, value) 
+    data.values.forEach(function(value, index)
     {
         if (index == 0) 
         {
@@ -509,18 +454,18 @@ function parse_data_from_google_drive(data)
         
         try
         {
-            var field_cat           = value[0];
-            var field_subcat        = value[1];
-            var field_weight        = parseInt(value[2]);
-            var field_is_starred    = value[3].trim().toLowerCase() == "yes" ? true : false;;
-            var field_command       = value[4];
-            var field_desc          = value[5];
-            var field_more_info     = value[6] || "";
-            var field_output        = value[7] || "";
+            const field_cat           = value[0];
+            const field_subcat        = value[1];
+            const field_weight        = parseInt(value[2]);
+            const field_is_starred    = value[3].trim().toLowerCase() == "yes" ? true : false;
+            const field_command       = value[4];
+            const field_desc          = value[5];
+            const field_more_info     = value[6] || "";
+            const field_output        = value[7] || "";
             
-            var csi = new CheatSheetItem(field_cat, field_subcat, field_weight, 
-                                        field_is_starred, field_command, 
-                                        field_desc, field_more_info, field_output);
+            const csi = CheatSheetItem(field_cat, field_subcat, field_weight, 
+                                       field_is_starred, field_command, 
+                                       field_desc, field_more_info, field_output);
             ret.push(csi);
         }
         catch(err)
@@ -530,164 +475,192 @@ function parse_data_from_google_drive(data)
         }
     });
     
-    ret.sort(function(a, b) {
-                if (a.cat != b.cat) { return a.cat.localeCompare(b.cat); }
-                if (a.subcat != b.subcat) { return a.subcat.localeCompare(b.subcat); }
-                return a.weight - b.weight;
-            }
-    );
+    ret.sort(function(a, b) 
+    {
+        if (a.cat != b.cat) 
+        {
+            return a.cat.localeCompare(b.cat); 
+        }
+        
+        if (a.subcat != b.subcat) 
+        {
+            return a.subcat.localeCompare(b.subcat); 
+        }
+
+        return a.weight - b.weight;
+    });
     
     return ret;
 };
 
-// Make sure data returned by data_url is trusted, as HTML can be evaluated!
+// Make sure that the data returned by data_url is trusted, as the HTML might be evaluated!
 function populate_data(data_type, data_url, parse_func)
 {
-    jQuery.ajax({  
-        type: "GET",  
-        dataType: data_type,
-        url: data_url,
-        success: function (data) 
-        {  
-            $("#loading").hide();
-            var container = $("#container");
-            
-            var date_parsed = parse_func(data);
+    const clean_identifier = function(identifier)
+    {
+        return encodeURIComponent(identifier).replace(/\W/g, '');
+    };
 
-            $.each(date_parsed, function(index, item) 
+    fetch(data_url)
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('loading').hidden = true;
+        
+        const container = document.getElementById('container');
+        
+        const data_parsed = parse_func(data);
+
+        data_parsed.forEach(function(item, index) 
+        {
+            let category_id = clean_identifier(item.cat);
+            if (!category_id)
             {
-                var category_id = encodeURIComponent(item.cat).replace(/\W/g, '');
-                if (!category_id)
+                return true; //continue;
+            }
+            
+            category_id = "cat_" + category_id;
+            
+            let subcategory_id = clean_identifier(item.subcat);
+            if (!subcategory_id)
+            {
+                return true; //continue;
+            }
+            
+            subcategory_id = "subcat_" + subcategory_id;
+            
+            if (document.getElementById(category_id) === null)
+            {
+                container.append(htmlToElement(`
+                    <li>
+                        ${escapeHtml(item.cat)}
+                        <ul id="${category_id}">
+                        </ul>
+                    </li>
+                `));
+            }
+            
+            if (document.getElementById(subcategory_id) === null)
+            {
+                const li_id = 'li_' + subcategory_id;
+                let WasInserted = false;
+                const li = htmlToElement(`
+                    <li id="${li_id}">
+                        ${escapeHtml(item.subcat)}
+                        <ul id="${subcategory_id}">
+                        </ul>
+                    </li>
+                `);
+                
+                Array.from(document.getElementById(category_id).querySelector('li') || []).forEach(function(element)
                 {
-                    return true; //continue;
+                    // TODO: Double check that this works
+                    const other_li_id = element.id;
+                    if (other_li_id > li_id)
+                    {
+                        element.before(li);
+                        WasInserted = true;
+                        return false; //break
+                    }
+                });
+                
+                if (!WasInserted)
+                {
+                    document.getElementById(category_id).append(li);
                 }
-               
-                category_id = "cat_" + category_id;
-               
-                var subcategory_id = encodeURIComponent(item.subcat).replace(/\W/g, '');
-                if (!subcategory_id)
+            }
+            
+            let command_class = "command";
+            if (item.is_starred)
+            {
+                command_class += " starred";
+            }
+            
+            let new_element_html = `
+                <li>
+                    <a href="javascript:void(0)" class="${command_class}">${escapeHtml(item.command)}</a>
+                    <dl class="description">
+                        <dt>Command</dt>
+                            <dd>${nl2br(escapeHtml(item.command))}</dd>
+                        <dt>Description</dt>
+                            <dd class="description_content">${nl2br(escapeHtml(item.desc))}</dd>
+                        <dt>More Information</dt>
+            `;
+            
+            new_element_html += "<dd>";
+            
+            if (item.more_info)
+            {
+                if (item.more_info.toLowerCase().indexOf("http") >= 0)
                 {
-                    return true; //continue;
-                }
-               
-                subcategory_id = "subcat_" + subcategory_id;
-               
-                if ($("#" + category_id).length == 0)
-                {
-                    container.append('<li>' + escapeHtml(item.cat) + '<ul id="' + category_id + '"></ul></li>');
-                }
-               
-                if ($("#" + subcategory_id).length == 0)
-                {
-                    var li_id = 'li_' + subcategory_id;
-                    var WasInserted = false;
-                    var newHtml = '<li id="' + li_id + '">' 
-                                    + escapeHtml(item.subcat) + '<ul id="' + subcategory_id + '"></ul></li>';
-                  
-                    $("#" + category_id + " > li").each(function(){
-                        var otherLiId = $(this).attr("id");
-                        if (otherLiId > li_id)
+                    var links = [];
+                    var lines = item.more_info.split("\n");
+                    lines.forEach(function(line_value, line_index) {
+                        if (line_value.toLowerCase().indexOf("http") === 0)
                         {
-                            $(this).before(newHtml);
-                            WasInserted = true;
-                            return false; //break
+                            links.push('<a href="' + escapeHtml(line_value) + '" target="_BLANK">Link</a>');
+                        }
+                        else
+                        {
+                            links.push(line_value);
                         }
                     });
-                  
-                    if (!WasInserted)
-                    {
-                        $("#" + category_id).append(newHtml);
-                    }
-                }
-               
-                var command_class = "command";
-                if (item.is_starred)
-                {
-                    command_class += " starred";
-                }
-               
-                var newElement = '<li>';
-                newElement += '<a href="javascript:void(0)" class="' + command_class + '">' + escapeHtml(item.command) + '</a>';
-                
-
-                newElement += '<dl class="description">';
-                
-                newElement += '<dt>Command</dt><dd>' + nl2br(escapeHtml(item.command)) + '</dd>';
-                
-                newElement += '<dt>Description</dt><dd class="description_content">' + nl2br(escapeHtml(item.desc)) + '</dd>';
-                
-                newElement += '<dt>More Information</dt><dd>'
-                
-                if (item.more_info)
-                {
-                    if (item.more_info.toLowerCase().indexOf("http") >= 0)
-                    {
-                        var links = [];
-                        var lines = item.more_info.split("\n");
-                        $.each(lines, function(line_index, line_value) {
-                            if (line_value.toLowerCase().indexOf("http") === 0)
-                            {
-                                links.push('<a href="' + escapeHtml(line_value) + '" target="_BLANK">Link</a>');
-                            }
-                            else
-                            {
-                                links.push(line_value);
-                            }
-                        });
-                        
-                        newElement += links.join(" | ");
-                    }
-                    else
-                    {
-                        newElement += escapeHtml(item.more_info);
-                    }
+                    
+                    new_element_html += links.join(" | ");
                 }
                 else
                 {
-                    newElement += 'Unavailable';
+                    new_element_html += escapeHtml(item.more_info);
                 }
-               
-               
-                newElement += '</dd>';
-               
-                if (item.output)
-                {
-                    newElement += '<dt>Example Output</dt><dd class="output"><br/><pre>' + escapeHtml(item.output) + '</pre><br/><br/></dd>';
-                    newElement += '</dl>';
-                    newElement += '</li>';
-                    newElement += '';
-                }
-               
-                $("#" + subcategory_id).append(newElement);
-            });
+            }
+            else
+            {
+                new_element_html += 'Unavailable';
+            }
             
-            start();
-        },  
-        error: function (xhr, msg, e) {
-            console.log(e);  
-            document.write(e);
-        }  
+            new_element_html += '</dd>';
+            
+            if (item.output)
+            {
+                new_element_html += `
+                            <dt>Example Output</dt>
+                                <dd class="output"><br/><pre>${escapeHtml(item.output)}</pre><br/><br/></dd>
+                        </dl>
+                    </li>
+                `;
+                
+            }
+            
+            document.getElementById(subcategory_id).append(htmlToElement(new_element_html));
+        });
+        
+        start();
+    })
+    .catch((error) => {
+        console.error('Error:', error);
     });
 };
 
+document.addEventListener('DOMContentLoaded', (event) => {
+    const self_url = new URL(window.location.href);
+    const google_api_key = self_url.searchParams.get("google_api_key");
 
-var self_url = new URL(window.location.href);
-var google_api_key = self_url.searchParams.get("google_api_key");
-var data_url = "CheatSheet.json";
-var subject = "Git";
-if (google_api_key != null)
-{
-    data_url = `https://sheets.googleapis.com/v4/spreadsheets/1FI6BjoA4fRpxbPIoVNbR_gLsu2U3_AKd_-uKKUZNi5o/values/${subject}?key=${google_api_key}`;
-}
+    // TODO: Read from query string:
+    const subject = "Git";
+    let data_url = `${subject}.json`;
+    if (google_api_key != null)
+    {
+        data_url = `https://sheets.googleapis.com/v4/spreadsheets/1FI6BjoA4fRpxbPIoVNbR_gLsu2U3_AKd_-uKKUZNi5o/values/${subject}?key=${google_api_key}`;
+    }
 
-$(document).ready(function () {
-   $("#warning").hide();
-   //populate_data('html', data_url + "?" + (new Date().getMilliseconds()), parse_data_from_sharepoint);
-   populate_data("json", data_url, parse_data_from_google_drive);
-   $("h1").text(subject + " " + $("h1").text());
-   document.title = subject + " " + document.title;
-});  
+    document.getElementById('warning').hidden = true;
+    
+    populate_data("json", data_url, parse_data_from_google_drive);
+    
+    const title = `${subject} ${document.title}`;
+    document.getElementsByTagName("h1")[0].textContent = title;
+    document.title = title;
 
+});
 </script>
 
 
