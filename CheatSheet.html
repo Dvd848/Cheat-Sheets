@@ -141,6 +141,12 @@
             font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
         }
 
+        footer {
+            font-size: 0.6em;
+            text-align: center;
+
+        }
+
         /*
         a.starred:after {
             margin-left: 5px;
@@ -662,21 +668,27 @@ function populate_data(data_type, data_url, parse_func)
 };
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    const subjects = ["Git"];
+    const toc = {
+        "Git": {
+            "footer" : `Some content originated from the <a href='https://git-scm.com/book/en/v2'>Pro Git</a> book,
+                        licensed under the <a href='https://creativecommons.org/licenses/by-nc-sa/3.0/'>Creative Commons Attribution Non Commercial Share Alike 3.0 license</a>.`
+        }
+    };
     const self_url = new URL(window.location.href);
     const google_api_key = self_url.searchParams.get("google_api_key");
 
     document.getElementById('warning').hidden = true;
 
     const subject = self_url.searchParams.get("subject");
-    if (subject == null || !subjects.includes(subject))
+    if (subject == null || Object.keys(toc).includes(subject) == false)
     {
         const container = document.getElementById('container');
         container.append(htmlToElement(`<h2>Subject List</h2>`));
         const ul = document.createElement("ul");
-        for (const subject of subjects)
+        for (const subject of Object.keys(toc))
         {
             const url = new URL(window.location.href);
+            url.searchParams.delete('subject');
             url.searchParams.append('subject', subject);
             ul.append(htmlToElement(`<li><a href='${url.toString()}'>${subject}</a></li>`));
         }
@@ -696,12 +708,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const title = `${subject} ${document.title}`;
         document.getElementsByTagName("h1")[0].textContent = title;
         document.title = title;
+
+        if (toc[subject].footer)
+        {
+            document.getElementById("footer").innerHTML = toc[subject].footer;
+        }
     }
 
 
 });
 </script>
 
-
+<footer id="footer"></footer>
 </body>
 </html>
