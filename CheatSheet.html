@@ -120,6 +120,27 @@
             color: gray;
         }
 
+        .description code {
+            padding: 2px 0.4em 0 0.4em;
+            margin: 0;
+            font-size: 95%;
+            background-color: rgba(175, 194, 193, 0.5);
+            border-radius: 6px;
+        }
+
+        .description pre {
+            padding: 16px;
+            overflow: auto;
+            font-size: 85%;
+            line-height: 1.45;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+        }
+
+        .command_plaintext {
+            font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+        }
+
         /*
         a.starred:after {
             margin-left: 5px;
@@ -134,6 +155,10 @@
    </style>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.es6.min.js" crossorigin="anonymous" 
             integrity="sha512-jZSRKDD86PmExf0ZoXQEMxhtxvLtOxo2xMJwgnx3VE/5VT5c8LCsnvut4wK3fIdFyO4szlbz/2tpg+xulnJDyQ=="></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js" crossorigin="anonymous"
+            integrity="sha512-hzyXu3u+VDu/7vpPjRKFp9w33Idx7pWWNazPm+aCMRu26yZXFCby1gn1JxevVv3LDwnSbyKrvLo3JNdi4Qx1ww=="></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.3/purify.min.js" crossorigin="anonymous"
+            integrity="sha512-gtcrasYnyeB27+IejClswFlb/eggt+khRr+lLAeNcgg5x2ijlWaiBOPXZkwivNj15LaE6s9CzV57hsoTPrQ5xg=="></script>
 </head>
 <body>
    <div id="warning">
@@ -526,7 +551,7 @@ function populate_data(data_type, data_url, parse_func)
             {
                 container.append(htmlToElement(`
                     <li>
-                        ${escapeHtml(item.cat)}
+                        ${DOMPurify.sanitize( escapeHtml(item.cat) )}
                         <ul id="${category_id}">
                         </ul>
                     </li>
@@ -539,7 +564,7 @@ function populate_data(data_type, data_url, parse_func)
                 let WasInserted = false;
                 const li = htmlToElement(`
                     <li id="${li_id}">
-                        ${escapeHtml(item.subcat)}
+                        ${DOMPurify.sanitize( escapeHtml(item.subcat) )}
                         <ul id="${subcategory_id}">
                         </ul>
                     </li>
@@ -571,12 +596,12 @@ function populate_data(data_type, data_url, parse_func)
             
             let new_element_html = `
                 <li>
-                    <a href="javascript:void(0)" class="${command_class}">${escapeHtml(item.command)}</a>
+                    <a href="javascript:void(0)" class="${command_class}">${DOMPurify.sanitize( escapeHtml(item.command))}</a>
                     <dl class="description">
                         <dt>Command</dt>
-                            <dd>${nl2br(escapeHtml(item.command))}</dd>
+                            <dd class="command_plaintext">${DOMPurify.sanitize( nl2br(escapeHtml(item.command)))}</dd>
                         <dt>Description</dt>
-                            <dd class="description_content">${nl2br(escapeHtml(item.desc))}</dd>
+                            <dd class="description_content">${DOMPurify.sanitize( marked.parse(escapeHtml(item.desc)))}</dd>
                         <dt>More Information</dt>
             `;
             
@@ -591,11 +616,11 @@ function populate_data(data_type, data_url, parse_func)
                     lines.forEach(function(line_value, line_index) {
                         if (line_value.toLowerCase().indexOf("http") === 0)
                         {
-                            links.push('<a href="' + escapeHtml(line_value) + '" target="_BLANK">Link</a>');
+                            links.push(DOMPurify.sanitize( '<a href="' + escapeHtml(line_value) + '" target="_BLANK">Link</a>'));
                         }
                         else
                         {
-                            links.push(line_value);
+                            links.push(DOMPurify.sanitize( line_value ) );
                         }
                     });
                     
@@ -603,7 +628,7 @@ function populate_data(data_type, data_url, parse_func)
                 }
                 else
                 {
-                    new_element_html += escapeHtml(item.more_info);
+                    new_element_html += DOMPurify.sanitize( escapeHtml(item.more_info) );
                 }
             }
             else
@@ -617,7 +642,7 @@ function populate_data(data_type, data_url, parse_func)
             {
                 new_element_html += `
                             <dt>Example Output</dt>
-                                <dd class="output"><br/><pre>${escapeHtml(item.output)}</pre><br/><br/></dd>
+                                <dd class="output"><pre>${DOMPurify.sanitize( escapeHtml(item.output) )}</pre><br/></dd>
                         </dl>
                     </li>
                 `;
