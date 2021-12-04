@@ -34,10 +34,6 @@
             padding: 10px;
             background: white;
         }
-
-        .hide {
-            display: none;
-        }
             
         h1 {
             text-align: center;
@@ -49,10 +45,6 @@
             padding: 10px;
             /*width: 60%;*/
             background:    #E8E8E8  ;
-        }
-
-        #file_a {
-            display: none;
         }
 
         .highlight {
@@ -153,7 +145,7 @@
          <form id="filter_form">
             <label>Search for:</label>
             <input type="text" id="filter" />
-            <input type="submit" value="Search!" />
+            <input type="submit"  disabled="disabled" value="Search!" />
          </form>
       </div>
       <div>
@@ -406,6 +398,8 @@ function start()
         return false;
     });
 
+    document.getElementById("filter_form").querySelector("input[type=submit]").disabled = false;
+
     Array.from(document.getElementsByClassName("command") || []).forEach(function(element) 
     {
         element.addEventListener('click', function() 
@@ -636,29 +630,49 @@ function populate_data(data_type, data_url, parse_func)
         start();
     })
     .catch((error) => {
+        document.getElementById('loading').hidden = true;
         console.error('Error:', error);
+        document.getElementById('container').append(htmlToElement(`<div><p style="color: red; font-weight: bold;">Error! See console for details.</p></div>`));
     });
 };
 
 document.addEventListener('DOMContentLoaded', (event) => {
+    const subjects = ["Git"];
     const self_url = new URL(window.location.href);
     const google_api_key = self_url.searchParams.get("google_api_key");
 
-    // TODO: Read from query string:
-    const subject = "Git";
-    let data_url = `${subject}.json`;
-    if (google_api_key != null)
+    document.getElementById('warning').hidden = true;
+
+    const subject = self_url.searchParams.get("subject");
+    if (subject == null || !subjects.includes(subject))
     {
-        data_url = `https://sheets.googleapis.com/v4/spreadsheets/1FI6BjoA4fRpxbPIoVNbR_gLsu2U3_AKd_-uKKUZNi5o/values/${subject}?key=${google_api_key}`;
+        const container = document.getElementById('container');
+        container.append(htmlToElement(`<h2>Subject List</h2>`));
+        const ul = document.createElement("ul");
+        for (const subject of subjects)
+        {
+            const url = new URL(window.location.href);
+            url.searchParams.append('subject', subject);
+            ul.append(htmlToElement(`<li><a href='${url.toString()}'>${subject}</a></li>`));
+        }
+        container.append(ul);
+        document.getElementById('loading').hidden = true;
+    }
+    else
+    {
+        let data_url = `${subject}.json`;
+        if (google_api_key != null)
+        {
+            data_url = `https://sheets.googleapis.com/v4/spreadsheets/1FI6BjoA4fRpxbPIoVNbR_gLsu2U3_AKd_-uKKUZNi5o/values/${subject}?key=${google_api_key}`;
+        }
+        
+        populate_data("json", data_url, parse_data_from_google_drive);
+        
+        const title = `${subject} ${document.title}`;
+        document.getElementsByTagName("h1")[0].textContent = title;
+        document.title = title;
     }
 
-    document.getElementById('warning').hidden = true;
-    
-    populate_data("json", data_url, parse_data_from_google_drive);
-    
-    const title = `${subject} ${document.title}`;
-    document.getElementsByTagName("h1")[0].textContent = title;
-    document.title = title;
 
 });
 </script>
