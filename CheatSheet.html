@@ -378,7 +378,7 @@ function filter()
    
 };
 
-function expand_and_collapse(anchor)
+function expandAndCollapse(anchor)
 {
     const element = getSiblings(anchor).filter(el => el.classList.contains("description"))[0];
     slideToggle(element);
@@ -419,7 +419,7 @@ function setViewMode()
     }
 };
 
-function start()
+function finalizeCheatSheet()
 {
     document.getElementById("filter_form").addEventListener('submit', function(e)
     {
@@ -435,7 +435,7 @@ function start()
     {
         element.addEventListener('click', function() 
         {
-            expand_and_collapse(this);
+            expandAndCollapse(this);
         });
     });
 
@@ -451,7 +451,7 @@ function start()
 /*
  * See https://stackoverflow.com/questions/30082277/accessing-a-new-style-public-google-sheet-as-json
  */
-function parse_data_from_google_drive(data)
+function parseDataFromGoogleDrive(data)
 {
     let ret = [];
 
@@ -519,7 +519,7 @@ function parse_data_from_google_drive(data)
 };
 
 // Make sure that the data returned by data_url is trusted, as the HTML might be evaluated!
-function populate_data(data_type, data_url, parse_func)
+function populateData(data_type, data_url, parse_func)
 {
     const clean_identifier = function(identifier)
     {
@@ -576,9 +576,8 @@ function populate_data(data_type, data_url, parse_func)
                     </li>
                 `);
                 
-                Array.from(document.getElementById(category_id).querySelector('li') || []).forEach(function(element)
+                Array.from(document.getElementById(category_id).querySelectorAll(':scope > li') || []).forEach(function(element)
                 {
-                    // TODO: Double check that this works
                     const other_li_id = element.id;
                     if (other_li_id > li_id)
                     {
@@ -658,7 +657,7 @@ function populate_data(data_type, data_url, parse_func)
             document.getElementById(subcategory_id).append(htmlToElement(new_element_html));
         });
         
-        start();
+        finalizeCheatSheet();
     })
     .catch((error) => {
         document.getElementById('loading').hidden = true;
@@ -667,7 +666,10 @@ function populate_data(data_type, data_url, parse_func)
     });
 };
 
-document.addEventListener('DOMContentLoaded', (event) => {
+function setupCheatSheet()
+{
+    const SPREADSHEET_ID = "1FI6BjoA4fRpxbPIoVNbR_gLsu2U3_AKd_-uKKUZNi5o";
+
     const toc = {
         "Git": {
             "footer" : `Some content originated from the <a href='https://git-scm.com/book/en/v2'>Pro Git</a> book,
@@ -697,13 +699,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
     else
     {
-        let data_url = `${subject}.json`;
+        let data_url;
         if (google_api_key != null)
         {
-            data_url = `https://sheets.googleapis.com/v4/spreadsheets/1FI6BjoA4fRpxbPIoVNbR_gLsu2U3_AKd_-uKKUZNi5o/values/${subject}?key=${google_api_key}`;
+            data_url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${subject}?key=${google_api_key}`;
+        }
+        else
+        {
+            data_url = `${subject}.json`;
         }
         
-        populate_data("json", data_url, parse_data_from_google_drive);
+        populateData("json", data_url, parseDataFromGoogleDrive);
         
         const title = `${subject} ${document.title}`;
         document.getElementsByTagName("h1")[0].textContent = title;
@@ -714,8 +720,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
             document.getElementById("footer").innerHTML = toc[subject].footer;
         }
     }
+};
 
-
+document.addEventListener('DOMContentLoaded', (event) => {
+    setupCheatSheet();
 });
 </script>
 
