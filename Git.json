@@ -1,0 +1,536 @@
+{
+  "range": "Git!A1:Z1000",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Category",
+      "Subcategory",
+      "Weight",
+      "Is Starred?",
+      "Command",
+      "Description",
+      "More Info",
+      "Output"
+    ],
+    [
+      "Commands",
+      "clone",
+      "0",
+      "No",
+      "git clone \u003crepository\u003e",
+      "Clone a repository into a new directory",
+      "https://git-scm.com/docs/git-clone\nhttps://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository",
+      "$ git clone https://github.com/schacon/ticgit\nCloning into 'ticgit'...\nremote: Reusing existing pack: 1857, done.\nremote: Total 1857 (delta 0), reused 0 (delta 0)\nReceiving objects: 100% (1857/1857), 374.35 KiB | 268.00 KiB/s, done.\nResolving deltas: 100% (772/772), done.\nChecking connectivity... done."
+    ],
+    [
+      "Commands",
+      "clone",
+      "10",
+      "No",
+      "git clone \u003crepository\u003e \u003cdirectory\u003e",
+      "Clone a repository into a new directory, and provide the directory name",
+      "https://git-scm.com/docs/git-clone\nhttps://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository",
+      "$ git clone https://github.com/libgit2/libgit2 mylibgit"
+    ],
+    [
+      "Commands",
+      "status",
+      "0",
+      "No",
+      "git status",
+      "Show the working tree status",
+      "https://git-scm.com/docs/git-status\nhttps://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository",
+      "$ git status\nOn branch master\nYour branch is up-to-date with 'origin/master'.\nnothing to commit, working tree clean\n$ echo 'My Project' \u003e README\n$ git status\nOn branch master\nYour branch is up-to-date with 'origin/master'.\nUntracked files:\n(use \"git add \u003cfile\u003e...\" to include in what will be committed)\nREADME\nnothing added to commit but untracked files present (use \"git add\" to track)\n$ git add README\n$ git status\nOn branch master\nYour branch is up-to-date with 'origin/master'.\nChanges to be committed:\n(use \"git restore --staged \u003cfile\u003e...\" to unstage)\nnew file: README\n$ git status\nOn branch master\nYour branch is up-to-date with 'origin/master'.\nChanges to be committed:\n(use \"git reset HEAD \u003cfile\u003e...\" to unstage)\nnew file: README\nChanges not staged for commit:\n(use \"git add \u003cfile\u003e...\" to update what will be committed)\n(use \"git checkout -- \u003cfile\u003e...\" to discard changes in working directory)\nmodified: CONTRIBUTING.md"
+    ],
+    [
+      "Commands",
+      "status",
+      "10",
+      "No",
+      "git status --short",
+      "Show the working tree status in a shorter manner\nTriggers: `-s`, `--short`\nNew files that aren’t tracked have a `??` next to them, new files that have been added to the staging area have an `A`, modified files have an `M` and so on. There are two columns to the output: The left-hand column indicates the status of the staging area and the right-hand column indicates the status of the working tree.",
+      "https://git-scm.com/docs/git-status\nhttps://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository",
+      "$ git status -s\nM README\nMM Rakefile\nA lib/git.rb\nM lib/simplegit.rb\n?? LICENSE.txt"
+    ],
+    [
+      "Commands",
+      "add",
+      "0",
+      "No",
+      "git add \u003cpath\u003e",
+      "Add file contents to the index",
+      "https://git-scm.com/docs/git-add",
+      "$ git add README"
+    ],
+    [
+      "Commands",
+      "diff",
+      "0",
+      "No",
+      "git diff",
+      "Compare what's in the working directory with what's in the staging area",
+      "https://git-scm.com/docs/git-diff\nhttps://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository",
+      "$ git diff\ndiff --git a/CONTRIBUTING.md b/CONTRIBUTING.md\nindex 8ebb991..643e24f 100644\n--- a/CONTRIBUTING.md\n+++ b/CONTRIBUTING.md\n@@ -65,7 +65,8 @@ branch directly, things can get messy.\n Please include a nice description of your changes when you submit your PR;\n if we have to read the whole diff to figure out why you're contributing\n in the first place, you're less likely to get feedback and have your change\n-merged in.\n+merged in. Also, split your changes into comprehensive chunks if your patch is\n+longer than a dozen lines.\n\n If you are starting to work on a particular area, feel free to submit a PR\n that highlights your work in progress (and note in the PR title that it's"
+    ],
+    [
+      "Commands",
+      "diff",
+      "10",
+      "No",
+      "git diff --staged",
+      "Compare what's in the staging area to the last commit\n`--staged` and `--cached` are synonyms.",
+      "https://git-scm.com/docs/git-diff\nhttps://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository",
+      "$ git diff --staged\ndiff --git a/README b/README\nnew file mode 100644\nindex 0000000..03902a1\n--- /dev/null\n+++ b/README\n@@ -0,0 +1 @@\n+My Project"
+    ],
+    [
+      "Commands",
+      "commit",
+      "0",
+      "No",
+      "git commit",
+      "Record changes to the repository",
+      "https://git-scm.com/docs/git-commit\nhttps://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository",
+      "$ git commit"
+    ],
+    [
+      "Commands",
+      "commit",
+      "10",
+      "No",
+      "git commit -m \"\u003cmessage\u003e\"",
+      "Record changes to the repository, provide commit message inline",
+      "https://git-scm.com/docs/git-commit\nhttps://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository",
+      "$ git commit -m \"Story 182: fix benchmarks for speed\"\n[master 463dc4f] Story 182: fix benchmarks for speed\n 2 files changed, 2 insertions(+)\n create mode 100644 README"
+    ],
+    [
+      "Commands",
+      "commit",
+      "20",
+      "No",
+      "git commit -a -m \"\u003cmessage\u003e\"",
+      "Record changes to the repository and provide commit message inline while skipping staging area",
+      "https://git-scm.com/docs/git-commit\nhttps://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository",
+      "$ git status\nOn branch master\nYour branch is up-to-date with 'origin/master'.\nChanges not staged for commit:\n(use \"git add \u003cfile\u003e...\" to update what will be committed)\n(use \"git checkout -- \u003cfile\u003e...\" to discard changes in working directory)\nmodified: CONTRIBUTING.md\nno changes added to commit (use \"git add\" and/or \"git commit -a\")\n$ git commit -a -m 'Add new benchmarks'\n[master 83e38c7] Add new benchmarks\n1 file changed, 5 insertions(+), 0 deletions(-)"
+    ],
+    [
+      "Commands",
+      "rm",
+      "0",
+      "No",
+      "git rm \u003cpath\u003e",
+      "Remove a path from the working tree and from the index",
+      "https://git-scm.com/docs/git-rm\nhttps://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository",
+      "$ git rm PROJECTS.md\nrm 'PROJECTS.md'\n$ git status\nOn branch master\nYour branch is up-to-date with 'origin/master'.\nChanges to be committed:\n(use \"git reset HEAD \u003cfile\u003e...\" to unstage)\ndeleted: PROJECTS.md\n$ git rm log/\\*.log\n$ git rm \\*~"
+    ],
+    [
+      "Commands",
+      "rm",
+      "10",
+      "No",
+      "git rm --cached \u003cpath\u003e",
+      "Remove a path from the staging area while keeping it in the working tree",
+      "https://git-scm.com/docs/git-rm\nhttps://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository",
+      "$ git rm --cached README"
+    ],
+    [
+      "Commands",
+      "mv",
+      "0",
+      "No",
+      "git mv \u003cfile_from\u003e \u003cfile_to\u003e",
+      "Move or rename a file, a directory, or a symlink",
+      "https://git-scm.com/docs/git-mv\nhttps://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository",
+      "$ git mv README.md README\n$ git status\nOn branch master\nYour branch is up-to-date with 'origin/master'.\nChanges to be committed:\n(use \"git reset HEAD \u003cfile\u003e...\" to unstage)\nrenamed: README.md -\u003e README"
+    ],
+    [
+      "Commands",
+      "log",
+      "0",
+      "No",
+      "git log",
+      "Show commit logs",
+      "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History",
+      "$ git log\ncommit ca82a6dff817ec66f44342007202690a93763949\nAuthor: Scott Chacon \u003cschacon@gee-mail.com\u003e\nDate: Mon Mar 17 21:52:11 2008 -0700\nChange version number\ncommit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7\nAuthor: Scott Chacon \u003cschacon@gee-mail.com\u003e\nDate: Sat Mar 15 16:40:33 2008 -0700\nRemove unnecessary test\ncommit a11bef06a3f659402fe7563abf99ad00de2209e6\nAuthor: Scott Chacon \u003cschacon@gee-mail.com\u003e\nDate: Sat Mar 15 10:31:28 2008 -0700\nInitial commit"
+    ],
+    [
+      "Commands",
+      "log",
+      "10",
+      "No",
+      "git log --patch",
+      "Show commit logs as diff",
+      "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History",
+      "$ git log -p -2\ncommit ca82a6dff817ec66f44342007202690a93763949\nAuthor: Scott Chacon \u003cschacon@gee-mail.com\u003e\nDate: Mon Mar 17 21:52:11 2008 -0700\nChange version number\ndiff --git a/Rakefile b/Rakefile\nindex a874b73..8f94139 100644\n--- a/Rakefile\n+++ b/Rakefile\n@@ -5,7 +5,7 @@ require 'rake/gempackagetask'\nspec = Gem::Specification.new do |s|\ns.platform = Gem::Platform::RUBY\ns.name = \"simplegit\"\n- s.version = \"0.1.0\"\n+ s.version = \"0.1.1\"\ns.author = \"Scott Chacon\"\ns.email = \"schacon@gee-mail.com\"\ns.summary = \"A simple gem for using Git in Ruby code.\"\ncommit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7\nAuthor: Scott Chacon \u003cschacon@gee-mail.com\u003e\nDate: Sat Mar 15 16:40:33 2008 -0700\nRemove unnecessary test\ndiff --git a/lib/simplegit.rb b/lib/simplegit.rb\nindex a0a60ae..47c6340 100644\n--- a/lib/simplegit.rb\n+++ b/lib/simplegit.rb\n@@ -18,8 +18,3 @@ class SimpleGit\nend\nend\n-\n-if $0 == __FILE__\n- git = SimpleGit.new\n- puts git.show\n-end"
+    ],
+    [
+      "Commands",
+      "log",
+      "20",
+      "No",
+      "git log -\u003cnumber\u003e",
+      "Show commit logs, limit the number of commits to output.\nTriggers: `-\u003cnumber\u003e`, `-n \u003cnumber\u003e`, `--max-count=\u003cnumber\u003e`",
+      "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History",
+      "$ git log -3\ncommit ca82a6dff817ec66f44342007202690a93763949\nAuthor: Scott Chacon \u003cschacon@gee-mail.com\u003e\nDate: Mon Mar 17 21:52:11 2008 -0700\nChange version number\ncommit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7\nAuthor: Scott Chacon \u003cschacon@gee-mail.com\u003e\nDate: Sat Mar 15 16:40:33 2008 -0700\nRemove unnecessary test\ncommit a11bef06a3f659402fe7563abf99ad00de2209e6\nAuthor: Scott Chacon \u003cschacon@gee-mail.com\u003e\nDate: Sat Mar 15 10:31:28 2008 -0700\nInitial commit"
+    ],
+    [
+      "Commands",
+      "log",
+      "30",
+      "No",
+      "git log --pretty=\u003cformat\u003e",
+      "Show commit logs with special format.\nShortcut for `--pretty=oneline`: `--oneline`",
+      "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History",
+      "$ git log --pretty=oneline\nca82a6dff817ec66f44342007202690a93763949 Change version number\n085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7 Remove unnecessary test\na11bef06a3f659402fe7563abf99ad00de2209e6 Initial commit\n\n$ git log --pretty=format:\"%h - %an, %ar : %s\"\nca82a6d - Scott Chacon, 6 years ago : Change version number\n085bb3b - Scott Chacon, 6 years ago : Remove unnecessary test\na11bef0 - Scott Chacon, 6 years ago : Initial commit"
+    ],
+    [
+      "Commands",
+      "log",
+      "40",
+      "No",
+      "git log --graph",
+      "Show commit logs with ASCII branch graph",
+      "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History",
+      "$ git log --pretty=format:\"%h %s\" --graph\n* 2d3acf9 Ignore errors from SIGCHLD on trap\n* 5e3ee11 Merge branch 'master' of git://github.com/dustin/grit\n|\\\n| * 420eac9 Add method for getting the current branch\n* | 30e367c Timeout code and tests\n* | 5a09431 Add timeout protection to grit\n* | e1193f8 Support for heads with slashes in them\n|/\n* d6016bc Require time for xmlschema\n* 11d191e Merge branch 'defunkt' into local"
+    ],
+    [
+      "Commands",
+      "log",
+      "50",
+      "No",
+      "git log --since=\u003cdate\u003e",
+      "Show commit logs since a specific date",
+      "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History",
+      "$ git log --since=2.weeks\n\n$ git log --since=\"2008-01-15\"\n\n$ git log --since=\"2 years 1 day 3 minutes ago\""
+    ],
+    [
+      "Commands",
+      "log",
+      "60",
+      "No",
+      "git log --until=\u003cdate\u003e",
+      "Show commit logs until a specific date",
+      "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History",
+      "$ git log --until=2.weeks\n\n$ git log --until=\"2008-01-15\"\n\n$ git log --until=\"2 years 1 day 3 minutes ago\""
+    ],
+    [
+      "Commands",
+      "log",
+      "70",
+      "No",
+      "git log --author=\u003cauthor\u003e",
+      "Show commit logs by a specific author\n\nYou can specify more than one instance of the --author search criteria, which will limit the commit output to commits that match any of the --author patterns.",
+      "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History",
+      "$ git log --author='Junio C Hamano'"
+    ],
+    [
+      "Commands",
+      "log",
+      "80",
+      "No",
+      "git log --grep=\u003cpattern\u003e",
+      "Show commit logs containing keyword in the commit message\n\nYou can specify more than one instance of `--grep` search criteria, which will limit the commit output to commits that match any of the `--grep` patterns; however, adding the --all-match option further limits the output to just those commits that match all `--grep` patterns.",
+      "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History",
+      "$ git log --grep=\"Refactoring\""
+    ],
+    [
+      "Commands",
+      "log",
+      "90",
+      "No",
+      "git log -S \u003cstring\u003e",
+      "Look for differences that change the number of occurrences of the specified string (i.e. addition/deletion) in a file.\n\nTakes a string and shows only those commits that changed the number of occurrences of that string.",
+      "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History",
+      "$ git log -S function_name"
+    ],
+    [
+      "Commands",
+      "log",
+      "100",
+      "No",
+      "git log -- \u003cpath/to/file\u003e",
+      "Limit the log output to commits that introduced a change to the specified files.\n\nThis is always the last option and is generally preceded by double dashes (`--`) to separate the paths from the options",
+      "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History",
+      "$ git log -- path/to/file"
+    ],
+    [
+      "Commands",
+      "log",
+      "110",
+      "No",
+      "git log --no-merges",
+      "Show the whole commit history, but skip any merges.\n\n\nDepending on the workflow used in your repository, it’s possible that a sizable percentage of the commits in your log history are just merge commits, which typically aren’t very informative. To prevent the display of merge commits cluttering up your log history, simply add the log option `--no-merges`.",
+      "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History",
+      "$ git log --no-merges"
+    ],
+    [
+      "Commands",
+      "commit",
+      "30",
+      "No",
+      "git commit --amend",
+      "Redo the most recent commit, make the additional changes that were forgotten, stage them, and commit again\nThis command takes your staging area and uses it for the commit. If you’ve made no changes since your last commit (for instance, you run this command immediately after your previous commit), then your snapshot will look exactly the same, and all you’ll change is your commit message.\nIt’s important to understand that when you’re amending your last commit, you’re not so much fixing it as replacing it entirely with a new, improved commit that pushes the old commit out of the way and puts the new commit in its place. Effectively, it’s as if the previous commit never happened, and it won’t show up in your repository history.\nThe obvious value to amending commits is to make minor improvements to your last commit, without cluttering your repository history with commit messages of the form, “Oops, forgot to add a file” or “Fixing a typo in last commit”.\nOnly amend commits that are still local and have not been pushed somewhere. Amending previously pushed commits and force pushing the branch will cause problems for your collaborators.",
+      "https://git-scm.com/docs/git-commit\nhttps://git-scm.com/book/en/v2/Git-Basics-Undoing-Things",
+      "$ git commit -m 'Initial commit'\n$ git add forgotten_file\n$ git commit --amend"
+    ],
+    [
+      "Commands",
+      "reset",
+      "0",
+      "No",
+      "git reset HEAD \u003cfile\u003e...",
+      "Unstage a staged file\nConsider using `git restore` instead.",
+      "https://git-scm.com/docs/git-reset\nhttps://git-scm.com/book/en/v2/Git-Basics-Undoing-Things",
+      "$ git add *\n$ git status\nOn branch master\nChanges to be committed:\n(use \"git reset HEAD \u003cfile\u003e...\" to unstage)\nrenamed: README.md -\u003e README\nmodified: CONTRIBUTING.md\n$ git reset HEAD CONTRIBUTING.md\nUnstaged changes after reset:\nM\tCONTRIBUTING.md\n$ git status\nOn branch master\nChanges to be committed:\n(use \"git reset HEAD \u003cfile\u003e...\" to unstage)\nrenamed: README.md -\u003e README\nChanges not staged for commit:\n(use \"git add \u003cfile\u003e...\" to update what will be committed)\n(use \"git checkout -- \u003cfile\u003e...\" to discard changes in working directory)\nmodified: CONTRIBUTING.md"
+    ],
+    [
+      "Commands",
+      "checkout",
+      "0",
+      "No",
+      "git checkout -- \u003cfile\u003e...",
+      "Revert a modified file\n\nConsider using `git restore` instead.\n\nIt’s important to understand that `git checkout -- \u003cfile\u003e` is a dangerous command. Any local changes you made to that file are gone — Git just replaced that file with the last staged or committed version. Don’t ever use this command unless you absolutely know that you don’t want those unsaved local changes.",
+      "https://git-scm.com/docs/git-checkout\nhttps://git-scm.com/book/en/v2/Git-Basics-Undoing-Things",
+      "Changes not staged for commit:\n(use \"git add \u003cfile\u003e...\" to update what will be committed)\n(use \"git checkout -- \u003cfile\u003e...\" to discard changes in working directory)\nmodified: CONTRIBUTING.md\n$ git checkout -- CONTRIBUTING.md\n$ git status\nOn branch master\nChanges to be committed:\n(use \"git reset HEAD \u003cfile\u003e...\" to unstage)\nrenamed: README.md -\u003e README"
+    ],
+    [
+      "Commands",
+      "restore",
+      "0",
+      "No",
+      "git restore --staged \u003cfile\u003e...",
+      "Unstage a staged file",
+      "https://git-scm.com/docs/git-restore\nhttps://git-scm.com/book/en/v2/Git-Basics-Undoing-Things",
+      "$ git add *\n$ git status\nOn branch master\nChanges to be committed:\n(use \"git restore --staged \u003cfile\u003e...\" to unstage)\nmodified: CONTRIBUTING.md\nrenamed: README.md -\u003e README\n$ git restore --staged CONTRIBUTING.md\n$ git status\nOn branch master\nChanges to be committed:\n(use \"git restore --staged \u003cfile\u003e...\" to unstage)\nrenamed: README.md -\u003e README\nChanges not staged for commit:\n(use \"git add \u003cfile\u003e...\" to update what will be committed)\n(use \"git restore \u003cfile\u003e...\" to discard changes in working directory)\nmodified: CONTRIBUTING.md"
+    ],
+    [
+      "Commands",
+      "restore",
+      "10",
+      "No",
+      "git restore \u003cfile\u003e...",
+      "Revert a modified file\n\nIt’s important to understand that `git restore \u003cfile\u003e` is a dangerous command. Any local changes you made to that file are gone — Git just replaced that file with the last staged or committed version. Don’t ever use this command unless you absolutely know that you don’t want those unsaved local changes.",
+      "https://git-scm.com/docs/git-restore\nhttps://git-scm.com/book/en/v2/Git-Basics-Undoing-Things",
+      "Changes not staged for commit:\n(use \"git add \u003cfile\u003e...\" to update what will be committed)\n(use \"git restore \u003cfile\u003e...\" to discard changes in working directory)\nmodified: CONTRIBUTING.md\n$ git restore CONTRIBUTING.md\n$ git status\nOn branch master\nChanges to be committed:\n(use \"git restore --staged \u003cfile\u003e...\" to unstage)\nrenamed: README.md -\u003e README"
+    ],
+    [
+      "Commands",
+      "remote",
+      "0",
+      "No",
+      "git remote",
+      "Show the remotes",
+      "https://git-scm.com/docs/git-remote\nhttps://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes",
+      "$ git remote\norigin\n\n$ git remote -v\norigin\thttps://github.com/schacon/ticgit (fetch)\norigin\thttps://github.com/schacon/ticgit (push)"
+    ],
+    [
+      "Commands",
+      "remote",
+      "10",
+      "No",
+      "git remote add \u003cshortname\u003e \u003curl\u003e",
+      "Add a remote",
+      "https://git-scm.com/docs/git-remote\nhttps://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes",
+      "$ git remote\norigin\n$ git remote add pb https://github.com/paulboone/ticgit\n$ git remote -v\norigin\thttps://github.com/schacon/ticgit (fetch)\norigin\thttps://github.com/schacon/ticgit (push)\npb\thttps://github.com/paulboone/ticgit (fetch)\npb\thttps://github.com/paulboone/ticgit (push)"
+    ],
+    [
+      "Commands",
+      "fetch",
+      "0",
+      "No",
+      "git fetch",
+      "Download objects and refs from another repository\nNote that the `git fetch` command only downloads the data to your local repository — it doesn’t automatically merge it with any of your work or modify what you’re currently working on. You have to merge it manually into your work when you’re ready.",
+      "https://git-scm.com/docs/git-fetch\nhttps://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes",
+      "$ git fetch"
+    ],
+    [
+      "Commands",
+      "fetch",
+      "10",
+      "No",
+      "git fetch \u003cremote\u003e",
+      "Download objects and refs from another repository",
+      "https://git-scm.com/docs/git-fetch\nhttps://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes",
+      "$ git fetch pb\nremote: Counting objects: 43, done.\nremote: Compressing objects: 100% (36/36), done.\nremote: Total 43 (delta 10), reused 31 (delta 5)\nUnpacking objects: 100% (43/43), done.\nFrom https://github.com/paulboone/ticgit\n* [new branch] master -\u003e pb/master\n* [new branch] ticgit -\u003e pb/ticgit"
+    ],
+    [
+      "Commands",
+      "pull",
+      "0",
+      "No",
+      "git pull",
+      "Fetch from and integrate with another repository or a local branch",
+      "https://git-scm.com/docs/git-pull\nhttps://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes",
+      "$ git pull"
+    ],
+    [
+      "Commands",
+      "push",
+      "0",
+      "No",
+      "git push \u003cremote\u003e \u003cbranch\u003e",
+      "Upload local repository content to a remote repository",
+      "https://git-scm.com/docs/git-push\nhttps://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes",
+      "$ git push origin master"
+    ],
+    [
+      "Commands",
+      "remote",
+      "20",
+      "No",
+      "git remote show \u003cremote\u003e",
+      "See more information about a particular remote\n\nThis command shows which branch is automatically pushed to when you run `git push` while on certain branches. It also shows you which remote branches on the server you don’t yet have, which remote branches you have that have been removed from the server, and multiple local branches that are able to merge automatically with their remote-tracking branch when you run `git pull`.",
+      "https://git-scm.com/docs/git-remote\nhttps://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes",
+      "$ git remote show origin\n* remote origin\nURL: https://github.com/my-org/complex-project\nFetch URL: https://github.com/my-org/complex-project\nPush URL: https://github.com/my-org/complex-project\nHEAD branch: master\nRemote branches:\nmaster tracked\ndev-branch tracked\nmarkdown-strip tracked\nissue-43 new (next fetch will store in remotes/origin)\nissue-45 new (next fetch will store in remotes/origin)\nrefs/remotes/origin/issue-11 stale (use 'git remote prune' to remove)\nLocal branches configured for 'git pull':\ndev-branch merges with remote dev-branch\nmaster merges with remote master\nLocal refs configured for 'git push':\ndev-branch pushes to dev-branch (up to date)\nmarkdown-strip pushes to markdown-strip (up to date)\nmaster pushes to master (up to date)"
+    ],
+    [
+      "Commands",
+      "remote",
+      "30",
+      "No",
+      "git remote rename \u003cold\u003e \u003cnew\u003e",
+      "Rename a remote",
+      "https://git-scm.com/docs/git-remote\nhttps://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes",
+      "$ git remote rename pb paul\n$ git remote\norigin\npaul"
+    ],
+    [
+      "Commands",
+      "remote",
+      "40",
+      "No",
+      "git remote remove \u003cremote\u003e",
+      "Remove a remote\n\nOnce you delete the reference to a remote this way, all remote-tracking branches and configuration settings associated with that remote are also deleted.",
+      "https://git-scm.com/docs/git-remote\nhttps://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes",
+      "$ git remote remove paul\n$ git remote\norigin"
+    ],
+    [
+      "Commands",
+      "tag",
+      "0",
+      "No",
+      "git tag",
+      "List existing tags",
+      "https://git-scm.com/docs/git-tag\nhttps://git-scm.com/book/en/v2/Git-Basics-Tagging",
+      "$ git tag\nv1.0\nv2.0"
+    ],
+    [
+      "Commands",
+      "tag",
+      "10",
+      "No",
+      "git tag -l \"\u003ctagname\u003e\"",
+      "List existing tags with filter\nTriggers: `-l`, `--list`",
+      "https://git-scm.com/docs/git-tag\nhttps://git-scm.com/book/en/v2/Git-Basics-Tagging",
+      "$ git tag -l \"v1.8.5*\"\nv1.8.5\nv1.8.5-rc0\nv1.8.5-rc1\nv1.8.5-rc2\nv1.8.5-rc3\nv1.8.5.1\nv1.8.5.2\nv1.8.5.3\nv1.8.5.4\nv1.8.5.5"
+    ],
+    [
+      "Commands",
+      "tag",
+      "20",
+      "No",
+      "git tag -a \u003ctagname\u003e -m \"\u003cmessage\u003e\"",
+      "Create an annotated tag\n\nThe `-m` specifies a tagging message, which is stored with the tag. If you don’t specify a message for an annotated tag, Git launches your editor so you can type it in.",
+      "https://git-scm.com/docs/git-tag\nhttps://git-scm.com/book/en/v2/Git-Basics-Tagging",
+      "$ git tag -a v1.4 -m \"my version 1.4\"\n$ git tag\nv0.1\nv1.3\nv1.4"
+    ],
+    [
+      "Commands",
+      "show",
+      "0",
+      "No",
+      "git show \u003ctagname\u003e",
+      "Show details about a given tag",
+      "https://git-scm.com/docs/git-show\nhttps://git-scm.com/book/en/v2/Git-Basics-Tagging",
+      "$ git show v1.4 # annotated\ntag v1.4\nTagger: Ben Straub \u003cben@straub.cc\u003e\nDate: Sat May 3 20:19:12 2014 -0700\nmy version 1.4\ncommit ca82a6dff817ec66f44342007202690a93763949\nAuthor: Scott Chacon \u003cschacon@gee-mail.com\u003e\nDate: Mon Mar 17 21:52:11 2008 -0700\nChange version number\n$ git show v1.4-lw # lightweight\ncommit ca82a6dff817ec66f44342007202690a93763949\nAuthor: Scott Chacon \u003cschacon@gee-mail.com\u003e\nDate: Mon Mar 17 21:52:11 2008 -0700\nChange version number"
+    ],
+    [
+      "Commands",
+      "tag",
+      "30",
+      "No",
+      "git tag \u003ctagname\u003e",
+      "Create a lightweight tag",
+      "https://git-scm.com/docs/git-tag\nhttps://git-scm.com/book/en/v2/Git-Basics-Tagging",
+      "$ git tag v1.4-lw\n$ git tag\nv0.1\nv1.3\nv1.4\nv1.4-lw\nv1.5"
+    ],
+    [
+      "Commands",
+      "tag",
+      "40",
+      "No",
+      "git tag -a \u003ctagname\u003e \u003ccommit_hash\u003e",
+      "Tag a specific commit",
+      "https://git-scm.com/docs/git-tag\nhttps://git-scm.com/book/en/v2/Git-Basics-Tagging",
+      "$ git tag -a v1.2 9fceb02"
+    ],
+    [
+      "Commands",
+      "push",
+      "10",
+      "No",
+      "git push \u003cremote\u003e \u003ctagname\u003e",
+      "Push a tag to a remote\n\nBy default, the `git push` command doesn’t transfer tags to remote servers. You will have to explicitly push tags to a shared server after you have created them.",
+      "https://git-scm.com/docs/git-push\nhttps://git-scm.com/book/en/v2/Git-Basics-Tagging",
+      "$ git push origin v1.5\nCounting objects: 14, done.\nDelta compression using up to 8 threads.\nCompressing objects: 100% (12/12), done.\nWriting objects: 100% (14/14), 2.05 KiB | 0 bytes/s, done.\nTotal 14 (delta 3), reused 0 (delta 0)\nTo git@github.com:schacon/simplegit.git\n* [new tag] v1.5 -\u003e v1.5"
+    ],
+    [
+      "Commands",
+      "push",
+      "20",
+      "No",
+      "git push \u003cremote\u003e --tags",
+      "Push all tags to a remote\n\nThis will transfer all of your tags to the remote server that are not already there.\n\n`git push \u003cremote\u003e --tags` will push both lightweight and annotated tags. There is currently no option to push only lightweight tags, but if you use `git push \u003cremote\u003e --follow-tags` only annotated tags will be pushed to the remote.",
+      "https://git-scm.com/docs/git-push\nhttps://git-scm.com/book/en/v2/Git-Basics-Tagging",
+      "$ git push origin --tags\nCounting objects: 1, done.\nWriting objects: 100% (1/1), 160 bytes | 0 bytes/s, done.\nTotal 1 (delta 0), reused 0 (delta 0)\nTo git@github.com:schacon/simplegit.git\n* [new tag] v1.4 -\u003e v1.4\n* [new tag] v1.4-lw -\u003e v1.4-lw"
+    ],
+    [
+      "Commands",
+      "tag",
+      "50",
+      "No",
+      "git tag -d \u003ctagname\u003e",
+      "Delete a tag from the local repository\n\nNote that this does not remove the tag from any remote servers. There are two common variations for deleting a tag from a remote server.",
+      "https://git-scm.com/docs/git-tag\nhttps://git-scm.com/book/en/v2/Git-Basics-Tagging",
+      "$ git tag -d v1.4-lw\nDeleted tag 'v1.4-lw' (was e7d5add)"
+    ],
+    [
+      "Commands",
+      "push",
+      "30",
+      "No",
+      "git push \u003cremote\u003e --delete \u003ctagname\u003e",
+      "Delete a tag from the remote repository",
+      "https://git-scm.com/docs/git-push\nhttps://git-scm.com/book/en/v2/Git-Basics-Tagging",
+      "$ git push origin --delete \u003ctagname\u003e"
+    ],
+    [
+      "Commands",
+      "checkout",
+      "10",
+      "No",
+      "git checkout \u003ctagname\u003e",
+      "Checkout the versions of files a tag is pointing to\nThis puts your repository in “detached HEAD” state. In this state, if you make changes and then create a commit, the tag will stay the same, but your new commit won’t belong to any branch and will be unreachable, except by the exact commit hash.",
+      "https://git-scm.com/docs/git-checkout\nhttps://git-scm.com/book/en/v2/Git-Basics-Tagging",
+      "$ git checkout v2.0.0\nNote: switching to 'v2.0.0'.\nYou are in 'detached HEAD' state. You can look around, make experimental\nchanges and commit them, and you can discard any commits you make in this\nstate without impacting any branches by performing another checkout.\nIf you want to create a new branch to retain commits you create, you may\ndo so (now or later) by using -c with the switch command. Example:\ngit switch -c \u003cnew-branch-name\u003e\nOr undo this operation with:\ngit switch -\nTurn off this advice by setting config variable advice.detachedHead to false\nHEAD is now at 99ada87... Merge pull request #89 from schacon/appendix-final\n$ git checkout v2.0-beta-0.1\nPrevious HEAD position was 99ada87... Merge pull request #89 from schacon/appendix-final\nHEAD is now at df3f601... Add atlas.json and cover image"
+    ],
+    [
+      "Commands",
+      "checkout",
+      "20",
+      "No",
+      "git checkout -b \u003cbranchname\u003e \u003ctagname\u003e",
+      "Checkout the versions of files a tag is pointing to, while creating a branch",
+      "https://git-scm.com/docs/git-checkout\nhttps://git-scm.com/book/en/v2/Git-Basics-Tagging",
+      "$ git checkout -b version2 v2.0.0\nSwitched to a new branch 'version2'"
+    ],
+    [
+      "Commands",
+      "config",
+      "0",
+      "No",
+      "git config alias.\u003calias\u003e \u003ccommand\u003e",
+      "Create an alias for a command\n\nTo run an external command, rather than a Git subcommand, start the command with a `!` character.",
+      "https://git-scm.com/docs/git-config\nhttps://git-scm.com/book/en/v2/Git-Basics-Git-Aliases",
+      "$ git config --global alias.co checkout\n$ git config --global alias.br branch\n$ git config --global alias.ci commit\n$ git config --global alias.st status\n$ git config --global alias.unstage 'reset HEAD --'\n$ git config --global alias.last 'log -1 HEAD'\n$ git config --global alias.visual '!gitk'"
+    ]
+  ]
+}
