@@ -16,6 +16,7 @@ In order to use this infrastructure for your own cheat sheets:
  2. Add the following columns as a header: `Category, Subcategory, Weight, Is Starred?, Command, Description, More Info, Output`
  3. Change the spreadsheet permissions so that it has public Read-Only permissions
  4. Modify `SPREADSHEET_ID` in `CheatSheet.html` to point to your spreadsheet ID
+ 5. Modify the table of contents under `setupCheatSheet` to include the spreadsheet name (and any information that should appear in the footer)
 
 At this point, there are two options to access the spreadsheet content:
  
