@@ -148,7 +148,7 @@
       "0",
       "No",
       "git log",
-      "Show commit logs",
+      "Show commit logs\n\nBy default, `git log` will only show commit history below the branch you’ve checked out.\n\nTo show commit history for the desired branch you have to explicitly specify it: `git log testing`. To show all of the branches, add `--all` to your git log command.\n",
       "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History",
       "$ git log\ncommit ca82a6dff817ec66f44342007202690a93763949\nAuthor: Scott Chacon \u003cschacon@gee-mail.com\u003e\nDate: Mon Mar 17 21:52:11 2008 -0700\nChange version number\ncommit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7\nAuthor: Scott Chacon \u003cschacon@gee-mail.com\u003e\nDate: Sat Mar 15 16:40:33 2008 -0700\nRemove unnecessary test\ncommit a11bef06a3f659402fe7563abf99ad00de2209e6\nAuthor: Scott Chacon \u003cschacon@gee-mail.com\u003e\nDate: Sat Mar 15 10:31:28 2008 -0700\nInitial commit"
     ],
@@ -349,7 +349,7 @@
       "No",
       "git fetch \u003cremote\u003e",
       "Download objects and refs from another repository",
-      "https://git-scm.com/docs/git-fetch\nhttps://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes",
+      "https://git-scm.com/docs/git-fetch\nhttps://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes\nhttps://git-scm.com/book/en/v2/Git-Branching-Remote-Branches",
       "$ git fetch pb\nremote: Counting objects: 43, done.\nremote: Compressing objects: 100% (36/36), done.\nremote: Total 43 (delta 10), reused 31 (delta 5)\nUnpacking objects: 100% (43/43), done.\nFrom https://github.com/paulboone/ticgit\n* [new branch] master -\u003e pb/master\n* [new branch] ticgit -\u003e pb/ticgit"
     ],
     [
@@ -358,8 +358,8 @@
       "0",
       "No",
       "git pull",
-      "Fetch from and integrate with another repository or a local branch",
-      "https://git-scm.com/docs/git-pull\nhttps://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes",
+      "Fetch from and integrate with another repository or a local branch\n\nEssentially this is a `git fetch` immediately followed by a `git merge` in most cases.",
+      "https://git-scm.com/docs/git-pull\nhttps://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes\nhttps://git-scm.com/book/en/v2/Git-Branching-Remote-Branches",
       "$ git pull"
     ],
     [
@@ -369,7 +369,7 @@
       "No",
       "git push \u003cremote\u003e \u003cbranch\u003e",
       "Upload local repository content to a remote repository",
-      "https://git-scm.com/docs/git-push\nhttps://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes",
+      "https://git-scm.com/docs/git-push\nhttps://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes\nhttps://git-scm.com/book/en/v2/Git-Branching-Remote-Branches",
       "$ git push origin master"
     ],
     [
@@ -531,6 +531,339 @@
       "Create an alias for a command\n\nTo run an external command, rather than a Git subcommand, start the command with a `!` character.",
       "https://git-scm.com/docs/git-config\nhttps://git-scm.com/book/en/v2/Git-Basics-Git-Aliases",
       "$ git config --global alias.co checkout\n$ git config --global alias.br branch\n$ git config --global alias.ci commit\n$ git config --global alias.st status\n$ git config --global alias.unstage 'reset HEAD --'\n$ git config --global alias.last 'log -1 HEAD'\n$ git config --global alias.visual '!gitk'"
+    ],
+    [
+      "Commands",
+      "init",
+      "0",
+      "No",
+      "git init",
+      "Create an empty Git repository or reinitialize an existing one",
+      "https://git-scm.com/docs/git-init\nhttps://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository",
+      "$ git init"
+    ],
+    [
+      "Commands",
+      "branch",
+      "100",
+      "No",
+      "git branch \u003cbranchname\u003e",
+      "Create a new branch\n\nThis creates a new pointer to the same commit you’re currently on (where `HEAD` is pointing to).",
+      "https://git-scm.com/docs/git-branch\nhttps://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell",
+      "$ git branch testing"
+    ],
+    [
+      "Commands",
+      "log",
+      "120",
+      "No",
+      "git log --oneline --decorate",
+      "View the git log with extra info of where the branch pointers are pointing to",
+      "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell",
+      "$ git log --oneline --decorate\nf30ab (HEAD -\u003e master, testing) Add feature #32 - ability to add new formats to the central interface\n34ac2 Fix bug #1328 - stack overflow under certain conditions\n98ca9 Initial commit"
+    ],
+    [
+      "Commands",
+      "checkout",
+      "30",
+      "No",
+      "git checkout \u003cbranchname\u003e",
+      "Switch to a given branch\n\nThis moves HEAD to point to the given branch.",
+      "https://git-scm.com/docs/git-checkout\nhttps://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell",
+      "$ git checkout testing"
+    ],
+    [
+      "Commands",
+      "log",
+      "130",
+      "No",
+      "git log --oneline --decorate --graph --all",
+      "View the git log with extra info of where all the branch pointers are pointing to as a graph",
+      "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell",
+      "$ git log --oneline --decorate --graph --all\n* c2b9e (HEAD, master) Made other changes\n| * 87ab2 (testing) Made a change\n|/\n* f30ab Add feature #32 - ability to add new formats to the central interface\n* 34ac2 Fix bug #1328 - stack overflow under certain conditions\n* 98ca9 initial commit of my project"
+    ],
+    [
+      "Commands",
+      "checkout",
+      "40",
+      "No",
+      "git checkout -b \u003cnewbranchname\u003e",
+      "Create a new branch and switch to it at the same time",
+      "https://git-scm.com/docs/git-checkout\nhttps://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell\nhttps://git-scm.com/book/en/v2/Git-Branching-Remote-Branches"
+    ],
+    [
+      "Commands",
+      "switch",
+      "0",
+      "No",
+      "git switch \u003cbranch\u003e",
+      "Switch to an existing branch",
+      "https://git-scm.com/docs/git-switch\nhttps://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell"
+    ],
+    [
+      "Commands",
+      "switch",
+      "10",
+      "No",
+      "git switch -c \u003cnewbranchname\u003e",
+      "Create a new branch and switch to it\n\nTriggers: `-c`, `--create`\n",
+      "https://git-scm.com/docs/git-switch\nhttps://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell"
+    ],
+    [
+      "Commands",
+      "switch",
+      "20",
+      "No",
+      "git switch -",
+      "Return to the previously checked out branch",
+      "https://git-scm.com/docs/git-switch\nhttps://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell"
+    ],
+    [
+      "Workflows",
+      "Branching",
+      "10",
+      "No",
+      "\u003cGetting interrupted with a higher priority fix\u003e",
+      "Getting interrupted with a higher priority fix\n\n 1. Do some work on a website.\n 2. Create a branch for a new user story you’re working on.\n 3. Do some work in that branch.\n 4. Switch to your production branch.\n 5. Create a branch to add the hotfix.\n 6. After it’s tested, merge the hotfix branch, and push to production.\n 7. Switch back to your original user story and continue working.\n\n\nNote that if your working directory or staging area has uncommitted changes that conflict with the branch you’re checking out, Git won’t let you switch branches. It’s best to have a clean working state when you switch branches.",
+      "https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging",
+      "$ git checkout -b iss53\nSwitched to a new branch \"iss53\"\n$ vim index.html\n$ git commit -a -m 'Create new footer [issue 53]'\n$ git checkout master\nSwitched to branch 'master'\n$ git checkout -b hotfix\nSwitched to a new branch 'hotfix'\n$ vim index.html\n$ git commit -a -m 'Fix broken email address'\n[hotfix 1fb7853] Fix broken email address\n 1 file changed, 2 insertions(+)\n$ git checkout master\n$ git merge hotfix\nUpdating f42c576..3a0874c\nFast-forward\n index.html | 2 ++\n 1 file changed, 2 insertions(+)\n$ git branch -d hotfix\nDeleted branch hotfix (3a0874c).\n$ git checkout iss53\nSwitched to branch \"iss53\"\n$ vim index.html\n$ git commit -a -m 'Finish the new footer [issue 53]'\n[iss53 ad82d7a] Finish the new footer [issue 53]\n1 file changed, 1 insertion(+)\n$ git checkout master\nSwitched to branch 'master'\n$ git merge iss53\nMerge made by the 'recursive' strategy.\nindex.html |    1 +\n1 file changed, 1 insertion(+)\n$ git branch -d iss53"
+    ],
+    [
+      "Commands",
+      "merge",
+      "0",
+      "No",
+      "git merge \u003cbranchname\u003e",
+      "Merge a branch into the current branch",
+      "https://git-scm.com/docs/git-merge\nhttps://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging\nhttps://git-scm.com/book/en/v2/Git-Branching-Remote-Branches",
+      "$ git checkout master\n$ git merge hotfix\nUpdating f42c576..3a0874c\nFast-forward\n index.html | 2 ++\n 1 file changed, 2 insertions(+)"
+    ],
+    [
+      "Commands",
+      "branch",
+      "110",
+      "No",
+      "git branch -d \u003cbranchname\u003e",
+      "Delete a branch\n\nNote: If the branch contains work that wasn't merged yet, git might refuse to delete the branch.\nTo force it, use `-D` instead.\n",
+      "https://git-scm.com/docs/git-branch\nhttps://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging",
+      "$ git branch -d hotfix\nDeleted branch hotfix (3a0874c)."
+    ],
+    [
+      "Workflows",
+      "Branching",
+      "20",
+      "No",
+      "\u003cMerging conflicts\u003e",
+      "Merging conflicts\n\n 1. Attempt to merge the branches\n 2. Identify that git complains about conflicts\n 3. Resolve the conflicts\n 4. Add each file back to the staging area to mark the conflict resolved\n 5. Check status to confirm no conflicts remain\n 6. Commit change\n",
+      "https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging",
+      "$ git merge iss53\nAuto-merging index.html\nCONFLICT (content): Merge conflict in index.html\nAutomatic merge failed; fix conflicts and then commit the result.\n$ git status\nOn branch master\nYou have unmerged paths.\n  (fix conflicts and run \"git commit\")\n\nUnmerged paths:\n  (use \"git add \u003cfile\u003e...\" to mark resolution)\n\n    both modified:      index.html\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")\n$ # Resolve conflicts (perhaps by running git mergetool)\n$ git add index.html\n\n$ git status\nOn branch master\nAll conflicts fixed but you are still merging.\n  (use \"git commit\" to conclude merge)\n\nChanges to be committed:\n\n    modified:   index.html\n$ git commit\nMerge branch 'iss53'\n\nConflicts:\n    index.html\n#\n# It looks like you may be committing a merge.\n# If this is not correct, please remove the file\n#\t.git/MERGE_HEAD\n# and try again.\n\n\n# Please enter the commit message for your changes. Lines starting\n# with '#' will be ignored, and an empty message aborts the commit.\n# On branch master\n# All conflicts fixed but you are still merging.\n#\n# Changes to be committed:\n#\tmodified:   index.html\n#\n"
+    ],
+    [
+      "Commands",
+      "mergetool",
+      "0",
+      "No",
+      "git mergetool",
+      "Run merge conflict resolution tools to resolve merge conflicts",
+      "https://git-scm.com/docs/git-mergetool\nhttps://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging"
+    ],
+    [
+      "Workflows",
+      "Branching",
+      "0",
+      "No",
+      "\u003cSimple fix\u003e",
+      "A simple fix\n 1. Create a branch for the fix\n 2. Fix the issue\n 3. Merge the fix to the main branch\n 4. Delete the branch\n",
+      "https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging",
+      "$ git checkout -b iss53\nSwitched to a new branch \"iss53\"\n$ vim index.html\n$ git commit -a -m 'Create new footer [issue 53]'\n$ git checkout master\nSwitched to branch 'master'\n$ git merge iss53\nMerge made by the 'recursive' strategy.\nindex.html |    1 +\n1 file changed, 1 insertion(+)\n$ git branch -d iss53"
+    ],
+    [
+      "Commands",
+      "branch",
+      "0",
+      "No",
+      "git branch",
+      "View existing branches\n\nThe `*` indicates the branch that you currently have checked out (i.e., the branch that `HEAD` points to).\n",
+      "https://git-scm.com/docs/git-branch\nhttps://git-scm.com/book/en/v2/Git-Branching-Branch-Management",
+      "$ git branch\n  iss53\n* master\n  testing"
+    ],
+    [
+      "Commands",
+      "branch",
+      "10",
+      "No",
+      "git branch -v",
+      "View the last commit on each branch",
+      "https://git-scm.com/docs/git-branch\nhttps://git-scm.com/book/en/v2/Git-Branching-Branch-Management",
+      "$ git branch -v\n  iss53   93b412c Fix javascript issue\n* master  7a98805 Merge branch 'iss53'\n  testing 782fd34 Add scott to the author list in the readme"
+    ],
+    [
+      "Commands",
+      "branch",
+      "20",
+      "No",
+      "git branch --merged",
+      "View only the branches that you have merged into the branch you’re currently on",
+      "https://git-scm.com/docs/git-branch\nhttps://git-scm.com/book/en/v2/Git-Branching-Branch-Management",
+      "$ git branch --merged\n  iss53\n* master"
+    ],
+    [
+      "Commands",
+      "branch",
+      "30",
+      "No",
+      "git branch --no-merged",
+      "View only the branches that you have not merged into the branch you’re currently on",
+      "https://git-scm.com/docs/git-branch\nhttps://git-scm.com/book/en/v2/Git-Branching-Branch-Management",
+      "$ git branch --no-merged\n  testing"
+    ],
+    [
+      "Commands",
+      "branch",
+      "111",
+      "No",
+      "git branch -D \u003cbranchname\u003e",
+      "Force-delete a branch\n\nThis might be needed if the branch contains work that has not yet been merged.\nShortcut for `--delete --force`\n",
+      "https://git-scm.com/docs/git-branch\nhttps://git-scm.com/book/en/v2/Git-Branching-Branch-Management",
+      "$ git branch -d testing\nerror: The branch 'testing' is not fully merged.\nIf you are sure you want to delete it, run 'git branch -D testing'.\n$ git branch -D testing"
+    ],
+    [
+      "Commands",
+      "branch",
+      "21",
+      "No",
+      "git branch --merged \u003cbranchname\u003e",
+      "View only the branches that you have merged into the provided branch",
+      "https://git-scm.com/docs/git-branch\nhttps://git-scm.com/book/en/v2/Git-Branching-Branch-Management",
+      "$ git checkout testing\n$ git branch --merged master\n  topicA\n  featureB"
+    ],
+    [
+      "Commands",
+      "branch",
+      "31",
+      "No",
+      "git branch --no-merged \u003cbranchname\u003e",
+      "View only the branches that you have not merged into the provided branch",
+      "https://git-scm.com/docs/git-branch\nhttps://git-scm.com/book/en/v2/Git-Branching-Branch-Management",
+      "$ git checkout testing\n$ git branch --no-merged master\n  topicA\n  featureB"
+    ],
+    [
+      "Commands",
+      "branch",
+      "40",
+      "No",
+      "git branch --move \u003coldname\u003e \u003cnewname\u003e",
+      "Rename a branch locally\n\nCollaborators won't see the change until the branch is pushed upstream using:\n`git push --set-upstream \u003cremote\u003e \u003cnewname\u003e`\n",
+      "https://git-scm.com/docs/git-branch\nhttps://git-scm.com/book/en/v2/Git-Branching-Branch-Management",
+      "$ git branch --move bad-branch-name corrected-branch-name\n"
+    ],
+    [
+      "Workflows",
+      "Branching",
+      "30",
+      "No",
+      "\u003cRename a branch remotely\u003e",
+      "Rename a branch remotely\n 1. Rename the branch locally\n 2. Push the new branch upstream\n 3. Delete the old branch from the remote\n\nDo not rename branches that are still in use by other collaborators. Do not rename a branch like master/main/mainline without further research.\n",
+      "https://git-scm.com/docs/git-branch\nhttps://git-scm.com/book/en/v2/Git-Branching-Branch-Management",
+      "$ git branch --move bad-branch-name corrected-branch-name\n$ git push --set-upstream origin corrected-branch-name\n$ git branch --all\n* corrected-branch-name\n  main\n  remotes/origin/bad-branch-name\n  remotes/origin/corrected-branch-name\n  remotes/origin/main\n$ git push origin --delete bad-branch-name\n"
+    ],
+    [
+      "Commands",
+      "config",
+      "0",
+      "No",
+      "git config --global credential.helper cache",
+      "Setup a credential cache to avoid retyping password",
+      "https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches\nhttps://git-scm.com/book/en/v2/ch00/_credential_caching"
+    ],
+    [
+      "Commands",
+      "checkout",
+      "50",
+      "No",
+      "git checkout --track \u003cremote\u003e/\u003cbranch\u003e",
+      "Setup a local tracking branch for the remote branch",
+      "https://git-scm.com/docs/git-checkout\nhttps://git-scm.com/book/en/v2/Git-Branching-Remote-Branches",
+      "$ git checkout --track origin/serverfix\nBranch serverfix set up to track remote branch serverfix from origin.\nSwitched to a new branch 'serverfix'"
+    ],
+    [
+      "Commands",
+      "branch",
+      "11",
+      "No",
+      "git branch -vv",
+      "List out local branches with more information\n\nThis information includes what each branch is tracking and if your local branch is ahead, behind or both",
+      "https://git-scm.com/docs/git-branch\nhttps://git-scm.com/book/en/v2/Git-Branching-Remote-Branches",
+      "$ git branch -vv\n  iss53     7e424c3 [origin/iss53: ahead 2] Add forgotten brackets\n  master    1ae2a45 [origin/master] Deploy index fix\n* serverfix f8674d9 [teamone/server-fix-good: ahead 3, behind 1] This should do it\n  testing   5ea463a Try something new"
+    ],
+    [
+      "Commands",
+      "push",
+      "40",
+      "No",
+      "git push \u003cremote\u003e --delete \u003cbranch\u003e",
+      "Delete a remote branch",
+      "https://git-scm.com/docs/git-push\nhttps://git-scm.com/book/en/v2/Git-Branching-Remote-Branches",
+      "$ git push origin --delete serverfix\nTo https://github.com/schacon/simplegit\n - [deleted]         serverfix"
+    ],
+    [
+      "Commands",
+      "rebase",
+      "0",
+      "No",
+      "git rebase \u003cbranch\u003e",
+      "Take all the changes that were committed on the given branch and replay them on the current branch",
+      "https://git-scm.com/docs/git-rebase\nhttps://git-scm.com/book/en/v2/Git-Branching-Rebasing",
+      "$ git checkout experiment\n$ git rebase master\nFirst, rewinding head to replay your work on top of it...\nApplying: added staged command"
+    ],
+    [
+      "Workflows",
+      "Branching",
+      "40",
+      "No",
+      "\u003cBasic rebase\u003e",
+      "Basic rebase\n\n 1. Checkout the topic branch and rebase it onto the main branch\n 2. Return to the main branch and perform a fast-forward merge\n",
+      "https://git-scm.com/book/en/v2/Git-Branching-Rebasing",
+      "$ git checkout experiment\n$ git rebase master\nFirst, rewinding head to replay your work on top of it...\nApplying: added staged command\n$ git checkout master\n$ git merge experiment"
+    ],
+    [
+      "Commands",
+      "rebase",
+      "10",
+      "No",
+      "git rebase --onto \u003cnewbase\u003e \u003cupstream\u003e \u003cbranch\u003e",
+      "Perform a rebase from a given starting point\n\nThis basically means: \"Take the `branch` branch, figure out the patches since it diverged from the `upstream` branch, and replay these patches in the `branch` branch as if it was based directly off the `newbase` branch instead\".",
+      "https://git-scm.com/book/en/v2/Git-Branching-Rebasing",
+      "$ git rebase --onto master server client"
+    ],
+    [
+      "Commands",
+      "rebase",
+      "20",
+      "No",
+      "git rebase \u003cbasebranch\u003e \u003ctopicbranch\u003e",
+      "Check out the topic branch and replay it onto the base branch",
+      "https://git-scm.com/book/en/v2/Git-Branching-Rebasing",
+      "$ git rebase master server"
+    ],
+    [
+      "Commands",
+      "pull",
+      "10",
+      "No",
+      "git pull --rebase",
+      "Rrebase the current branch on top of the upstream branch after fetching",
+      "https://git-scm.com/docs/git-pull\nhttps://git-scm.com/book/en/v2/Git-Branching-Rebasing",
+      "$ git pull --rebase"
+    ],
+    [
+      "Commands",
+      "config",
+      "20",
+      "No",
+      "git config --global pull.rebase true",
+      "Configure git pull to always use a rebase",
+      "https://git-scm.com/docs/git-pull\nhttps://git-scm.com/book/en/v2/Git-Branching-Rebasing"
     ]
   ]
 }
