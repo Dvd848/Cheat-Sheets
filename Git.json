@@ -1161,11 +1161,159 @@
     [
       "Commands",
       "stash",
-      "0",
+      "20",
       "No",
       "git stash -p",
       "Partially stash changes in files.\n\nTriggers: `-p`, `--patch`.",
-      "https://git-scm.com/docs/git-stash\nhttps://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging"
+      "https://git-scm.com/docs/git-stash\nhttps://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning",
+      "$ git stash --patch\ndiff --git a/lib/simplegit.rb b/lib/simplegit.rb\nindex 66d332e..8bb5674 100644\n--- a/lib/simplegit.rb\n+++ b/lib/simplegit.rb\n@@ -16,6 +16,10 @@ class SimpleGit\n         return `#{git_cmd} 2\u003e&1`.chomp\n       end\n     end\n+\n+    def show(treeish = 'master')\n+      command(\"git show #{treeish}\")\n+    end\n\n end\n test\nStash this hunk [y,n,q,a,d,/,e,?]? y\n\nSaved working directory and index state WIP on master: 1b65b17 added the index file"
+    ],
+    [
+      "Commands",
+      "stash",
+      "0",
+      "No",
+      "git stash",
+      "Stash the changes in a dirty working directory away.\n\nBy default, `git stash` will stash only modified and staged tracked files.",
+      "https://git-scm.com/docs/git-stash\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning",
+      "$ git status\nChanges to be committed:\n  (use \"git reset HEAD \u003cfile\u003e...\" to unstage)\n\n\tmodified:   index.html\n\nChanges not staged for commit:\n  (use \"git add \u003cfile\u003e...\" to update what will be committed)\n  (use \"git checkout -- \u003cfile\u003e...\" to discard changes in working directory)\n\n\tmodified:   lib/simplegit.rb\n\n$ git stash\nSaved working directory and index state \\\n  \"WIP on master: 049d078 Create index file\"\nHEAD is now at 049d078 Create index file\n(To restore them type \"git stash apply\")\n\n$ git status\n# On branch master\nnothing to commit, working directory clean"
+    ],
+    [
+      "Commands",
+      "stash",
+      "30",
+      "No",
+      "git stash list",
+      "List available stashes.",
+      "https://git-scm.com/docs/git-stash\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning",
+      "$ git stash list\nstash@{0}: WIP on master: 049d078 Create index file\nstash@{1}: WIP on master: c264051 Revert \"Add file_size\"\nstash@{2}: WIP on master: 21d80a5 Add number to log"
+    ],
+    [
+      "Commands",
+      "stash",
+      "40",
+      "No",
+      "git stash apply",
+      "Apply most recent stash to current branch.\n\nHaving a clean working directory and applying it on the same branch aren’t necessary to successfully apply a stash. You can save a stash on one branch, switch to another branch later, and try to reapply the changes. You can also have modified and uncommitted files in your working directory when you apply a stash — Git gives you merge conflicts if anything no longer applies cleanly.\n\nNote that after running this, the changes to your files are reapplied, but the files you staged before aren’t restaged. To restage files, run with `--index`.",
+      "https://git-scm.com/docs/git-stash\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning",
+      "$ git stash apply\nOn branch master\nChanges not staged for commit:\n  (use \"git add \u003cfile\u003e...\" to update what will be committed)\n  (use \"git checkout -- \u003cfile\u003e...\" to discard changes in working directory)\n\n\tmodified:   index.html\n\tmodified:   lib/simplegit.rb\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")"
+    ],
+    [
+      "Commands",
+      "stash",
+      "60",
+      "No",
+      "git stash apply \u003cname\u003e",
+      "Apply given stash to current branch.",
+      "https://git-scm.com/docs/git-stash\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning",
+      "$ git stash apply stash@{2}"
+    ],
+    [
+      "Commands",
+      "stash",
+      "50",
+      "No",
+      "git stash apply --index",
+      "Apply the most recent stash to the current branch and try to restage the files.",
+      "https://git-scm.com/docs/git-stash\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning",
+      "$ git stash apply --index\nOn branch master\nChanges to be committed:\n  (use \"git reset HEAD \u003cfile\u003e...\" to unstage)\n\n\tmodified:   index.html\n\nChanges not staged for commit:\n  (use \"git add \u003cfile\u003e...\" to update what will be committed)\n  (use \"git checkout -- \u003cfile\u003e...\" to discard changes in working directory)\n\n\tmodified:   lib/simplegit.rb"
+    ],
+    [
+      "Commands",
+      "stash",
+      "70",
+      "No",
+      "git stash drop \u003cname\u003e",
+      "Delete the given stash.",
+      "https://git-scm.com/docs/git-stash\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning",
+      "$ git stash list\nstash@{0}: WIP on master: 049d078 Create index file\nstash@{1}: WIP on master: c264051 Revert \"Add file_size\"\nstash@{2}: WIP on master: 21d80a5 Add number to log\n$ git stash drop stash@{0}\nDropped stash@{0} (364e91f3f268f0900bc3ee613f9f733e82aaed43)"
+    ],
+    [
+      "Commands",
+      "stash",
+      "10",
+      "No",
+      "git stash --keep-index",
+      "Stash the changes while keeping the working directory modified.",
+      "https://git-scm.com/docs/git-stash\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning",
+      "$ git status -s\nM  index.html\n M lib/simplegit.rb\n\n$ git stash --keep-index\nSaved working directory and index state WIP on master: 1b65b17 added the index file\nHEAD is now at 1b65b17 added the index file\n\n$ git status -s\nM  index.html"
+    ],
+    [
+      "Commands",
+      "stash",
+      "11",
+      "No",
+      "git stash --include-untracked",
+      "Stash changes, include untracked files in the stash being created.\n\nTriggers: `-u`, `--include-untracked`.\n\nIncluding untracked files in the stash will still not include explicitly ignored files. To additionally include ignored files, use `--all` (or just `-a`).",
+      "https://git-scm.com/docs/git-stash\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning",
+      "$ git status -s\nM  index.html\n M lib/simplegit.rb\n?? new-file.txt\n\n$ git stash -u\nSaved working directory and index state WIP on master: 1b65b17 added the index file\nHEAD is now at 1b65b17 added the index file\n\n$ git status -s\n$"
+    ],
+    [
+      "Commands",
+      "stash",
+      "80",
+      "No",
+      "git stash branch \u003cnew branchname\u003e",
+      "Create a branch from a stash.\n\nThis creates a new branch for you with your selected branch name, checks out the commit you were on when you stashed your work, reapplies your work there, and then drops the stash if it applies successfully.",
+      "https://git-scm.com/docs/git-stash\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning",
+      "$ git stash branch testchanges\nM\tindex.html\nM\tlib/simplegit.rb\nSwitched to a new branch 'testchanges'\nOn branch testchanges\nChanges to be committed:\n  (use \"git reset HEAD \u003cfile\u003e...\" to unstage)\n\n\tmodified:   index.html\n\nChanges not staged for commit:\n  (use \"git add \u003cfile\u003e...\" to update what will be committed)\n  (use \"git checkout -- \u003cfile\u003e...\" to discard changes in working directory)\n\n\tmodified:   lib/simplegit.rb\n\nDropped refs/stash@{0} (29d385a81d163dfd45a452a2ce816487a6b8b014)"
+    ],
+    [
+      "Commands",
+      "clean",
+      "0",
+      "No",
+      "git clean",
+      "Remove untracked files from the working tree.\n\nBy default, the `git clean` command will only remove untracked files that are not ignored.\n\nAny file that matches a pattern in your `.gitignore` or other ignore files will not be removed.",
+      "https://git-scm.com/docs/git-clean\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning"
+    ],
+    [
+      "Commands",
+      "stash",
+      "25",
+      "No",
+      "git stash --all",
+      "Stash all files and remove them from the working directory.\n\nBrings the working directory back to a clean state.",
+      "https://git-scm.com/docs/git-stash\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning"
+    ],
+    [
+      "Commands",
+      "clean",
+      "10",
+      "No",
+      "git clean -d",
+      "Remove all the untracked files in your working directory.\n\nThis removes any files and also any subdirectories that become empty as a result.\n\nAdd `-f` (which means 'force') if the Git configuration variable `clean.requireForce` is not explicitly set to false.",
+      "https://git-scm.com/docs/git-clean\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning"
+    ],
+    [
+      "Commands",
+      "clean",
+      "20",
+      "No",
+      "git clean -d --dry-run",
+      "List the files that git would have removed during a clean request.\n\nTriggers: `-n`, `--dry-run`.",
+      "https://git-scm.com/docs/git-clean\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning",
+      "$ git clean -d -n\nWould remove test.o\nWould remove tmp/"
+    ],
+    [
+      "Commands",
+      "clean",
+      "30",
+      "No",
+      "git clean -d -x",
+      "Remove untracked files (including ignored files) from the working tree.",
+      "https://git-scm.com/docs/git-clean\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning",
+      "$ git status -s\n M lib/simplegit.rb\n?? build.TMP\n?? tmp/\n\n$ git clean -n -d\nWould remove build.TMP\nWould remove tmp/\n\n$ git clean -n -d -x\nWould remove build.TMP\nWould remove test.o\nWould remove tmp/"
+    ],
+    [
+      "Commands",
+      "clean",
+      "40",
+      "No",
+      "git clean -i",
+      "Run the clean command in interactive mode.\n\nThis allows to step through each file individually or specify patterns for deletion interactively.",
+      "https://git-scm.com/docs/git-clean\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning",
+      "$ git clean -x -i\nWould remove the following items:\n  build.TMP  test.o\n*** Commands ***\n    1: clean                2: filter by pattern    3: select by numbers    4: ask each             5: quit\n    6: help\nWhat now\u003e"
     ]
   ]
 }
