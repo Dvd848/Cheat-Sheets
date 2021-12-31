@@ -238,9 +238,9 @@
       "90",
       "No",
       "git log -S \u003cstring\u003e",
-      "Look for differences that change the number of occurrences of the specified string (i.e. addition/deletion) in a file.\n\nTakes a string and shows only those commits that changed the number of occurrences of that string.",
-      "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History",
-      "$ git log -S function_name"
+      "Look for differences that change the number of occurrences of the specified string (i.e. addition/deletion) in a file.\n\nTakes a string and shows only those commits that changed the number of occurrences of that string.\n\nIf you need to be more specific, you can provide a regular expression to search for with the `-G` option.",
+      "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History\nhttps://git-scm.com/book/en/v2/Git-Tools-Searching",
+      "$ git log -S function_name\n\n$ git log -S ZLIB_BUF_MAX --oneline\ne01503b zlib: allow feeding more than 4GB in one go\nef49a7a zlib: zlib can only process 4GB at a time"
     ],
     [
       "Commands",
@@ -1117,7 +1117,7 @@
       "200",
       "No",
       "git log \u003c...\u003e --left-right",
-      "Shows which side of the range each commit is in.",
+      "Show which side of the range each commit is in.",
       "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Tools-Revision-Selection",
       "$ git log --left-right master...experiment\n\u003c F\n\u003c E\n\u003e D\n\u003e C"
     ],
@@ -1314,6 +1314,101 @@
       "Run the clean command in interactive mode.\n\nThis allows to step through each file individually or specify patterns for deletion interactively.",
       "https://git-scm.com/docs/git-clean\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning",
       "$ git clean -x -i\nWould remove the following items:\n  build.TMP  test.o\n*** Commands ***\n    1: clean                2: filter by pattern    3: select by numbers    4: ask each             5: quit\n    6: help\nWhat now\u003e"
+    ],
+    [
+      "Commands",
+      "grep",
+      "0",
+      "No",
+      "git grep -n \u003cterm\u003e",
+      "Search through the files in your working directory for a given term, show line numbers.\n\nTriggers: `-n`, `--line-number`.",
+      "https://git-scm.com/docs/git-grep\nhttps://git-scm.com/book/en/v2/Git-Tools-Searching",
+      "$ git grep -n gmtime_r\ncompat/gmtime.c:3:#undef gmtime_r\ncompat/gmtime.c:8:      return git_gmtime_r(timep, &result);\ncompat/gmtime.c:11:struct tm *git_gmtime_r(const time_t *timep, struct tm *result)\ncompat/gmtime.c:16:     ret = gmtime_r(timep, result);\ncompat/mingw.c:826:struct tm *gmtime_r(const time_t *timep, struct tm *result)\ncompat/mingw.h:206:struct tm *gmtime_r(const time_t *timep, struct tm *result);\ndate.c:482:             if (gmtime_r(&now, &now_tm))\ndate.c:545:             if (gmtime_r(&time, tm)) {\ndate.c:758:             /* gmtime_r() in match_digit() may have clobbered it */\ngit-compat-util.h:1138:struct tm *git_gmtime_r(const time_t *, struct tm *);\ngit-compat-util.h:1140:#define gmtime_r git_gmtime_r"
+    ],
+    [
+      "Commands",
+      "grep",
+      "10",
+      "No",
+      "git grep -c \u003cterm\u003e",
+      "Search through the files in your working directory for a given term, count matches.\n\nTriggers: `-c`, `--count`.",
+      "https://git-scm.com/docs/git-grep\nhttps://git-scm.com/book/en/v2/Git-Tools-Searching",
+      "$ git grep --count gmtime_r\ncompat/gmtime.c:4\ncompat/mingw.c:1\ncompat/mingw.h:1\ndate.c:3\ngit-compat-util.h:2"
+    ],
+    [
+      "Commands",
+      "grep",
+      "20",
+      "No",
+      "git grep -p \u003cterm\u003e",
+      "Search through the files in your working directory for a given term, show context.\n\nTriggers: `-p`, `--show-function`.\n\nThis displays the enclosing method or function for each matching string.",
+      "https://git-scm.com/docs/git-grep\nhttps://git-scm.com/book/en/v2/Git-Tools-Searching",
+      "$ git grep -p gmtime_r *.c\ndate.c=static int match_multi_number(timestamp_t num, char c, const char *date,\ndate.c:         if (gmtime_r(&now, &now_tm))\ndate.c=static int match_digit(const char *date, struct tm *tm, int *offset, int *tm_gmt)\ndate.c:         if (gmtime_r(&time, tm)) {\ndate.c=int parse_date_basic(const char *date, timestamp_t *timestamp, int *offset)\ndate.c:         /* gmtime_r() in match_digit() may have clobbered it */"
+    ],
+    [
+      "Commands",
+      "grep",
+      "30",
+      "No",
+      "git grep --break --heading \u003cterm\u003e",
+      "Search for a given term, split up the output into a more readable format.",
+      "https://git-scm.com/docs/git-grep\nhttps://git-scm.com/book/en/v2/Git-Tools-Searching",
+      "$ git grep --break --heading \\\n    -n -e '#define' --and \\( -e LINK -e BUF_MAX \\) v1.8.0\nv1.8.0:builtin/index-pack.c\n62:#define FLAG_LINK (1u\u003c\u003c20)\n\nv1.8.0:cache.h\n73:#define S_IFGITLINK  0160000\n74:#define S_ISGITLINK(m)       (((m) & S_IFMT) == S_IFGITLINK)\n\nv1.8.0:environment.c\n54:#define OBJECT_CREATION_MODE OBJECT_CREATION_USES_HARDLINKS\n\nv1.8.0:strbuf.c\n326:#define STRBUF_MAXLINK (2*PATH_MAX)\n\nv1.8.0:symlinks.c\n53:#define FL_SYMLINK  (1 \u003c\u003c 2)\n\nv1.8.0:zlib.c\n30:/* #define ZLIB_BUF_MAX ((uInt)-1) */\n31:#define ZLIB_BUF_MAX ((uInt) 1024 * 1024 * 1024) /* 1GB */"
+    ],
+    [
+      "Commands",
+      "grep",
+      "40",
+      "No",
+      "git grep -e \u003cregexp1\u003e --or -e \u003cregexp2\u003e",
+      "Search working tree for lines of text matching regular expression regexp1 or regexp2.",
+      "https://git-scm.com/docs/git-grep\nhttps://stackoverflow.com/questions/2928584/how-to-grep-search-committed-code-in-the-git-history"
+    ],
+    [
+      "Commands",
+      "grep",
+      "50",
+      "No",
+      "git grep -l -e \u003cregexp1\u003e --and -e \u003cregexp2\u003e",
+      "Search working tree for lines of text matching regular expression regexp1 and regexp2, reporting file paths only.",
+      "https://git-scm.com/docs/git-grep\nhttps://stackoverflow.com/questions/2928584/how-to-grep-search-committed-code-in-the-git-history"
+    ],
+    [
+      "Commands",
+      "grep",
+      "60",
+      "No",
+      "git grep -l --all-match -e \u003cregexp1\u003e -e \u003cregexp2\u003e",
+      "Search working tree for files that have lines of text matching regular expression regexp1 and lines of text matching regular expression regexp2.",
+      "https://git-scm.com/docs/git-grep\nhttps://stackoverflow.com/questions/2928584/how-to-grep-search-committed-code-in-the-git-history"
+    ],
+    [
+      "Commands",
+      "grep",
+      "70",
+      "No",
+      "git grep \u003cregexp\u003e $(git rev-list --all)",
+      "Search all revisions for text matching regular expression regexp.",
+      "https://git-scm.com/docs/git-grep\nhttps://stackoverflow.com/questions/2928584/how-to-grep-search-committed-code-in-the-git-history"
+    ],
+    [
+      "Commands",
+      "grep",
+      "80",
+      "No",
+      "git grep \u003cregexp\u003e $(git rev-list \u003crev1\u003e..\u003crev2\u003e)",
+      "Search all revisions between rev1 and rev2 for text matching regular expression regexp.",
+      "https://git-scm.com/docs/git-grep\nhttps://stackoverflow.com/questions/2928584/how-to-grep-search-committed-code-in-the-git-history"
+    ],
+    [
+      "Commands",
+      "log",
+      "210",
+      "No",
+      "git log -L \u003cexpression\u003e",
+      "Show the history of a function or line of code in the codebase.\n\nThis will try to figure out what the bounds of that function are and then look through the history and show us every change that was made to the function as a series of patches back to when the function was first created.",
+      "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Tools-Searching",
+      "$ git log -L :git_deflate_bound:zlib.c\ncommit ef49a7a0126d64359c974b4b3b71d7ad42ee3bca\nAuthor: Junio C Hamano \u003cgitster@pobox.com\u003e\nDate:   Fri Jun 10 11:52:15 2011 -0700\n\n    zlib: zlib can only process 4GB at a time\n\ndiff --git a/zlib.c b/zlib.c\n--- a/zlib.c\n+++ b/zlib.c\n@@ -85,5 +130,5 @@\n-unsigned long git_deflate_bound(z_streamp strm, unsigned long size)\n+unsigned long git_deflate_bound(git_zstream *strm, unsigned long size)\n {\n-       return deflateBound(strm, size);\n+       return deflateBound(&strm-\u003ez, size);\n }\n\n\ncommit 225a6f1068f71723a910e8565db4e252b3ca21fa\nAuthor: Junio C Hamano \u003cgitster@pobox.com\u003e\nDate:   Fri Jun 10 11:18:17 2011 -0700\n\n    zlib: wrap deflateBound() too\n\ndiff --git a/zlib.c b/zlib.c\n--- a/zlib.c\n+++ b/zlib.c\n@@ -81,0 +85,5 @@\n+unsigned long git_deflate_bound(z_streamp strm, unsigned long size)\n+{\n+       return deflateBound(strm, size);\n+}\n+"
     ]
   ]
 }
