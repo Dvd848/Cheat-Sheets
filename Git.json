@@ -269,7 +269,7 @@
       "No",
       "git commit --amend",
       "Redo the most recent commit, make the additional changes that were forgotten, stage them, and commit again.\nThis command takes your staging area and uses it for the commit. If you’ve made no changes since your last commit (for instance, you run this command immediately after your previous commit), then your snapshot will look exactly the same, and all you’ll change is your commit message.\nIt’s important to understand that when you’re amending your last commit, you’re not so much fixing it as replacing it entirely with a new, improved commit that pushes the old commit out of the way and puts the new commit in its place. Effectively, it’s as if the previous commit never happened, and it won’t show up in your repository history.\nThe obvious value to amending commits is to make minor improvements to your last commit, without cluttering your repository history with commit messages of the form, “Oops, forgot to add a file” or “Fixing a typo in last commit”.\nOnly amend commits that are still local and have not been pushed somewhere. Amending previously pushed commits and force pushing the branch will cause problems for your collaborators.",
-      "https://git-scm.com/docs/git-commit\nhttps://git-scm.com/book/en/v2/Git-Basics-Undoing-Things",
+      "https://git-scm.com/docs/git-commit\nhttps://git-scm.com/book/en/v2/Git-Basics-Undoing-Things\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History",
       "$ git commit -m 'Initial commit'\n$ git add forgotten_file\n$ git commit --amend"
     ],
     [
@@ -813,7 +813,7 @@
       "No",
       "git rebase \u003cbranch\u003e",
       "Take all the changes that were committed on the given branch and replay them on the current branch.",
-      "https://git-scm.com/docs/git-rebase\nhttps://git-scm.com/book/en/v2/Git-Branching-Rebasing",
+      "https://git-scm.com/docs/git-rebase\nhttps://git-scm.com/book/en/v2/Git-Branching-Rebasing\nhttps://git-rebase.io/",
       "$ git checkout experiment\n$ git rebase master\nFirst, rewinding head to replay your work on top of it...\nApplying: added staged command"
     ],
     [
@@ -833,7 +833,7 @@
       "No",
       "git rebase --onto \u003cnewbase\u003e \u003cupstream\u003e \u003cbranch\u003e",
       "Perform a rebase from a given starting point.\n\nThis basically means: \"Take the `branch` branch, figure out the patches since it diverged from the `upstream` branch, and replay these patches in the `branch` branch as if it was based directly off the `newbase` branch instead\".",
-      "https://git-scm.com/book/en/v2/Git-Branching-Rebasing",
+      "https://git-scm.com/book/en/v2/Git-Branching-Rebasing\nhttps://git-rebase.io/",
       "$ git rebase --onto master server client"
     ],
     [
@@ -843,7 +843,7 @@
       "No",
       "git rebase \u003cbasebranch\u003e \u003ctopicbranch\u003e",
       "Check out the topic branch and replay it onto the base branch.",
-      "https://git-scm.com/book/en/v2/Git-Branching-Rebasing",
+      "https://git-scm.com/book/en/v2/Git-Branching-Rebasing\nhttps://git-rebase.io/",
       "$ git rebase master server"
     ],
     [
@@ -1409,6 +1409,105 @@
       "Show the history of a function or line of code in the codebase.\n\nThis will try to figure out what the bounds of that function are and then look through the history and show us every change that was made to the function as a series of patches back to when the function was first created.",
       "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Tools-Searching",
       "$ git log -L :git_deflate_bound:zlib.c\ncommit ef49a7a0126d64359c974b4b3b71d7ad42ee3bca\nAuthor: Junio C Hamano \u003cgitster@pobox.com\u003e\nDate:   Fri Jun 10 11:52:15 2011 -0700\n\n    zlib: zlib can only process 4GB at a time\n\ndiff --git a/zlib.c b/zlib.c\n--- a/zlib.c\n+++ b/zlib.c\n@@ -85,5 +130,5 @@\n-unsigned long git_deflate_bound(z_streamp strm, unsigned long size)\n+unsigned long git_deflate_bound(git_zstream *strm, unsigned long size)\n {\n-       return deflateBound(strm, size);\n+       return deflateBound(&strm-\u003ez, size);\n }\n\n\ncommit 225a6f1068f71723a910e8565db4e252b3ca21fa\nAuthor: Junio C Hamano \u003cgitster@pobox.com\u003e\nDate:   Fri Jun 10 11:18:17 2011 -0700\n\n    zlib: wrap deflateBound() too\n\ndiff --git a/zlib.c b/zlib.c\n--- a/zlib.c\n+++ b/zlib.c\n@@ -81,0 +85,5 @@\n+unsigned long git_deflate_bound(z_streamp strm, unsigned long size)\n+{\n+       return deflateBound(strm, size);\n+}\n+"
+    ],
+    [
+      "Commands",
+      "rebase",
+      "30",
+      "No",
+      "git rebase -i \u003cparent of last commit to edit\u003e",
+      "Rewrite history of last n commits via interactive rebase.\n\nWith the interactive rebase tool, you can then stop after each commit you want to modify and change the message, add files, or do whatever you wish.\n\nThis is a rebasing command — every commit in the range \u003cparent of last commit to edit\u003e..HEAD with a changed message and all of its descendants will be rewritten. Don’t include any commit you’ve already pushed to a central server — doing so will confuse other developers by providing an alternate version of the same change.\n\n The interactive rebase gives you a script that it’s going to run. It will start at the commit you specify on the command line and replay the changes introduced in each of these commits from top to bottom. It lists the oldest at the top, rather than the newest, because that’s the first one it will replay. You need to edit the script so that it stops at the commit you want to edit. To do so, change the word “pick” to the word “edit” for each of the commits you want the script to stop after. When you save and exit the editor, Git rewinds you back to the last commit in that list and drops you on the command line with further instructions. Alternatively you can squash, reorder or delete commits.\n\nIf you finish a rebase and decide it’s not what you want, you can use `git reflog` to recover an earlier version of your branch.",
+      "https://git-scm.com/docs/git-rebase\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History\nhttps://git-rebase.io/",
+      "$ # Edit last three commits\n$ git rebase -i HEAD~3 # or HEAD~2^\npick f7f3f6d Change my name a bit\npick 310154e Update README formatting and add blame\npick a5f4a0d Add cat-file\n\n# Rebase 710f0f8..a5f4a0d onto 710f0f8\n#\n# Commands:\n# p, pick \u003ccommit\u003e = use commit\n# r, reword \u003ccommit\u003e = use commit, but edit the commit message\n# e, edit \u003ccommit\u003e = use commit, but stop for amending\n# s, squash \u003ccommit\u003e = use commit, but meld into previous commit\n# f, fixup \u003ccommit\u003e = like \"squash\", but discard this commit's log message\n# x, exec \u003ccommand\u003e = run command (the rest of the line) using shell\n# b, break = stop here (continue rebase later with 'git rebase --continue')\n# d, drop \u003ccommit\u003e = remove commit\n# l, label \u003clabel\u003e = label current HEAD with a name\n# t, reset \u003clabel\u003e = reset HEAD to a label\n# m, merge [-C \u003ccommit\u003e | -c \u003ccommit\u003e] \u003clabel\u003e [# \u003coneline\u003e]\n# .       create a merge commit using the original merge commit's\n# .       message (or the oneline, if no original merge commit was\n# .       specified). Use -c \u003ccommit\u003e to reword the commit message.\n#\n# These lines can be re-ordered; they are executed from top to bottom.\n#\n# If you remove a line here THAT COMMIT WILL BE LOST.\n#\n# However, if you remove everything, the rebase will be aborted.\n#\n# Note that empty commits are commented out"
+    ],
+    [
+      "Workflows",
+      "Rebasing",
+      "0",
+      "No",
+      "\u003cChanging Multiple Commit Messages\u003e",
+      "Changing Multiple Commit Messages.\n\n 1. Run the interactive rebase command\n 2. In the editor that pops up, select commits to edit by marking as \"edit\" instead of \"pick\"\n 3. Save and exit\n 4. For each commit selected, git will show a command line and offer to amend the commit\n 5. After making the change, proceed with a `continue` command",
+      "https://git-scm.com/docs/git-rebase\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History\nhttps://git-rebase.io/",
+      "$ git rebase -i HEAD~3\npick f7f3f6d Change my name a bit\npick 310154e Update README formatting and add blame\npick a5f4a0d Add cat-file\n\n# Rebase 710f0f8..a5f4a0d onto 710f0f8\n#\n# Commands:\n# p, pick \u003ccommit\u003e = use commit\n# r, reword \u003ccommit\u003e = use commit, but edit the commit message\n# e, edit \u003ccommit\u003e = use commit, but stop for amending\n# s, squash \u003ccommit\u003e = use commit, but meld into previous commit\n# f, fixup \u003ccommit\u003e = like \"squash\", but discard this commit's log message\n# x, exec \u003ccommand\u003e = run command (the rest of the line) using shell\n# b, break = stop here (continue rebase later with 'git rebase --continue')\n# d, drop \u003ccommit\u003e = remove commit\n# l, label \u003clabel\u003e = label current HEAD with a name\n# t, reset \u003clabel\u003e = reset HEAD to a label\n# m, merge [-C \u003ccommit\u003e | -c \u003ccommit\u003e] \u003clabel\u003e [# \u003coneline\u003e]\n# .       create a merge commit using the original merge commit's\n# .       message (or the oneline, if no original merge commit was\n# .       specified). Use -c \u003ccommit\u003e to reword the commit message.\n#\n\n# These lines can be re-ordered; they are executed from top to bottom.\n#\n# If you remove a line here THAT COMMIT WILL BE LOST.\n#\n# However, if you remove everything, the rebase will be aborted.\n#\n# Note that empty commits are commented out\n\n--\u003e [Edit the file and mark commits to edit]\nedit f7f3f6d Change my name a bit\npick 310154e Update README formatting and add blame\npick a5f4a0d Add cat-file\n\n--\u003e [Save and exit, to return to command line]\n\n$ git rebase -i HEAD~3\nStopped at f7f3f6d... Change my name a bit\nYou can amend the commit now, with\n\n       git commit --amend\n\nOnce you're satisfied with your changes, run\n\n       git rebase --continue\n\n$ git commit --amend # Use to amend the commit message\n\n$ git rebase --continue"
+    ],
+    [
+      "Workflows",
+      "Rebasing",
+      "10",
+      "No",
+      "\u003cReordering Commits\u003e",
+      "Reordering Commits.\n\nGit rewinds your branch to the parent of these commits, then starts re-applying them according to the new order.",
+      "https://git-scm.com/docs/git-rebase\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History\nhttps://git-rebase.io/",
+      "$ git rebase -i HEAD~3\npick f7f3f6d Change my name a bit\npick 310154e Update README formatting and add blame\npick a5f4a0d Add cat-file\n\n# Rebase 710f0f8..a5f4a0d onto 710f0f8\n#\n# Commands:\n# p, pick \u003ccommit\u003e = use commit\n# r, reword \u003ccommit\u003e = use commit, but edit the commit message\n# e, edit \u003ccommit\u003e = use commit, but stop for amending\n# s, squash \u003ccommit\u003e = use commit, but meld into previous commit\n# f, fixup \u003ccommit\u003e = like \"squash\", but discard this commit's log message\n# x, exec \u003ccommand\u003e = run command (the rest of the line) using shell\n# b, break = stop here (continue rebase later with 'git rebase --continue')\n# d, drop \u003ccommit\u003e = remove commit\n# l, label \u003clabel\u003e = label current HEAD with a name\n# t, reset \u003clabel\u003e = reset HEAD to a label\n# m, merge [-C \u003ccommit\u003e | -c \u003ccommit\u003e] \u003clabel\u003e [# \u003coneline\u003e]\n# .       create a merge commit using the original merge commit's\n# .       message (or the oneline, if no original merge commit was\n# .       specified). Use -c \u003ccommit\u003e to reword the commit message.\n#\n\n# These lines can be re-ordered; they are executed from top to bottom.\n#\n# If you remove a line here THAT COMMIT WILL BE LOST.\n#\n# However, if you remove everything, the rebase will be aborted.\n#\n# Note that empty commits are commented out\n\n--\u003e [Edit the file and change commit order]\npick 310154e Update README formatting and add blame\npick f7f3f6d Change my name a bit\npick a5f4a0d Add cat-file\n\n--\u003e [Save and exit]\n# Git will first apply 310154e, then f7f3f6d, then a5f4a0d "
+    ],
+    [
+      "Workflows",
+      "Rebasing",
+      "20",
+      "No",
+      "\u003cRemoving Commits\u003e",
+      "Removing commits.\n\nThis is done by either deleting the commit line from the interactive rebase script or changing the action to \"drop\".\n\nBecause of the way Git builds commit objects, deleting or altering a commit will cause the rewriting of all the commits that follow it. The further back in your repo’s history you go, the more commits will need to be recreated. This can cause lots of merge conflicts if you have many commits later in the sequence that depend on the one you just deleted.",
+      "https://git-scm.com/docs/git-rebase\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History\nhttps://git-rebase.io/",
+      "$ git rebase -i HEAD~3\npick f7f3f6d Change my name a bit\npick 310154e Update README formatting and add blame\npick a5f4a0d Add cat-file\n\n# Rebase 710f0f8..a5f4a0d onto 710f0f8\n#\n# Commands:\n# p, pick \u003ccommit\u003e = use commit\n# r, reword \u003ccommit\u003e = use commit, but edit the commit message\n# e, edit \u003ccommit\u003e = use commit, but stop for amending\n# s, squash \u003ccommit\u003e = use commit, but meld into previous commit\n# f, fixup \u003ccommit\u003e = like \"squash\", but discard this commit's log message\n# x, exec \u003ccommand\u003e = run command (the rest of the line) using shell\n# b, break = stop here (continue rebase later with 'git rebase --continue')\n# d, drop \u003ccommit\u003e = remove commit\n# l, label \u003clabel\u003e = label current HEAD with a name\n# t, reset \u003clabel\u003e = reset HEAD to a label\n# m, merge [-C \u003ccommit\u003e | -c \u003ccommit\u003e] \u003clabel\u003e [# \u003coneline\u003e]\n# .       create a merge commit using the original merge commit's\n# .       message (or the oneline, if no original merge commit was\n# .       specified). Use -c \u003ccommit\u003e to reword the commit message.\n#\n\n# These lines can be re-ordered; they are executed from top to bottom.\n#\n# If you remove a line here THAT COMMIT WILL BE LOST.\n#\n# However, if you remove everything, the rebase will be aborted.\n#\n# Note that empty commits are commented out\n\n--\u003e [Edit the file and delete the entries for the commits to be removed]\npick 310154e Update README formatting and add blame\npick a5f4a0d Add cat-file\n\n--\u003e [Save and exit]"
+    ],
+    [
+      "Workflows",
+      "Rebasing",
+      "30",
+      "No",
+      "\u003cSquashing Commits\u003e",
+      "Squashing commits.\n\nThis takes a series of commits and squashes them down into a single commit with the interactive rebasing tool.\n\nGit applies all the squashed changes and the change directly before it and makes you merge the commit messages together.",
+      "https://git-scm.com/docs/git-rebase\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History\nhttps://git-rebase.io/",
+      "$ git rebase -i HEAD~3\npick f7f3f6d Change my name a bit\npick 310154e Update README formatting and add blame\npick a5f4a0d Add cat-file\n\n# Rebase 710f0f8..a5f4a0d onto 710f0f8\n#\n# Commands:\n# p, pick \u003ccommit\u003e = use commit\n# r, reword \u003ccommit\u003e = use commit, but edit the commit message\n# e, edit \u003ccommit\u003e = use commit, but stop for amending\n# s, squash \u003ccommit\u003e = use commit, but meld into previous commit\n# f, fixup \u003ccommit\u003e = like \"squash\", but discard this commit's log message\n# x, exec \u003ccommand\u003e = run command (the rest of the line) using shell\n# b, break = stop here (continue rebase later with 'git rebase --continue')\n# d, drop \u003ccommit\u003e = remove commit\n# l, label \u003clabel\u003e = label current HEAD with a name\n# t, reset \u003clabel\u003e = reset HEAD to a label\n# m, merge [-C \u003ccommit\u003e | -c \u003ccommit\u003e] \u003clabel\u003e [# \u003coneline\u003e]\n# .       create a merge commit using the original merge commit's\n# .       message (or the oneline, if no original merge commit was\n# .       specified). Use -c \u003ccommit\u003e to reword the commit message.\n#\n\n# These lines can be re-ordered; they are executed from top to bottom.\n#\n# If you remove a line here THAT COMMIT WILL BE LOST.\n#\n# However, if you remove everything, the rebase will be aborted.\n#\n# Note that empty commits are commented out\n\n--\u003e [Edit the file and select what to squash]\npick f7f3f6d Change my name a bit\nsquash 310154e Update README formatting and add blame\nsquash a5f4a0d Add cat-file\n\n--\u003e [Save and exit]\n\n# This is a combination of 3 commits.\n# The first commit's message is:\nChange my name a bit\n\n# This is the 2nd commit message:\n\nUpdate README formatting and add blame\n\n# This is the 3rd commit message:\n\nAdd cat-file\n\n--\u003e [Edit, save and exit]"
+    ],
+    [
+      "Workflows",
+      "Rebasing",
+      "40",
+      "No",
+      "\u003cSplitting Commits\u003e",
+      "Splitting commits.\n\nSplitting a commit undoes a commit and then partially stages and commits as many times as commits you want to end up with.\n\n 1. Perform an interactive rebase.\n 2. Select the commit(s) to split by marking as \"edit\" instead of \"pick\"\n 3. Save and exit interactive rebase script, script will drop you in command line\n 4. Reset current commit (effectively undoing the commit and leaveing modified files unchanged)\n 5. Stage and commit files as needed\n 6. Continue rebase",
+      "https://git-scm.com/docs/git-rebase\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History\nhttps://git-rebase.io/",
+      "$ git rebase -i HEAD~3\npick f7f3f6d Change my name a bit\npick 310154e Update README formatting and add blame\npick a5f4a0d Add cat-file\n\n# Rebase 710f0f8..a5f4a0d onto 710f0f8\n#\n# Commands:\n# p, pick \u003ccommit\u003e = use commit\n# r, reword \u003ccommit\u003e = use commit, but edit the commit message\n# e, edit \u003ccommit\u003e = use commit, but stop for amending\n# s, squash \u003ccommit\u003e = use commit, but meld into previous commit\n# f, fixup \u003ccommit\u003e = like \"squash\", but discard this commit's log message\n# x, exec \u003ccommand\u003e = run command (the rest of the line) using shell\n# b, break = stop here (continue rebase later with 'git rebase --continue')\n# d, drop \u003ccommit\u003e = remove commit\n# l, label \u003clabel\u003e = label current HEAD with a name\n# t, reset \u003clabel\u003e = reset HEAD to a label\n# m, merge [-C \u003ccommit\u003e | -c \u003ccommit\u003e] \u003clabel\u003e [# \u003coneline\u003e]\n# .       create a merge commit using the original merge commit's\n# .       message (or the oneline, if no original merge commit was\n# .       specified). Use -c \u003ccommit\u003e to reword the commit message.\n#\n\n# These lines can be re-ordered; they are executed from top to bottom.\n#\n# If you remove a line here THAT COMMIT WILL BE LOST.\n#\n# However, if you remove everything, the rebase will be aborted.\n#\n# Note that empty commits are commented out\n\n--\u003e [Edit the file and select what to split]\npick f7f3f6d Change my name a bit\nedit 310154e Update README formatting and add blame\npick a5f4a0d Add cat-file\n\n--\u003e [Save and exit]\n$ git reset HEAD^\n$ git add README\n$ git commit -m 'Update README formatting'\n$ git add lib/simplegit.rb\n$ git commit -m 'Add blame'\n$ git rebase --continue\n\n$ git log -4 --pretty=format:\"%h %s\"\n1c002dd Add cat-file\n9b29157 Add blame\n35cfb2b Update README formatting\nf7f3f6d Change my name a bit"
+    ],
+    [
+      "Commands",
+      "rebase",
+      "40",
+      "No",
+      "git rebase --abort",
+      "Abort a rebase.\n\nThe repo will be returned to the state it was in before you started the rebase.",
+      "https://git-scm.com/docs/git-rebase\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History\nhttps://git-rebase.io/"
+    ],
+    [
+      "Commands",
+      "filter-branch",
+      "0",
+      "No",
+      "git filter-branch --tree-filter 'rm -f \u003cfile\u003e' HEAD",
+      "Remove a file from every commit.\n\nThe `--tree-filter` option runs the specified command after each checkout of the project and then recommits the results.\n\nTo run filter-branch on all your branches, you can pass `--all` to the command.",
+      "https://git-scm.com/docs/git-filter-branch\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History",
+      "$ git filter-branch --tree-filter 'rm -f passwords.txt' HEAD\nRewrite 6b9b3cf04e7c5686a9cb838c3f36a8cb6a0fc2bd (21/21)\nRef 'refs/heads/master' was rewritten\n\n$ git filter-branch --tree-filter 'rm -f *~' HEAD"
+    ],
+    [
+      "Commands",
+      "filter-branch",
+      "10",
+      "No",
+      "git filter-branch --subdirectory-filter \u003csubdirectory\u003e HEAD",
+      "Making a subdirectory the new root.",
+      "https://git-scm.com/docs/git-filter-branch\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History",
+      "$ git filter-branch --subdirectory-filter trunk HEAD\nRewrite 856f0bf61e41a27326cdae8f09fe708d679f596f (12/12)\nRef 'refs/heads/master' was rewritten"
+    ],
+    [
+      "Commands",
+      "filter-branch",
+      "20",
+      "No",
+      "git filter-branch --commit-filter '\u003cfilter\u003e' HEAD",
+      "Change something in each commit.\n\nFor example, change the email address.",
+      "https://git-scm.com/docs/git-filter-branch\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History",
+      "$ git filter-branch --commit-filter '\n        if [ \"$GIT_AUTHOR_EMAIL\" = \"schacon@localhost\" ];\n        then\n                GIT_AUTHOR_NAME=\"Scott Chacon\";\n                GIT_AUTHOR_EMAIL=\"schacon@example.com\";\n                git commit-tree \"$@\";\n        else\n                git commit-tree \"$@\";\n        fi' HEAD"
     ]
   ]
 }
