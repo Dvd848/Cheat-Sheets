@@ -278,14 +278,14 @@
       "0",
       "No",
       "git reset HEAD \u003cfile\u003e...",
-      "Unstage a staged file.\n\nConsider using `git restore` instead.",
-      "https://git-scm.com/docs/git-reset\nhttps://git-scm.com/book/en/v2/Git-Basics-Undoing-Things",
-      "$ git add *\n$ git status\nOn branch master\nChanges to be committed:\n(use \"git reset HEAD \u003cfile\u003e...\" to unstage)\nrenamed: README.md -\u003e README\nmodified: CONTRIBUTING.md\n$ git reset HEAD CONTRIBUTING.md\nUnstaged changes after reset:\nM\tCONTRIBUTING.md\n$ git status\nOn branch master\nChanges to be committed:\n(use \"git reset HEAD \u003cfile\u003e...\" to unstage)\nrenamed: README.md -\u003e README\nChanges not staged for commit:\n(use \"git add \u003cfile\u003e...\" to update what will be committed)\n(use \"git checkout -- \u003cfile\u003e...\" to discard changes in working directory)\nmodified: CONTRIBUTING.md"
+      "Unstage a staged file.\n\nEssentially it just copies the file(s) from HEAD to the index, without modifying the working directory.\n\nGeneral form: `git reset \u003ccommit\u003e \u003cfile\u003e...`. \nIf no commit is provided, `HEAD` is assumed, so this is the same as `git reset \u003cfile\u003e...` (and essentially a shorthand for `git reset --mixed HEAD \u003cfile\u003e...`.\n\nConsider using `git restore` instead.",
+      "https://git-scm.com/docs/git-reset\nhttps://git-scm.com/book/en/v2/Git-Basics-Undoing-Things\nhttps://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified",
+      "$ git add *\n$ git status\nOn branch master\nChanges to be committed:\n(use \"git reset HEAD \u003cfile\u003e...\" to unstage)\nrenamed: README.md -\u003e README\nmodified: CONTRIBUTING.md\n$ git reset HEAD CONTRIBUTING.md\nUnstaged changes after reset:\nM        CONTRIBUTING.md\n$ git status\nOn branch master\nChanges to be committed:\n(use \"git reset HEAD \u003cfile\u003e...\" to unstage)\nrenamed: README.md -\u003e README\nChanges not staged for commit:\n(use \"git add \u003cfile\u003e...\" to update what will be committed)\n(use \"git checkout -- \u003cfile\u003e...\" to discard changes in working directory)\nmodified: CONTRIBUTING.md\n\n$ git reset eb43bf file.txt"
     ],
     [
       "Commands",
       "checkout",
-      "0",
+      "20",
       "No",
       "git checkout -- \u003cfile\u003e...",
       "Revert a modified file.\n\nConsider using `git restore` instead.\n\nIt’s important to understand that `git checkout -- \u003cfile\u003e` is a dangerous command. Any local changes you made to that file are gone — Git just replaced that file with the last staged or committed version. Don’t ever use this command unless you absolutely know that you don’t want those unsaved local changes.",
@@ -505,7 +505,7 @@
     [
       "Commands",
       "checkout",
-      "10",
+      "5",
       "No",
       "git checkout \u003ctagname\u003e",
       "Checkout the versions of files a tag is pointing to.\nThis puts your repository in “detached HEAD” state. In this state, if you make changes and then create a commit, the tag will stay the same, but your new commit won’t belong to any branch and will be unreachable, except by the exact commit hash.",
@@ -565,11 +565,11 @@
     [
       "Commands",
       "checkout",
-      "30",
+      "0",
       "No",
       "git checkout \u003cbranchname\u003e",
-      "Switch to a given branch.\n\nThis moves HEAD to point to the given branch.",
-      "https://git-scm.com/docs/git-checkout\nhttps://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell",
+      "Switch to a given branch.\n\nThis moves HEAD to point to the given branch.\n\nRunning `git checkout [branch]` is pretty similar to running `git reset --hard [branch]` in that it updates all three trees for you to look like `[branch]`, but there are two important differences.\n\nFirst, unlike `reset --hard`, `checkout` is working-directory safe; it will check to make sure it’s not blowing away files that have changes to them. Actually, it’s a bit smarter than that — it tries to do a trivial merge in the working directory, so all of the files you haven’t changed will be updated. `reset --hard`, on the other hand, will simply replace everything across the board without checking.\n\nThe second important difference is how checkout updates `HEAD`. Whereas `reset` will move the branch that `HEAD` points to, checkout will move `HEAD` itself to point to another branch.",
+      "https://git-scm.com/docs/git-checkout\nhttps://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell\nhttps://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified",
       "$ git checkout testing"
     ],
     [
@@ -1143,7 +1143,7 @@
     [
       "Commands",
       "reset",
-      "10",
+      "100",
       "No",
       "git reset -p \u003cfile\u003e",
       "Partially reset files.\n\nTriggers: `-p`, `--patch`.",
@@ -1508,6 +1508,55 @@
       "Change something in each commit.\n\nFor example, change the email address.",
       "https://git-scm.com/docs/git-filter-branch\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History",
       "$ git filter-branch --commit-filter '\n        if [ \"$GIT_AUTHOR_EMAIL\" = \"schacon@localhost\" ];\n        then\n                GIT_AUTHOR_NAME=\"Scott Chacon\";\n                GIT_AUTHOR_EMAIL=\"schacon@example.com\";\n                git commit-tree \"$@\";\n        else\n                git commit-tree \"$@\";\n        fi' HEAD"
+    ],
+    [
+      "Commands",
+      "rebase",
+      "9",
+      "No",
+      "git rebase --onto \u003cnewparent\u003e \u003coldparent\u003e",
+      "Change the parent of a commit from oldparent to newparent.",
+      "https://git-scm.com/docs/git-rebase\nhttps://stackoverflow.com/a/29916361",
+      "$ git rebase --onto F D\n\n#          Before                           After\r\n#    A---B---C---F---G (branch)        A---B---C---F---G (branch)\r\n#             \\                                     \\\r\n#              D---E---H---I (HEAD)                  E---H---I (HEAD)\n#"
+    ],
+    [
+      "Commands",
+      "reset",
+      "10",
+      "No",
+      "git reset --soft \u003ccommit\u003e",
+      "Move what HEAD points to.\n\nDoes not change the index or working directory.\n\nFor example, `git reset --soft HEAD~` will essentially undo the last `git commit` command. When you run `git commit`, Git creates a new commit and moves the branch that `HEAD` points to up to it. When you reset back to `HEAD~` (the parent of `HEAD`), you are moving the branch back to where it was, without changing the index or working directory. You could now update the index and run `git commit` again to accomplish what `git commit --amend` would have done.",
+      "https://git-scm.com/docs/git-reset\nhttps://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified",
+      "$ git reset --soft HEAD~"
+    ],
+    [
+      "Commands",
+      "reset",
+      "20",
+      "No",
+      "git reset --mixed \u003ccommit\u003e",
+      "Move what HEAD points to and update index with it.\n\nDoes not change the working directory.\n\nFor example, `git reset --mixed HEAD~` will undo your last commit, but also unstage everything. You rolled back to before you ran all your `git add` and `git commit` commands.\n\n`--mixed` is the default behavior, so it's the same as `git reset HEAD~`.",
+      "https://git-scm.com/docs/git-reset\nhttps://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified",
+      "$ git reset --mixed HEAD~"
+    ],
+    [
+      "Commands",
+      "reset",
+      "30",
+      "No",
+      "git reset --hard \u003ccommit\u003e",
+      "Move what HEAD points to, update index and working directory with it.\n\nFor example, `git reset --hard HEAD~` will undo your last commit, the `git add` and `git commit` commands, and all the work you did in your working directory.\n\nIf the contents of the working directory was not previously commited, it will be lost forever.\n\nSee also `git checkout`.",
+      "https://git-scm.com/docs/git-reset\nhttps://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified",
+      "$ git reset --hard HEAD~"
+    ],
+    [
+      "Comparisons",
+      "Resets",
+      "0",
+      "No",
+      "\u003cCheckout vs. Reset\u003e",
+      "\u003cComparison of reset and checkout\u003e\n\nThe “HEAD” column reads “REF” if that command moves the reference (branch) that HEAD points to, and “HEAD” if it moves HEAD itself. Pay especial attention to the 'WD Safe?' column — if it says NO, take a second to think before running that command.\n\n|                           | Level  | HEAD | Index | Workdir | WD Safe? |\n|---------------------------|--------|:----:|:-----:|:-------:|:--------:|\n| `reset --soft [commit]`     | Commit | REF  | NO    | NO      | YES      |\n| `reset [commit]`            | Commit | REF  | YES   | NO      | YES      |\n| `reset --hard [commit]`     | Commit | REF  | YES   | YES     | NO       |\n| `checkout \u003ccommit\u003e`         | Commit | HEAD | YES   | YES     | YES      |\n| `reset [commit] \u003cpaths\u003e`    | File   | NO   | YES   | NO      | YES      |\n| `checkout [commit] \u003cpaths\u003e` | File   | NO   | YES   | YES     | NO       |",
+      "https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified"
     ]
   ]
 }
