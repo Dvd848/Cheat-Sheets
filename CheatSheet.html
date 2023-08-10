@@ -33,6 +33,7 @@
             margin: 10px;
             padding: 10px;
             background: white;
+            display: flex;
         }
             
         h1 {
@@ -45,6 +46,10 @@
             padding: 10px;
             /*width: 60%;*/
             background:    #E8E8E8  ;
+        }
+        
+        #wrapper, .infoBox {
+            min-width: 600px;
         }
 
         .highlight {
@@ -90,6 +95,7 @@
 
         #loading {
             text-align: center;
+            width: 100%;
             /*display: none;*/
         }
 
@@ -152,10 +158,31 @@
 
         }
 
-        
         a.starred:after {
             margin-left: 5px;
             content: "⭐";
+        }
+        
+        #container {
+            flex: 1;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            overflow-y: auto; 
+            min-width: 400px;
+        }
+        
+        #navigation {
+            width: 300px;
+            min-width: 150px;
+            margin: 2px;
+            padding: 10px;
+            height: 95vh; 
+            position: sticky;
+            top: 10px;
+            border: 1px solid gray;
+            overflow-y: auto;
+            background: #F8F8FF;
         }
         
    </style>
@@ -191,6 +218,10 @@
    
    <div id="wrapper">
       <ul id="container"></ul>
+      <div id="navigation">
+        <u>Quick Navigation</u>
+        <ul id="quick_nav"></ul>
+      </div>
       
       <div id="loading">
          <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH+GkNyZWF0ZWQgd2l0aCBhamF4bG9hZC5pbmZvACH5BAAKAAAAIf8LTkVUU0NBUEUyL
@@ -337,6 +368,7 @@ const CheatSheetItem = Struct("cat", "subcat", "weight", "is_starred", "command"
 function filter()
 {
     document.getElementById("container").hidden = true;
+    document.getElementById("navigation").hidden = true;
     document.getElementById("loading").hidden = false;
 
     new Mark(document.getElementById("wrapper")).unmark();
@@ -373,6 +405,7 @@ function filter()
 
     setTimeout(function(){
         document.getElementById("container").hidden = false;
+        document.getElementById("navigation").hidden = false;
         document.getElementById("loading").hidden = true;
     }, 500);
    
@@ -445,6 +478,9 @@ function finalizeCheatSheet()
     });
 
     setViewMode();
+
+    document.getElementById("container").hidden = false;
+    document.getElementById("navigation").hidden = false;
 };
 
 
@@ -532,6 +568,7 @@ function populateData(data_type, data_url, parse_func)
         document.getElementById('loading').hidden = true;
         
         const container = document.getElementById('container');
+        const quick_nav = document.getElementById('quick_nav');
         
         const data_parsed = parse_func(data);
 
@@ -559,6 +596,13 @@ function populateData(data_type, data_url, parse_func)
                     <li>
                         ${DOMPurify.sanitize( escapeHtml(item.cat) )}
                         <ul id="${category_id}">
+                        </ul>
+                    </li>
+                `));
+                quick_nav.append(htmlToElement(`
+                    <li>
+                        ${DOMPurify.sanitize( escapeHtml(item.cat) )}
+                        <ul id="quick_nav_${category_id}">
                         </ul>
                     </li>
                 `));
@@ -590,6 +634,11 @@ function populateData(data_type, data_url, parse_func)
                 if (!WasInserted)
                 {
                     document.getElementById(category_id).append(li);
+                    document.getElementById("quick_nav_" + category_id).append(htmlToElement(`
+                        <li>
+                            <a href="#${li_id}">${DOMPurify.sanitize( escapeHtml(item.subcat) )}</a>
+                        </li>
+                    `))
                 }
             }
             
@@ -668,6 +717,9 @@ function populateData(data_type, data_url, parse_func)
 
 function setupCheatSheet()
 {
+    document.getElementById("container").hidden = true;
+    document.getElementById("navigation").hidden = true;
+
     const SPREADSHEET_ID = "1FI6BjoA4fRpxbPIoVNbR_gLsu2U3_AKd_-uKKUZNi5o";
 
     const toc = {
@@ -696,6 +748,7 @@ function setupCheatSheet()
         }
         container.append(ul);
         document.getElementById('loading').hidden = true;
+        document.getElementById("container").hidden = false;
     }
     else
     {
@@ -720,6 +773,7 @@ function setupCheatSheet()
             document.getElementById("footer").innerHTML = toc[subject].footer;
         }
     }
+
 };
 
 document.addEventListener('DOMContentLoaded', (event) => {
