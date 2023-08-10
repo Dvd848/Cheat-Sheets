@@ -1,5 +1,5 @@
 {
-  "range": "Git!A1:Z1000",
+  "range": "Git!A1:Z999",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -158,8 +158,8 @@
       "10",
       "No",
       "git log --patch",
-      "Show commit logs as diff.",
-      "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History",
+      "Show commit logs as diff.\n\nRecommended syntax: `git log -p -M --follow --stat -- path/to/file`",
+      "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History\nhttps://web.archive.org/web/20160515170215/http://blog.andrewray.me/a-better-git-blame/",
       "$ git log -p -2\ncommit ca82a6dff817ec66f44342007202690a93763949\nAuthor: Scott Chacon \u003cschacon@gee-mail.com\u003e\nDate: Mon Mar 17 21:52:11 2008 -0700\nChange version number\ndiff --git a/Rakefile b/Rakefile\nindex a874b73..8f94139 100644\n--- a/Rakefile\n+++ b/Rakefile\n@@ -5,7 +5,7 @@ require 'rake/gempackagetask'\nspec = Gem::Specification.new do |s|\ns.platform = Gem::Platform::RUBY\ns.name = \"simplegit\"\n- s.version = \"0.1.0\"\n+ s.version = \"0.1.1\"\ns.author = \"Scott Chacon\"\ns.email = \"schacon@gee-mail.com\"\ns.summary = \"A simple gem for using Git in Ruby code.\"\ncommit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7\nAuthor: Scott Chacon \u003cschacon@gee-mail.com\u003e\nDate: Sat Mar 15 16:40:33 2008 -0700\nRemove unnecessary test\ndiff --git a/lib/simplegit.rb b/lib/simplegit.rb\nindex a0a60ae..47c6340 100644\n--- a/lib/simplegit.rb\n+++ b/lib/simplegit.rb\n@@ -18,8 +18,3 @@ class SimpleGit\nend\nend\n-\n-if $0 == __FILE__\n- git = SimpleGit.new\n- puts git.show\n-end"
     ],
     [
@@ -428,7 +428,7 @@
       "20",
       "No",
       "git tag -a \u003ctagname\u003e -m \"\u003cmessage\u003e\"",
-      "Create an annotated tag.\n\nThe `-m` specifies a tagging message, which is stored with the tag. If you don’t specify a message for an annotated tag, Git launches your editor so you can type it in.",
+      "Create an annotated tag.\n\nAnnotated tags are meant for release.\n\nThe `-m` specifies a tagging message, which is stored with the tag. If you don’t specify a message for an annotated tag, Git launches your editor so you can type it in.\n\nBy default, the `git push` command doesn’t transfer tags to remote servers, they need to be pushed explicitly (see `git push`).",
       "https://git-scm.com/docs/git-tag\nhttps://git-scm.com/book/en/v2/Git-Basics-Tagging",
       "$ git tag -a v1.4 -m \"my version 1.4\"\n$ git tag\nv0.1\nv1.3\nv1.4"
     ],
@@ -448,7 +448,7 @@
       "30",
       "No",
       "git tag \u003ctagname\u003e",
-      "Create a lightweight tag.",
+      "Create a lightweight tag.\n\nLightweight tags are meant for private or temporary object labels.\n\nBy default, the `git push` command doesn’t transfer tags to remote servers, they need to be pushed explicitly (see `git push`).",
       "https://git-scm.com/docs/git-tag\nhttps://git-scm.com/book/en/v2/Git-Basics-Tagging",
       "$ git tag v1.4-lw\n$ git tag\nv0.1\nv1.3\nv1.4\nv1.4-lw\nv1.5"
     ],
@@ -458,7 +458,7 @@
       "40",
       "No",
       "git tag -a \u003ctagname\u003e \u003ccommit_hash\u003e",
-      "Tag a specific commit.",
+      "Tag a specific commit.\n\nBy default, the `git push` command doesn’t transfer tags to remote servers, they need to be pushed explicitly (see `git push`).",
       "https://git-scm.com/docs/git-tag\nhttps://git-scm.com/book/en/v2/Git-Basics-Tagging",
       "$ git tag -a v1.2 9fceb02"
     ],
@@ -635,7 +635,7 @@
       "No",
       "git merge \u003cbranchname\u003e",
       "Merge a branch into the current branch.",
-      "https://git-scm.com/docs/git-merge\nhttps://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging\nhttps://git-scm.com/book/en/v2/Git-Branching-Remote-Branches",
+      "https://git-scm.com/docs/git-merge\nhttps://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging\nhttps://git-scm.com/book/en/v2/Git-Branching-Remote-Branches\nhttps://www.biteinteractive.com/understanding-git-merge/",
       "$ git checkout master\n$ git merge hotfix\nUpdating f42c576..3a0874c\nFast-forward\n index.html | 2 ++\n 1 file changed, 2 insertions(+)"
     ],
     [
@@ -890,7 +890,7 @@
       "10",
       "No",
       "git merge --squash \u003cbranch\u003e",
-      "Merge a branch into the current branch, squash all commits into one.\n\nThis option takes all the work on the merged branch and squashes it into one changeset producing the repository state as if a real merge happened, without actually making a merge commit. This means your future commit will have one parent only and allows you to introduce all the changes from another branch and then make more changes before recording the new commit.",
+      "Merge a branch into the current branch, squash all commits into one. \n\nDoes not auto-commit! You must commit manually.\n\nThis option takes all the work on the merged branch and squashes it into one changeset producing the repository state as if a real merge happened, without actually making a merge commit. This means your future commit will have one parent only and allows you to introduce all the changes from another branch and then make more changes before recording the new commit.",
       "https://git-scm.com/docs/git-merge\nhttps://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project",
       "$ git checkout -b featureBv2 origin/master\n$ git merge --squash featureB\n  ... change implementation ...\n$ git commit\n$ git push myfork featureBv2"
     ],
@@ -975,7 +975,7 @@
     ],
     [
       "Commands",
-      "log",
+      "diff",
       "160",
       "No",
       "git diff \u003cbranch1\u003e...\u003cbranch2\u003e\n",
@@ -989,7 +989,7 @@
       "0",
       "No",
       "git cherry-pick \u003ccommit\u003e",
-      "Apply the changes introduced by some existing commits.\n\nThis pulls the same change introduced in `\u003ccommit\u003e`, but you get a new commit SHA-1 value, because the date applied is different.",
+      "Apply the changes introduced by some existing commits.\n\nThis pulls the same change introduced in `\u003ccommit\u003e`, but you get a new commit SHA-1 value, because the date applied is different.\n\nAdd `-x` to include a comment listing the original commit ID.",
       "https://git-scm.com/docs/git-cherry-pick\nhttps://git-scm.com/book/en/v2/Distributed-Git-Maintaining-a-Project",
       "$ git cherry-pick e43a6\nFinished one cherry-pick.\n[master]: created a0a41a9: \"More friendly message when locking the index fails.\"\n 3 files changed, 17 insertions(+), 3 deletions(-)"
     ],
@@ -1137,8 +1137,8 @@
       "20",
       "No",
       "git add -p \u003cfile\u003e",
-      "Interactively choose hunks of patch between the index and the work tree and add them to the index. \n\nTriggers: `-p`, `--patch`.",
-      "https://git-scm.com/docs/git-add\nhttps://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging"
+      "Interactively choose hunks of patch between the index and the work tree and add them to the index. \n\nTriggers: `-p`, `--patch`.\n\nIf you only want to add part of a hunk but git won't suggest `s` (split), choose `e` (manually edit the current hunk) and delete the lines you don't want to currently add to the staging area.",
+      "https://git-scm.com/docs/git-add\nhttps://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging\nhttps://rietta.com/blog/git-patch-manual-split/"
     ],
     [
       "Commands",
@@ -1163,7 +1163,7 @@
       "stash",
       "20",
       "No",
-      "git stash -p",
+      "git stash push -p",
       "Partially stash changes in files.\n\nTriggers: `-p`, `--patch`.",
       "https://git-scm.com/docs/git-stash\nhttps://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning",
       "$ git stash --patch\ndiff --git a/lib/simplegit.rb b/lib/simplegit.rb\nindex 66d332e..8bb5674 100644\n--- a/lib/simplegit.rb\n+++ b/lib/simplegit.rb\n@@ -16,6 +16,10 @@ class SimpleGit\n         return `#{git_cmd} 2\u003e&1`.chomp\n       end\n     end\n+\n+    def show(treeish = 'master')\n+      command(\"git show #{treeish}\")\n+    end\n\n end\n test\nStash this hunk [y,n,q,a,d,/,e,?]? y\n\nSaved working directory and index state WIP on master: 1b65b17 added the index file"
@@ -1173,8 +1173,8 @@
       "stash",
       "0",
       "No",
-      "git stash",
-      "Stash the changes in a dirty working directory away.\n\nBy default, `git stash` will stash only modified and staged tracked files.",
+      "git stash push",
+      "Stash the changes in a dirty working directory away.\n\nFor quickly making a snapshot, you can omit `push`. In this mode, non-option arguments are not allowed.\n\nBy default, `git stash` will stash only modified and staged tracked files.",
       "https://git-scm.com/docs/git-stash\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning",
       "$ git status\nChanges to be committed:\n  (use \"git reset HEAD \u003cfile\u003e...\" to unstage)\n\n\tmodified:   index.html\n\nChanges not staged for commit:\n  (use \"git add \u003cfile\u003e...\" to update what will be committed)\n  (use \"git checkout -- \u003cfile\u003e...\" to discard changes in working directory)\n\n\tmodified:   lib/simplegit.rb\n\n$ git stash\nSaved working directory and index state \\\n  \"WIP on master: 049d078 Create index file\"\nHEAD is now at 049d078 Create index file\n(To restore them type \"git stash apply\")\n\n$ git status\n# On branch master\nnothing to commit, working directory clean"
     ],
@@ -1233,7 +1233,7 @@
       "stash",
       "10",
       "No",
-      "git stash --keep-index",
+      "git stash push --keep-index",
       "Stash the changes while keeping the working directory modified.",
       "https://git-scm.com/docs/git-stash\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning",
       "$ git status -s\nM  index.html\n M lib/simplegit.rb\n\n$ git stash --keep-index\nSaved working directory and index state WIP on master: 1b65b17 added the index file\nHEAD is now at 1b65b17 added the index file\n\n$ git status -s\nM  index.html"
@@ -1243,7 +1243,7 @@
       "stash",
       "11",
       "No",
-      "git stash --include-untracked",
+      "git stash push --include-untracked",
       "Stash changes, include untracked files in the stash being created.\n\nTriggers: `-u`, `--include-untracked`.\n\nIncluding untracked files in the stash will still not include explicitly ignored files. To additionally include ignored files, use `--all` (or just `-a`).",
       "https://git-scm.com/docs/git-stash\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning",
       "$ git status -s\nM  index.html\n M lib/simplegit.rb\n?? new-file.txt\n\n$ git stash -u\nSaved working directory and index state WIP on master: 1b65b17 added the index file\nHEAD is now at 1b65b17 added the index file\n\n$ git status -s\n$"
@@ -1272,7 +1272,7 @@
       "stash",
       "25",
       "No",
-      "git stash --all",
+      "git stash push --all",
       "Stash all files and remove them from the working directory.\n\nBrings the working directory back to a clean state.",
       "https://git-scm.com/docs/git-stash\nhttps://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning"
     ],
@@ -1406,7 +1406,7 @@
       "210",
       "No",
       "git log -L \u003cexpression\u003e",
-      "Show the history of a function or line of code in the codebase.\n\nThis will try to figure out what the bounds of that function are and then look through the history and show us every change that was made to the function as a series of patches back to when the function was first created.",
+      "Show the history of a function or line of code in the codebase.\n\nThe expression can be of the form `-L\u003cstart\u003e,\u003cend\u003e:\u003cfile\u003e` or `-L:\u003cfuncname\u003e:\u003cfile\u003e`.\n\n`\u003cstart\u003e` and `\u003cend\u003e` can be a line number, a regular expression or an offset.\n\nThe `funcname` syntax will try to figure out what the bounds of that function are and then look through the history and show us every change that was made to the function as a series of patches back to when the function was first created.",
       "https://git-scm.com/docs/git-log\nhttps://git-scm.com/book/en/v2/Git-Tools-Searching",
       "$ git log -L :git_deflate_bound:zlib.c\ncommit ef49a7a0126d64359c974b4b3b71d7ad42ee3bca\nAuthor: Junio C Hamano \u003cgitster@pobox.com\u003e\nDate:   Fri Jun 10 11:52:15 2011 -0700\n\n    zlib: zlib can only process 4GB at a time\n\ndiff --git a/zlib.c b/zlib.c\n--- a/zlib.c\n+++ b/zlib.c\n@@ -85,5 +130,5 @@\n-unsigned long git_deflate_bound(z_streamp strm, unsigned long size)\n+unsigned long git_deflate_bound(git_zstream *strm, unsigned long size)\n {\n-       return deflateBound(strm, size);\n+       return deflateBound(&strm-\u003ez, size);\n }\n\n\ncommit 225a6f1068f71723a910e8565db4e252b3ca21fa\nAuthor: Junio C Hamano \u003cgitster@pobox.com\u003e\nDate:   Fri Jun 10 11:18:17 2011 -0700\n\n    zlib: wrap deflateBound() too\n\ndiff --git a/zlib.c b/zlib.c\n--- a/zlib.c\n+++ b/zlib.c\n@@ -81,0 +85,5 @@\n+unsigned long git_deflate_bound(z_streamp strm, unsigned long size)\n+{\n+       return deflateBound(strm, size);\n+}\n+"
     ],
@@ -1417,7 +1417,7 @@
       "No",
       "git rebase -i \u003cparent of last commit to edit\u003e",
       "Rewrite history of last n commits via interactive rebase.\n\nWith the interactive rebase tool, you can then stop after each commit you want to modify and change the message, add files, or do whatever you wish.\n\nThis is a rebasing command — every commit in the range \u003cparent of last commit to edit\u003e..HEAD with a changed message and all of its descendants will be rewritten. Don’t include any commit you’ve already pushed to a central server — doing so will confuse other developers by providing an alternate version of the same change.\n\n The interactive rebase gives you a script that it’s going to run. It will start at the commit you specify on the command line and replay the changes introduced in each of these commits from top to bottom. It lists the oldest at the top, rather than the newest, because that’s the first one it will replay. You need to edit the script so that it stops at the commit you want to edit. To do so, change the word “pick” to the word “edit” for each of the commits you want the script to stop after. When you save and exit the editor, Git rewinds you back to the last commit in that list and drops you on the command line with further instructions. Alternatively you can squash, reorder or delete commits.\n\nIf you finish a rebase and decide it’s not what you want, you can use `git reflog` to recover an earlier version of your branch.",
-      "https://git-scm.com/docs/git-rebase\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History\nhttps://git-rebase.io/",
+      "https://git-scm.com/docs/git-rebase\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History\nhttps://git-rebase.io/\nhttps://github.blog/2022-06-30-write-better-commits-build-better-projects/\nhttps://algoritmim.co.il/just-code/make-your-commit-the-best-with-interactive-rebase/",
       "$ # Edit last three commits\n$ git rebase -i HEAD~3 # or HEAD~2^\npick f7f3f6d Change my name a bit\npick 310154e Update README formatting and add blame\npick a5f4a0d Add cat-file\n\n# Rebase 710f0f8..a5f4a0d onto 710f0f8\n#\n# Commands:\n# p, pick \u003ccommit\u003e = use commit\n# r, reword \u003ccommit\u003e = use commit, but edit the commit message\n# e, edit \u003ccommit\u003e = use commit, but stop for amending\n# s, squash \u003ccommit\u003e = use commit, but meld into previous commit\n# f, fixup \u003ccommit\u003e = like \"squash\", but discard this commit's log message\n# x, exec \u003ccommand\u003e = run command (the rest of the line) using shell\n# b, break = stop here (continue rebase later with 'git rebase --continue')\n# d, drop \u003ccommit\u003e = remove commit\n# l, label \u003clabel\u003e = label current HEAD with a name\n# t, reset \u003clabel\u003e = reset HEAD to a label\n# m, merge [-C \u003ccommit\u003e | -c \u003ccommit\u003e] \u003clabel\u003e [# \u003coneline\u003e]\n# .       create a merge commit using the original merge commit's\n# .       message (or the oneline, if no original merge commit was\n# .       specified). Use -c \u003ccommit\u003e to reword the commit message.\n#\n# These lines can be re-ordered; they are executed from top to bottom.\n#\n# If you remove a line here THAT COMMIT WILL BE LOST.\n#\n# However, if you remove everything, the rebase will be aborted.\n#\n# Note that empty commits are commented out"
     ],
     [
@@ -1525,7 +1525,7 @@
       "10",
       "No",
       "git reset --soft \u003ccommit\u003e",
-      "Move what HEAD points to.\n\nDoes not change the index or working directory.\n\nFor example, `git reset --soft HEAD~` will essentially undo the last `git commit` command. When you run `git commit`, Git creates a new commit and moves the branch that `HEAD` points to up to it. When you reset back to `HEAD~` (the parent of `HEAD`), you are moving the branch back to where it was, without changing the index or working directory. You could now update the index and run `git commit` again to accomplish what `git commit --amend` would have done.",
+      "Move what HEAD points to.\n\nDoes not change the index or working directory:\n\n * Unstaged files: Don't change\n * Staged files: Don't change\n * Commited files: Move to staged\n\nFor example, `git reset --soft HEAD~` will essentially undo the last `git commit` command. When you run `git commit`, Git creates a new commit and moves the branch that `HEAD` points to up to it. When you reset back to `HEAD~` (the parent of `HEAD`), you are moving the branch back to where it was, without changing the index or working directory. You could now update the index and run `git commit` again to accomplish what `git commit --amend` would have done.",
       "https://git-scm.com/docs/git-reset\nhttps://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified",
       "$ git reset --soft HEAD~"
     ],
@@ -1535,7 +1535,7 @@
       "20",
       "No",
       "git reset --mixed \u003ccommit\u003e",
-      "Move what HEAD points to and update index with it.\n\nDoes not change the working directory.\n\nFor example, `git reset --mixed HEAD~` will undo your last commit, but also unstage everything. You rolled back to before you ran all your `git add` and `git commit` commands.\n\n`--mixed` is the default behavior, so it's the same as `git reset HEAD~`.",
+      "Move what HEAD points to and update index with it.\n\nDoes not change the working directory.\n\n * Unstaged files: Don't change\n * Staged files: Move to unstaged\n * Commited files: Move to unstaged\n\nFor example, `git reset --mixed HEAD~` will undo your last commit, but also unstage everything. You rolled back to before you ran all your `git add` and `git commit` commands.\n\n`--mixed` is the default behavior, so it's the same as `git reset HEAD~`.",
       "https://git-scm.com/docs/git-reset\nhttps://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified",
       "$ git reset --mixed HEAD~"
     ],
@@ -1545,7 +1545,7 @@
       "30",
       "No",
       "git reset --hard \u003ccommit\u003e",
-      "Move what HEAD points to, update index and working directory with it.\n\nFor example, `git reset --hard HEAD~` will undo your last commit, the `git add` and `git commit` commands, and all the work you did in your working directory.\n\nIf the contents of the working directory was not previously commited, it will be lost forever.\n\nSee also `git checkout`.",
+      "Move what HEAD points to, update index and working directory with it.\n\n * Unstaged files: Get deleted\n * Staged files: Get deleted\n * Commited files: Get deleted\n\nFor example, `git reset --hard HEAD~` will undo your last commit, the `git add` and `git commit` commands, and all the work you did in your working directory.\n\nIf the contents of the working directory was not previously commited, it will be lost forever.\n\nSee also `git checkout`.",
       "https://git-scm.com/docs/git-reset\nhttps://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified",
       "$ git reset --hard HEAD~"
     ],
@@ -1555,8 +1555,146 @@
       "0",
       "No",
       "\u003cCheckout vs. Reset\u003e",
-      "\u003cComparison of reset and checkout\u003e\n\nThe “HEAD” column reads “REF” if that command moves the reference (branch) that HEAD points to, and “HEAD” if it moves HEAD itself. Pay especial attention to the 'WD Safe?' column — if it says NO, take a second to think before running that command.\n\n|                           | Level  | HEAD | Index | Workdir | WD Safe? |\n|---------------------------|--------|:----:|:-----:|:-------:|:--------:|\n| `reset --soft [commit]`     | Commit | REF  | NO    | NO      | YES      |\n| `reset [commit]`            | Commit | REF  | YES   | NO      | YES      |\n| `reset --hard [commit]`     | Commit | REF  | YES   | YES     | NO       |\n| `checkout \u003ccommit\u003e`         | Commit | HEAD | YES   | YES     | YES      |\n| `reset [commit] \u003cpaths\u003e`    | File   | NO   | YES   | NO      | YES      |\n| `checkout [commit] \u003cpaths\u003e` | File   | NO   | YES   | YES     | NO       |",
+      "\u003cComparison of reset and checkout\u003e\n\nThe “HEAD” column reads “REF” if that command moves the reference (branch) that HEAD points to, and “HEAD” if it moves HEAD itself. Pay especial attention to the 'WD Safe?' column — if it says NO, take a second to think before running that command.\n\n|                           | Level  | HEAD | Index | Workdir | WD Safe? |\n|---------------------------|--------|:----:|:-----:|:-------:|:--------:|\n| `reset --soft [commit]`     | Commit | REF  | NO    | NO      | YES      |\n| `reset [commit]`            | Commit | REF  | YES   | NO      | YES      |\n| `reset --hard [commit]`     | Commit | REF  | YES   | YES     | NO       |\n| `checkout \u003ccommit\u003e`         | Commit | HEAD | YES   | YES     | YES      |\n| `reset [commit] \u003cpaths\u003e`    | File   | NO   | YES   | NO      | YES      |\n| `checkout [commit] \u003cpaths\u003e` | File   | NO   | YES   | YES     | NO       |\n\nReset Types:\n\n * `--soft`: Uncommit changes, changes are left staged (index).\n * `--mixed` (default): Uncommit + unstage changes, changes are left in working tree.\n * `--hard`: Uncommit + unstage + delete changes, nothing left.",
       "https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified"
+    ],
+    [
+      "Commands",
+      "diff",
+      "5",
+      "No",
+      "git diff \u003cremote\u003e",
+      "Compare what's in the working directory with a remote branch.",
+      "https://git-scm.com/docs/git-diff",
+      "$ git diff origin/main"
+    ],
+    [
+      "Commands",
+      "stash",
+      "1",
+      "No",
+      "git stash push -m \"\u003cdescription\u003e\"",
+      "Save your local modifications to a new stash entry and reset back to HEAD.",
+      "https://git-scm.com/docs/git-stash",
+      "$ git status\nOn branch master\nChanges not staged for commit:\n  (use \"git add \u003cfile\u003e...\" to update what will be committed)\n  (use \"git restore \u003cfile\u003e...\" to discard changes in working directory)\n        modified:   lyrics.txt\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")\n$ git stash push -m \"Working on Lyrics\"\nSaved working directory and index state On master: Working on Lyrics\n\n$ git stash list\nstash@{0}: On master: Working on Lyrics\n$ git status\nOn branch master\nChanges not staged for commit:\n  (use \"git add \u003cfile\u003e...\" to update what will be committed)\n  (use \"git restore \u003cfile\u003e...\" to discard changes in working directory)\n        modified:   lyrics.txt\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")"
+    ],
+    [
+      "Commands",
+      "push",
+      "21",
+      "No",
+      "git push \u003cremote\u003e --follow-tags",
+      "Pushes all annotated tags to the remote.\n\nNote that lightweight tags are not pushed with this command.",
+      "https://git-scm.com/docs/git-push"
+    ],
+    [
+      "Commands",
+      "commit",
+      "31",
+      "No",
+      "git commit --amend --no-edit",
+      "Redo the most recent commit, make the additional changes that were forgotten, stage them, and commit again without editing the commit message.",
+      "https://git-scm.com/docs/git-commit\nhttps://git-scm.com/book/en/v2/Git-Basics-Undoing-Things\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History",
+      "$ git commit -m 'Initial commit'\n$ git add forgotten_file\n$ git commit --amend --no-edit"
+    ],
+    [
+      "Commands",
+      "blame",
+      "0",
+      "No",
+      "git blame \u003cfile\u003e",
+      "Show what revision and author last modified each line of a file",
+      "https://git-scm.com/docs/git-blame",
+      "$ git blame config.rb\n^5e8863d (Gary Rennie       2012-03-08 23:05:24 +0000  1) class Config\n70d00535 (Bruce Banner      2012-03-08 23:07:41 +0000  2)   attr_accessor :name, :password\n97bdd0cc (Spider Man        2012-03-08 23:08:15 +0000  3)   def initialize(name, password = nil, options = {})"
+    ],
+    [
+      "Commands",
+      "blame",
+      "10",
+      "No",
+      "git blame \u003cfile\u003e -L \u003cexpression\u003e",
+      "Show what revision and author last modified for a range of a file.\n\nThe expression can be of the form `-L\u003cstart\u003e,\u003cend\u003e:\u003cfile\u003e` or `-L:\u003cfuncname\u003e:\u003cfile\u003e`.\n\n`\u003cstart\u003e` and `\u003cend\u003e` can be a line number, a regular expression or an offset.\n\nThe `funcname` syntax will try to figure out what the bounds of that function are.",
+      "https://git-scm.com/docs/git-blame",
+      "$ git blame config.rb -L 2,4\n70d00535 (Bruce Banner 2012-03-08 23:07:41 +0000 2)   attr_accessor :name, :password\n97bdd0cc (Spider Man   2012-03-08 23:08:15 +0000 3)   def initialize(name, password = nil, options = {})\n^5e8863d (Gary Rennie  2012-03-08 23:05:24 +0000 4)     @name = name"
+    ],
+    [
+      "Commands",
+      "bisect",
+      "0",
+      "No",
+      "git bisect start",
+      "Start a bisect session to use binary search and find the commit that introduced a bug.",
+      "https://git-scm.com/docs/git-bisect",
+      "$ git bisect start\n$ git bisect bad HEAD\n$ git bisect good f608824888b83bbedc1f658be7496ffea467a8fb\nBisecting: 9 revisions left to test after this (roughly 3 steps)\n[fdbfc0d403e5ac0b2659cbfa2cbb061fcca0dc2a] Another Commit\n$ make test\nruby prog.rb 5 | ruby test.rb\n$ git bisect good fdbfc0d403e5ac0b2659cbfa2cbb061fcca0dc2a\nBisecting: 4 revisions left to test after this (roughly 2 steps)\n[18ed2ac1522a014412d4303ce7c8db39becab076] Another Commit\n$ make test\nruby prog.rb 5 | ruby test.rb\nmake: *** [makefile:2: test] Error 1\n$ git bisect bad 18ed2ac1522a014412d4303ce7c8db39becab076\nBisecting: 2 revisions left to test after this (roughly 1 step)\n[9f54462abbb991b167532929b34118113aa6c52e] Another Commit\n$ make test\nruby prog.rb 5 | ruby test.rb\n$ git bisect good 9f54462abbb991b167532929b34118113aa6c52e\nBisecting: 0 revisions left to test after this (roughly 1 step)\n[5db7a7cb90e745e2c9dbdd84810ccc7d91d92e72] Another Commit\n$ make test\nruby prog.rb 5 | ruby test.rb\n$ git bisect good 5db7a7cb90e745e2c9dbdd84810ccc7d91d92e72\n18ed2ac1522a014412d4303ce7c8db39becab076 is the first bad commit\ncommit 18ed2ac1522a014412d4303ce7c8db39becab076\nAuthor: Robert Bittle \u003cguywithnose@gmail.com\u003e\nDate:   Mon Apr 23 06:52:10 2012 -0400\n\n    Another Commit\n\n prog.rb | 2 +-\n 1 file changed, 1 insertion(+), 1 deletion(-)\n$ git bisect reset\nPrevious HEAD position was 5db7a7c Another Commit\nSwitched to branch 'master'"
+    ],
+    [
+      "Commands",
+      "bisect",
+      "10",
+      "No",
+      "git bisect \u003cverdict\u003e \u003ccommit\u003e",
+      "Feed the bisect wizard with the verdict on a given commit.\n\nVerdict can be `good` or `bad`.\n\nThe wizard will checkout the next commit to test, until finding the faulty commit.",
+      "https://git-scm.com/docs/git-bisect",
+      "$ git bisect start\n$ git bisect bad HEAD\n$ git bisect good f608824888b83bbedc1f658be7496ffea467a8fb\nBisecting: 9 revisions left to test after this (roughly 3 steps)\n[fdbfc0d403e5ac0b2659cbfa2cbb061fcca0dc2a] Another Commit\n$ make test\nruby prog.rb 5 | ruby test.rb\n$ git bisect good fdbfc0d403e5ac0b2659cbfa2cbb061fcca0dc2a\nBisecting: 4 revisions left to test after this (roughly 2 steps)\n[18ed2ac1522a014412d4303ce7c8db39becab076] Another Commit\n$ make test\nruby prog.rb 5 | ruby test.rb\nmake: *** [makefile:2: test] Error 1\n$ git bisect bad 18ed2ac1522a014412d4303ce7c8db39becab076\nBisecting: 2 revisions left to test after this (roughly 1 step)\n[9f54462abbb991b167532929b34118113aa6c52e] Another Commit\n$ make test\nruby prog.rb 5 | ruby test.rb\n$ git bisect good 9f54462abbb991b167532929b34118113aa6c52e\nBisecting: 0 revisions left to test after this (roughly 1 step)\n[5db7a7cb90e745e2c9dbdd84810ccc7d91d92e72] Another Commit\n$ make test\nruby prog.rb 5 | ruby test.rb\n$ git bisect good 5db7a7cb90e745e2c9dbdd84810ccc7d91d92e72\n18ed2ac1522a014412d4303ce7c8db39becab076 is the first bad commit\ncommit 18ed2ac1522a014412d4303ce7c8db39becab076\nAuthor: Robert Bittle \u003cguywithnose@gmail.com\u003e\nDate:   Mon Apr 23 06:52:10 2012 -0400\n\n    Another Commit\n\n prog.rb | 2 +-\n 1 file changed, 1 insertion(+), 1 deletion(-)\n$ git bisect reset\nPrevious HEAD position was 5db7a7c Another Commit\nSwitched to branch 'master'"
+    ],
+    [
+      "Commands",
+      "bisect",
+      "20",
+      "No",
+      "git bisect reset",
+      "Reset the bisect wizard.",
+      "https://git-scm.com/docs/git-bisect",
+      "$ git bisect reset\nPrevious HEAD position was 5db7a7c Another Commit\nSwitched to branch 'master'"
+    ],
+    [
+      "Commands",
+      "revert",
+      "0",
+      "No",
+      "git revert \u003ccommit\u003e",
+      "Revert some existing commits.\n\nIn this case, git will create a new commit with the inverse of the given commit. \nThis is useful if the bad commit was already pushed to a public remote.",
+      "https://git-scm.com/docs/git-revert\nhttps://www.atlassian.com/git/tutorials/undoing-changes",
+      "$ git revert 542c6ca5b1b7fa245934b0ff5ac04ec2ea919a30\nRemoving file3\n[master 1130227] Revert \"Bad commit\"\n 1 file changed, 0 insertions(+), 0 deletions(-)\n delete mode 100644 file3"
+    ],
+    [
+      "Commands",
+      "merge",
+      "20",
+      "No",
+      "git merge --abort",
+      "Abort a merge.",
+      "https://git-scm.com/docs/git-merge",
+      "$ git merge mybranch\nAuto-merging poem.txt\nCONFLICT (content): Merge conflict in poem.txt\nAutomatic merge failed; fix conflicts and then commit the result.\n$ git status\nOn branch master\nYou have unmerged paths.\n  (fix conflicts and run \"git commit\")\n  (use \"git merge --abort\" to abort the merge)\n\nUnmerged paths:\n  (use \"git add \u003cfile\u003e...\" to mark resolution)\n        both modified:   poem.txt\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")\n$ git merge --abort"
+    ],
+    [
+      "Commands",
+      "merge",
+      "30",
+      "No",
+      "git merge --continue",
+      "Continue an interrupted merge after resolving conflicts.",
+      "https://git-scm.com/docs/git-merge",
+      "$ git merge mybranch\nAuto-merging poem.txt\nCONFLICT (content): Merge conflict in poem.txt\nAutomatic merge failed; fix conflicts and then commit the result.\n$ nano poem.txt\n$ git add poem.txt\n$ git merge --continue\n[master 27c3e65] Merge branch 'mybranch'"
+    ],
+    [
+      "Commands",
+      "clone",
+      "30",
+      "No",
+      "git clone --depth \u003cdepth\u003e \u003crepository\u003e",
+      "Create a shallow clone with a history truncated to the specified number of commits. \n\nBy default, clones only the history leading to the tip of a single branch.",
+      "https://git-scm.com/docs/git-clone"
+    ],
+    [
+      "Commands",
+      "clone",
+      "40",
+      "No",
+      "git clone --shallow-since=\u003cdate\u003e \u003crepository\u003e",
+      "Create a shallow clone with a history after the specified time.",
+      "https://git-scm.com/docs/git-clone",
+      "$ git clone --shallow-since=\"3 months\" https://github.com/schacon/ticgit"
     ]
   ]
 }
