@@ -1,5 +1,5 @@
 {
-  "range": "Git!A1:Z999",
+  "range": "Git!A1:Z998",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -60,7 +60,7 @@
       "git add \u003cpath\u003e",
       "Add file contents to the index.",
       "https://git-scm.com/docs/git-add",
-      "$ git add README"
+      "$ git status\nOn branch master\nnothing to commit, working tree clean\n$ echo \"This is a README\" \u003e README\n$ git status\nOn branch master\nUntracked files:\n  (use \"git add \u003cfile\u003e...\" to include in what will be committed)\n        README\n\nnothing added to commit but untracked files present (use \"git add\" to track)\n$ git add README\n$ git status\nOn branch master\nChanges to be committed:\n  (use \"git restore --staged \u003cfile\u003e...\" to unstage)\n        new file:   README"
     ],
     [
       "Commands",
@@ -268,7 +268,7 @@
       "30",
       "Yes",
       "git commit --amend",
-      "Redo the most recent commit, make the additional changes that were forgotten, stage them, and commit again.\nThis command takes your staging area and uses it for the commit. If you’ve made no changes since your last commit (for instance, you run this command immediately after your previous commit), then your snapshot will look exactly the same, and all you’ll change is your commit message.\nIt’s important to understand that when you’re amending your last commit, you’re not so much fixing it as replacing it entirely with a new, improved commit that pushes the old commit out of the way and puts the new commit in its place. Effectively, it’s as if the previous commit never happened, and it won’t show up in your repository history.\nThe obvious value to amending commits is to make minor improvements to your last commit, without cluttering your repository history with commit messages of the form, “Oops, forgot to add a file” or “Fixing a typo in last commit”.\nOnly amend commits that are still local and have not been pushed somewhere. Amending previously pushed commits and force pushing the branch will cause problems for your collaborators.",
+      "Redo the most recent commit, make the additional changes that were forgotten, stage them, and commit again.\n\nThis command takes your staging area and uses it for the commit. If you’ve made no changes since your last commit (for instance, you run this command immediately after your previous commit), then your snapshot will look exactly the same, and all you’ll change is your commit message.\nIt’s important to understand that when you’re amending your last commit, you’re not so much fixing it as replacing it entirely with a new, improved commit that pushes the old commit out of the way and puts the new commit in its place. Effectively, it’s as if the previous commit never happened, and it won’t show up in your repository history.\nThe obvious value to amending commits is to make minor improvements to your last commit, without cluttering your repository history with commit messages of the form, “Oops, forgot to add a file” or “Fixing a typo in last commit”.\nOnly amend commits that are still local and have not been pushed somewhere. Amending previously pushed commits and force pushing the branch will cause problems for your collaborators.",
       "https://git-scm.com/docs/git-commit\nhttps://git-scm.com/book/en/v2/Git-Basics-Undoing-Things\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History",
       "$ git commit -m 'Initial commit'\n$ git add forgotten_file\n$ git commit --amend"
     ],
@@ -296,7 +296,7 @@
       "Commands",
       "restore",
       "0",
-      "No",
+      "Yes",
       "git restore --staged \u003cfile\u003e...",
       "Unstage a staged file.",
       "https://git-scm.com/docs/git-restore\nhttps://git-scm.com/book/en/v2/Git-Basics-Undoing-Things",
@@ -306,7 +306,7 @@
       "Commands",
       "restore",
       "10",
-      "No",
+      "Yes",
       "git restore \u003cfile\u003e...",
       "Revert a modified file.\n\nIt’s important to understand that `git restore \u003cfile\u003e` is a dangerous command. Any local changes you made to that file are gone — Git just replaced that file with the last staged or committed version. Don’t ever use this command unless you absolutely know that you don’t want those unsaved local changes.",
       "https://git-scm.com/docs/git-restore\nhttps://git-scm.com/book/en/v2/Git-Basics-Undoing-Things",
@@ -339,7 +339,7 @@
       "Yes",
       "git fetch",
       "Download objects and refs from another repository.\nNote that the `git fetch` command only downloads the data to your local repository — it doesn’t automatically merge it with any of your work or modify what you’re currently working on. You have to merge it manually into your work when you’re ready.",
-      "https://git-scm.com/docs/git-fetch\nhttps://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes",
+      "https://git-scm.com/docs/git-fetch\nhttps://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes\nhttps://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1",
       "$ git fetch"
     ],
     [
@@ -356,10 +356,10 @@
       "Commands",
       "pull",
       "0",
-      "No",
+      "Yes",
       "git pull",
       "Fetch from and integrate with another repository or a local branch.\n\nEssentially this is a `git fetch` immediately followed by a `git merge` in most cases.",
-      "https://git-scm.com/docs/git-pull\nhttps://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes\nhttps://git-scm.com/book/en/v2/Git-Branching-Remote-Branches",
+      "https://git-scm.com/docs/git-pull\nhttps://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes\nhttps://git-scm.com/book/en/v2/Git-Branching-Remote-Branches\nhttps://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1",
       "$ git pull"
     ],
     [
@@ -570,7 +570,7 @@
       "git checkout \u003cbranchname\u003e",
       "Switch to a given branch.\n\nThis moves HEAD to point to the given branch.\n\nRunning `git checkout [branch]` is pretty similar to running `git reset --hard [branch]` in that it updates all three trees for you to look like `[branch]`, but there are two important differences.\n\nFirst, unlike `reset --hard`, `checkout` is working-directory safe; it will check to make sure it’s not blowing away files that have changes to them. Actually, it’s a bit smarter than that — it tries to do a trivial merge in the working directory, so all of the files you haven’t changed will be updated. `reset --hard`, on the other hand, will simply replace everything across the board without checking.\n\nThe second important difference is how checkout updates `HEAD`. Whereas `reset` will move the branch that `HEAD` points to, checkout will move `HEAD` itself to point to another branch.",
       "https://git-scm.com/docs/git-checkout\nhttps://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell\nhttps://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified",
-      "$ git checkout testing"
+      "$ git checkout testing\nSwitched to branch 'testing'"
     ],
     [
       "Commands",
@@ -589,7 +589,8 @@
       "Yes",
       "git checkout -b \u003cnewbranchname\u003e \u003cbranchname\u003e",
       "Create a new branch and switch to it at the same time.\n\n`\u003cnewbranchname\u003e` is the new branch name, and it will initially point to the same commit as `\u003cbranch\u003e` does.",
-      "https://git-scm.com/docs/git-checkout\nhttps://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell\nhttps://git-scm.com/book/en/v2/Git-Branching-Remote-Branches"
+      "https://git-scm.com/docs/git-checkout\nhttps://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell\nhttps://git-scm.com/book/en/v2/Git-Branching-Remote-Branches",
+      "$ commit 2146ea1844752535e52591d8d022448b5ec00090 (HEAD -\u003e master)\nAuthor: Dvd848 \u003cDvd848@users.noreply.github.com\u003e\nDate:   Fri Aug 11 17:30:04 2023 +0300\n\n    Update README\n$ git checkout -b feature master\nSwitched to a new branch 'feature'\n$ commit 2146ea1844752535e52591d8d022448b5ec00090 (HEAD -\u003e feature, master)\nAuthor: Dvd848 \u003cDvd848@users.noreply.github.com\u003e\nDate:   Fri Aug 11 17:30:04 2023 +0300\n\n    Update README"
     ],
     [
       "Commands",
@@ -636,7 +637,7 @@
       "git merge \u003cbranchname\u003e",
       "Merge a branch into the current branch.",
       "https://git-scm.com/docs/git-merge\nhttps://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging\nhttps://git-scm.com/book/en/v2/Git-Branching-Remote-Branches\nhttps://www.biteinteractive.com/understanding-git-merge/",
-      "$ git checkout master\n$ git merge hotfix\nUpdating f42c576..3a0874c\nFast-forward\n index.html | 2 ++\n 1 file changed, 2 insertions(+)"
+      "$ git checkout master\n$ git log --oneline --decorate --graph --all\n* a00c2fa (dog) Add dog\n| * 9f3fae2 (cat) Add cat\n|/\n* 09f6706 (HEAD -\u003e master) Add animal class\n* 4e33f70 Add README\n* 4a5c59d Initial Commit\n$ git merge dog\nUpdating 09f6706..a00c2fa\nFast-forward\n script.py | 15 +++++++++++++--\n 1 file changed, 13 insertions(+), 2 deletions(-)\n$ git log --oneline --decorate --graph --all\n* a00c2fa (HEAD -\u003e master, dog) Add dog\n| * 9f3fae2 (cat) Add cat\n|/\n* 09f6706 Add animal class\n* 4e33f70 Add README\n* 4a5c59d Initial Commit\n\n$ git merge cat\nAuto-merging script.py\nCONFLICT (content): Merge conflict in script.py\nAutomatic merge failed; fix conflicts and then commit the result.\n$ # Fix conflicts...\n$ git add .\\script.py\n$ git merge --continue\n[master 11fb9a4] Merge branch 'cat'\n$ git log --oneline --decorate --graph --all\n*   11fb9a4 (HEAD -\u003e master) Merge branch 'cat'\n|\\\n| * 9f3fae2 (cat) Add cat\n* | a00c2fa (dog) Add dog\n|/\n* 09f6706 Add animal class\n* 4e33f70 Add README\n* 4a5c59d Initial Commit"
     ],
     [
       "Commands",
@@ -655,7 +656,7 @@
       "No",
       "\u003cMerging conflicts\u003e",
       "Merging conflicts.\n\n 1. Attempt to merge the branches\n 2. Identify that git complains about conflicts\n 3. Resolve the conflicts\n 4. Add each file back to the staging area to mark the conflict resolved\n 5. Check status to confirm no conflicts remain\n 6. Commit change\n",
-      "https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging",
+      "https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging\nhttps://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1",
       "$ git merge iss53\nAuto-merging index.html\nCONFLICT (content): Merge conflict in index.html\nAutomatic merge failed; fix conflicts and then commit the result.\n$ git status\nOn branch master\nYou have unmerged paths.\n  (fix conflicts and run \"git commit\")\n\nUnmerged paths:\n  (use \"git add \u003cfile\u003e...\" to mark resolution)\n\n    both modified:      index.html\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")\n$ # Resolve conflicts (perhaps by running git mergetool)\n$ git add index.html\n\n$ git status\nOn branch master\nAll conflicts fixed but you are still merging.\n  (use \"git commit\" to conclude merge)\n\nChanges to be committed:\n\n    modified:   index.html\n$ git commit\nMerge branch 'iss53'\n\nConflicts:\n    index.html\n#\n# It looks like you may be committing a merge.\n# If this is not correct, please remove the file\n#\t.git/MERGE_HEAD\n# and try again.\n\n\n# Please enter the commit message for your changes. Lines starting\n# with '#' will be ignored, and an empty message aborts the commit.\n# On branch master\n# All conflicts fixed but you are still merging.\n#\n# Changes to be committed:\n#\tmodified:   index.html\n#\n"
     ],
     [
@@ -674,7 +675,7 @@
       "No",
       "\u003cSimple fix\u003e",
       "A simple fix.\n 1. Create a branch for the fix\n 2. Fix the issue\n 3. Merge the fix to the main branch\n 4. Delete the branch\n",
-      "https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging",
+      "https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging\nhttps://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1",
       "$ git checkout -b iss53\nSwitched to a new branch \"iss53\"\n$ vim index.html\n$ git commit -a -m 'Create new footer [issue 53]'\n$ git checkout master\nSwitched to branch 'master'\n$ git merge iss53\nMerge made by the 'recursive' strategy.\nindex.html |    1 +\n1 file changed, 1 insertion(+)\n$ git branch -d iss53"
     ],
     [
@@ -823,7 +824,7 @@
       "No",
       "\u003cBasic rebase\u003e",
       "Basic rebase.\n\n 1. Checkout the topic branch and rebase it onto the main branch\n 2. Return to the main branch and perform a fast-forward merge\n",
-      "https://git-scm.com/book/en/v2/Git-Branching-Rebasing",
+      "https://git-scm.com/book/en/v2/Git-Branching-Rebasing\nhttps://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1",
       "$ git checkout experiment\n$ git rebase master\nFirst, rewinding head to replay your work on top of it...\nApplying: added staged command\n$ git checkout master\n$ git merge experiment"
     ],
     [
@@ -850,7 +851,7 @@
       "Commands",
       "pull",
       "10",
-      "No",
+      "Yes",
       "git pull --rebase",
       "Rrebase the current branch on top of the upstream branch after fetching.",
       "https://git-scm.com/docs/git-pull\nhttps://git-scm.com/book/en/v2/Git-Branching-Rebasing",
@@ -990,7 +991,7 @@
       "Yes",
       "git cherry-pick \u003ccommit\u003e",
       "Apply the changes introduced by some existing commits.\n\nThis pulls the same change introduced in `\u003ccommit\u003e`, but you get a new commit SHA-1 value, because the date applied is different.\n\nAdd `-x` to include a comment listing the original commit ID.",
-      "https://git-scm.com/docs/git-cherry-pick\nhttps://git-scm.com/book/en/v2/Distributed-Git-Maintaining-a-Project",
+      "https://git-scm.com/docs/git-cherry-pick\nhttps://git-scm.com/book/en/v2/Distributed-Git-Maintaining-a-Project\nhttps://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1",
       "$ git cherry-pick e43a6\nFinished one cherry-pick.\n[master]: created a0a41a9: \"More friendly message when locking the index fails.\"\n 3 files changed, 17 insertions(+), 3 deletions(-)"
     ],
     [
@@ -1010,7 +1011,7 @@
       "No",
       "git rerere",
       "Check the DB of resolutions and try to find a match with any current merge conflicts and resolve them.",
-      "https://git-scm.com/docs/git-rerere\nhttps://git-scm.com/book/en/v2/Distributed-Git-Maintaining-a-Project"
+      "https://git-scm.com/docs/git-rerere\nhttps://git-scm.com/book/en/v2/Distributed-Git-Maintaining-a-Project\nhttps://git-scm.com/book/en/Git-Tools-Rerere"
     ],
     [
       "Commands",
@@ -1069,7 +1070,7 @@
       "git show \u003ccommit\u003e",
       "Show details about a given commit.\n\nFor details about the parent of a commit, place a `^` at the end of the commit ID.\n\nYou can also specify a number after the `^` to identify which parent you want. This syntax is useful only for merge commits, which have more than one parent — the first parent of a merge commit is from the branch you were on when you merged (frequently `master`), while the second parent of a merge commit is from the branch that was merged (say, `topic`).\n\nThe other main ancestry specification is the `~` (tilde). This also refers to the first parent, so `HEAD~` and `HEAD^` are equivalent. The difference becomes apparent when you specify a number. `HEAD~2` means “the first parent of the first parent,” or “the grandparent” — it traverses the first parents the number of times you specify.",
       "https://git-scm.com/docs/git-show\nhttps://git-scm.com/book/en/v2/Git-Tools-Revision-Selection",
-      "$ git show 1c002dd4b536e7479fe34593e72e6c6c1819e53b\n$ git show 1c002dd4b536e7479f\n$ git show 1c002d\n\n$ git show HEAD^\ncommit d921970aadf03b3cf0e71becdaab3147ba71cdef\nMerge: 1c002dd... 35cfb2b...\nAuthor: Scott Chacon \u003cschacon@gmail.com\u003e\nDate:   Thu Dec 11 15:08:43 2008 -0800\n\n    Merge commit 'phedders/rdocs'\n\n$ git show d921970^\ncommit 1c002dd4b536e7479fe34593e72e6c6c1819e53b\nAuthor: Scott Chacon \u003cschacon@gmail.com\u003e\nDate:   Thu Dec 11 14:58:32 2008 -0800\n\n    Add some blame and merge stuff\n\n$ git show d921970^2\ncommit 35cfb2b795a55793d7cc56a6cc2060b4bb732548\nAuthor: Paul Hedderly \u003cpaul+git@mjr.org\u003e\nDate:   Wed Dec 10 22:22:03 2008 +0000\n\n    Some rdoc changes\n\n$ git show HEAD~3\ncommit 1c3618887afb5fbcbea25b7c013f4e2114448b8d\nAuthor: Tom Preston-Werner \u003ctom@mojombo.com\u003e\nDate:   Fri Nov 7 13:47:59 2008 -0500\n\n    Ignore *.gem\n\n$ git show HEAD~~~\ncommit 1c3618887afb5fbcbea25b7c013f4e2114448b8d\nAuthor: Tom Preston-Werner \u003ctom@mojombo.com\u003e\nDate:   Fri Nov 7 13:47:59 2008 -0500\n\n    Ignore *.gem"
+      "$ git show a00c2fa\ncommit a00c2fa444ebbf1631c30546e04b1974fe378294 (dog)\nAuthor: Dvd848 \u003cDvd848@users.noreply.github.com\u003e\nDate:   Fri Aug 11 17:02:37 2023 +0300\n\n    Add dog\n\ndiff --git a/script.py b/script.py\nindex 0868788..7eab908 100644\n--- a/script.py\n+++ b/script.py\n@@ -1,9 +1,20 @@\n+import sys^M\n\n class Animal:\n     def speak(self) -\u003e None:\n         pass\n-\n+^M\n+class Dog(Animal):^M\n+    def speak(self) -\u003e None:^M\n+        print(\"Woof!\")^M\n\n if __name__ == \"__main__\":\n-    a = Animal()\n+    try:^M\n+        if sys.argv[1] == \"dog\":^M\n+            a = Dog()^M\n+        else:^M\n+            raise KeyError(\"Unknown animal\")^M\n+    except (IndexError, KeyError):^M\n+        a = Animal()^M\n+        ^M\n     a.speak()\n\\ No newline at end of file\n\n\n$ git show 11fb9a4\ncommit 11fb9a4ac3020a8b1d0b1a642fcf65f7f7c577c6 (HEAD -\u003e master)\nMerge: a00c2fa 9f3fae2\nAuthor: Dvd848 \u003cDvd848@users.noreply.github.com\u003e\nDate:   Fri Aug 11 17:07:45 2023 +0300\n\n    Merge branch 'cat'\n\ndiff --cc script.py\nindex 7eab908,65bdd83..f65b608\n--- a/script.py\n+++ b/script.py\n@@@ -4,14 -4,14 +4,20 @@@ class Animal\n      def speak(self) -\u003e None:\n          pass\n\n +class Dog(Animal):\n +    def speak(self) -\u003e None:\n +        print(\"Woof!\")\n +\n+ class Cat(Animal):\n+     def speak(self) -\u003e None:\n+         print(\"Meow!\")\n+\n  if __name__ == \"__main__\":\n      try:\n -        if sys.argv[1] == \"cat\":\n +        if sys.argv[1] == \"dog\":\n +            a = Dog()\n++        elif sys.argv[1] == \"cat\":\n+             a = Cat()\n          else:\n              raise KeyError(\"Unknown animal\")\n      except (IndexError, KeyError):"
     ],
     [
       "Commands",
@@ -1086,10 +1087,10 @@
       "rev-parse",
       "0",
       "No",
-      "git rev-parse \u003cbranch\u003e",
-      "Show latest commit ID for given branch.",
-      "https://git-scm.com/docs/git-rev-parse\nhttps://git-scm.com/book/en/v2/Git-Tools-Revision-Selection",
-      "$ git rev-parse topic1\nca82a6dff817ec66f44342007202690a93763949"
+      "git rev-parse \u003creference\u003e",
+      "Translate or parse various types of revision references into their corresponding commit hashes or other meaningful information\n\nThis includes:\n - Getting the commit hash for a branch, a tag, HEAD, a shortened commit ID etc.\n - Resolving parent references (using `^`)\n - Resolving ancestry references (using `~`)",
+      "https://git-scm.com/docs/git-rev-parse\nhttps://git-scm.com/book/en/v2/Git-Tools-Revision-Selection\nhttps://git-scm.com/docs/revisions/",
+      "$ git rev-parse topic1\nca82a6dff817ec66f44342007202690a93763949\n$ git rev-parse HEAD\n2146ea1844752535e52591d8d022448b5ec00090\n$ git rev-parse HEAD^1\n823e262acd5a3e079031893beeb4965a31cfbf03\n$ git rev-parse HEAD~1\n823e262acd5a3e079031893beeb4965a31cfbf03\n$ git rev-parse HEAD~2\n331683efa9f66c19344636b68b8a69899b62f7cf"
     ],
     [
       "Commands",
@@ -1098,7 +1099,7 @@
       "Yes",
       "git reflog",
       "Show a log of where the HEAD and branch references have been recently.\n\nIt’s important to note that `reflog` information is strictly local — it’s a log only of what you’ve done in your repository. The references won’t be the same on someone else’s copy of the repository; also, right after you initially clone a repository, you’ll have an empty reflog, as no activity has occurred yet in your repository.",
-      "https://git-scm.com/docs/git-reflog\nhttps://git-scm.com/book/en/v2/Git-Tools-Revision-Selection",
+      "https://git-scm.com/docs/git-reflog\nhttps://git-scm.com/book/en/v2/Git-Tools-Revision-Selection\nhttps://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1",
       "$ git reflog\n734713b HEAD@{0}: commit: Fix refs handling, add gc auto, update tests\nd921970 HEAD@{1}: merge phedders/rdocs: Merge made by the 'recursive' strategy.\n1c002dd HEAD@{2}: commit: Add some blame and merge stuff\n1c36188 HEAD@{3}: rebase -i (squash): updating HEAD\n95df984 HEAD@{4}: commit: # This is a combination of two commits.\n1c36188 HEAD@{5}: rebase -i (squash): updating HEAD\n7e05da5 HEAD@{6}: rebase -i (pick): updating HEAD"
     ],
     [
@@ -1129,7 +1130,7 @@
       "git add -i",
       "Add modified contents in the working tree interactively.\n\nTriggers: `-i`, `--interactive`.",
       "https://git-scm.com/docs/git-add\nhttps://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging",
-      "$ git add -i\n           staged     unstaged path\n  1:    unchanged        +0/-1 TODO\n  2:    unchanged        +1/-1 index.html\n  3:    unchanged        +5/-1 lib/simplegit.rb\n\n*** Commands ***\n  1: [s]tatus     2: [u]pdate      3: [r]evert     4: [a]dd untracked\n  5: [p]atch      6: [d]iff        7: [q]uit       8: [h]elp\nWhat now\u003e"
+      "$ git add -i\n           staged     unstaged path\n  1:    unchanged        +0/-1 TODO\n  2:    unchanged        +1/-1 index.html\n  3:    unchanged        +5/-1 lib/simplegit.rb\n\n*** Commands ***\n  1: [s]tatus     2: [u]pdate      3: [r]evert     4: [a]dd untracked\n  5: [p]atch      6: [d]iff        7: [q]uit       8: [h]elp\nWhat now\u003e h\nstatus        - show paths with changes\nupdate        - add working tree state to the staged set of changes\nrevert        - revert staged set of changes back to the HEAD version\npatch         - pick hunks and update selectively\ndiff          - view diff between HEAD and index\nadd untracked - add contents of untracked files to the staged set of changes"
     ],
     [
       "Commands",
@@ -1137,8 +1138,9 @@
       "20",
       "Yes",
       "git add -p \u003cfile\u003e",
-      "Interactively choose hunks of patch between the index and the work tree and add them to the index. \n\nTriggers: `-p`, `--patch`.\n\nIf you only want to add part of a hunk but git won't suggest `s` (split), choose `e` (manually edit the current hunk) and delete the lines you don't want to currently add to the staging area.",
-      "https://git-scm.com/docs/git-add\nhttps://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging\nhttps://rietta.com/blog/git-patch-manual-split/"
+      "Interactively choose hunks of patch between the index and the work tree and add them to the index. \n\nTriggers: `-p`, `--patch`.\n\nIf you only want to add part of a hunk but git won't suggest `s` (split), choose `e` (manually edit the current hunk) and delete the lines you don't want to currently add to the staging area.\n\nUse `?` to see extended help:\n - y - stage this hunk\n - n - do not stage this hunk\n - q - quit; do not stage this hunk or any of the remaining ones\n - a - stage this hunk and all later hunks in the file\n - d - do not stage this hunk or any of the later hunks in the file\n - j - leave this hunk undecided, see next undecided hunk\n - J - leave this hunk undecided, see next hunk\n - g - select a hunk to go to\n - / - search for a hunk matching the given regex\n - s - split the current hunk into smaller hunks\n - e - manually edit the current hunk\n - ? - print help",
+      "https://git-scm.com/docs/git-add\nhttps://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging\nhttps://rietta.com/blog/git-patch-manual-split/",
+      "$ git add -p script.py\ndiff --git a/script.py b/script.py\nindex f65b608..1b38b16 100644\n--- a/script.py\n+++ b/script.py\n@@ -1,6 +1,10 @@\n import sys\n+import logging\n\n class Animal:\n+    def __init__(self, name = \"\"):\n+        self.name = name\n+\n     def speak(self) -\u003e None:\n         pass\n\n(1/2) Stage this hunk [y,n,q,a,d,j,J,g,/,s,e,?]? s\nSplit into 2 hunks.\n@@ -1,3 +1,4 @@\n import sys\n+import logging\n\n class Animal:\n(1/3) Stage this hunk [y,n,q,a,d,j,J,g,/,e,?]? n\n@@ -2,5 +3,8 @@\n\n class Animal:\n+    def __init__(self, name = \"\"):\n+        self.name = name\n+\n     def speak(self) -\u003e None:\n         pass\n\n(2/3) Stage this hunk [y,n,q,a,d,K,j,J,g,/,e,?]? y\n@@ -13,11 +17,14 @@ class Cat(Animal):\n         print(\"Meow!\")\n\n if __name__ == \"__main__\":\n+    logging.basicConfig(level=logging.DEBUG)\n+    logging.info(f\"Got the following command line arguments: {sys.argv[1:]}\")\n+\n     try:\n         if sys.argv[1] == \"dog\":\n-            a = Dog()\n+            a = Dog(\"Lassie\")\n         elif sys.argv[1] == \"cat\":\n-            a = Cat()\n+            a = Cat(\"Garfield\")\n         else:\n             raise KeyError(\"Unknown animal\")\n     except (IndexError, KeyError):\n(3/3) Stage this hunk [y,n,q,a,d,K,g,/,s,e,?]? s\nSplit into 3 hunks.\n@@ -13,5 +17,8 @@ class Cat(Animal):\n         print(\"Meow!\")\n\n if __name__ == \"__main__\":\n+    logging.basicConfig(level=logging.DEBUG)\n+    logging.info(f\"Got the following command line arguments: {sys.argv[1:]}\")\n+\n     try:\n         if sys.argv[1] == \"dog\":\n(3/5) Stage this hunk [y,n,q,a,d,K,j,J,g,/,e,?]? n\n@@ -16,4 +23,4 @@\n     try:\n         if sys.argv[1] == \"dog\":\n-            a = Dog()\n+            a = Dog(\"Lassie\")\n         elif sys.argv[1] == \"cat\":\n(4/5) Stage this hunk [y,n,q,a,d,K,j,J,g,/,e,?]? a"
     ],
     [
       "Commands",
@@ -1156,7 +1158,8 @@
       "No",
       "git checkout -p \u003cfile\u003e",
       "Partially checkout files.\n\nTriggers: `-p`, `--patch`.",
-      "https://git-scm.com/docs/git-checkout\nhttps://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging"
+      "https://git-scm.com/docs/git-checkout\nhttps://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging",
+      "$ git checkout -p feature -- script.py\ndiff --git b/script.py a/script.py\nindex 1b38b16..695bf20 100644\n--- b/script.py\n+++ a/script.py\n@@ -30,4 +30,5 @@ if __name__ == \"__main__\":\n     except (IndexError, KeyError):\n         a = Animal()\n\n-    a.speak()\n\\ No newline at end of file\n+    a.speak()\n+    print(f\"Animal's name is {a.name}\")\n\\ No newline at end of file\n(1/1) Apply this hunk to index and worktree [y,n,q,a,d,e,?]?"
     ],
     [
       "Commands",
@@ -1414,7 +1417,7 @@
       "Commands",
       "rebase",
       "30",
-      "No",
+      "Yes",
       "git rebase -i \u003cparent of last commit to edit\u003e",
       "Rewrite history of last n commits via interactive rebase.\n\nWith the interactive rebase tool, you can then stop after each commit you want to modify and change the message, add files, or do whatever you wish.\n\nThis is a rebasing command — every commit in the range \u003cparent of last commit to edit\u003e..HEAD with a changed message and all of its descendants will be rewritten. Don’t include any commit you’ve already pushed to a central server — doing so will confuse other developers by providing an alternate version of the same change.\n\n The interactive rebase gives you a script that it’s going to run. It will start at the commit you specify on the command line and replay the changes introduced in each of these commits from top to bottom. It lists the oldest at the top, rather than the newest, because that’s the first one it will replay. You need to edit the script so that it stops at the commit you want to edit. To do so, change the word “pick” to the word “edit” for each of the commits you want the script to stop after. When you save and exit the editor, Git rewinds you back to the last commit in that list and drops you on the command line with further instructions. Alternatively you can squash, reorder or delete commits.\n\nIf you finish a rebase and decide it’s not what you want, you can use `git reflog` to recover an earlier version of your branch.",
       "https://git-scm.com/docs/git-rebase\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History\nhttps://git-rebase.io/\nhttps://github.blog/2022-06-30-write-better-commits-build-better-projects/\nhttps://algoritmim.co.il/just-code/make-your-commit-the-best-with-interactive-rebase/",
@@ -1447,7 +1450,7 @@
       "No",
       "\u003cRemoving Commits\u003e",
       "Removing commits.\n\nThis is done by either deleting the commit line from the interactive rebase script or changing the action to \"drop\".\n\nBecause of the way Git builds commit objects, deleting or altering a commit will cause the rewriting of all the commits that follow it. The further back in your repo’s history you go, the more commits will need to be recreated. This can cause lots of merge conflicts if you have many commits later in the sequence that depend on the one you just deleted.",
-      "https://git-scm.com/docs/git-rebase\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History\nhttps://git-rebase.io/",
+      "https://git-scm.com/docs/git-rebase\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History\nhttps://git-rebase.io/\nhttps://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1",
       "$ git rebase -i HEAD~3\npick f7f3f6d Change my name a bit\npick 310154e Update README formatting and add blame\npick a5f4a0d Add cat-file\n\n# Rebase 710f0f8..a5f4a0d onto 710f0f8\n#\n# Commands:\n# p, pick \u003ccommit\u003e = use commit\n# r, reword \u003ccommit\u003e = use commit, but edit the commit message\n# e, edit \u003ccommit\u003e = use commit, but stop for amending\n# s, squash \u003ccommit\u003e = use commit, but meld into previous commit\n# f, fixup \u003ccommit\u003e = like \"squash\", but discard this commit's log message\n# x, exec \u003ccommand\u003e = run command (the rest of the line) using shell\n# b, break = stop here (continue rebase later with 'git rebase --continue')\n# d, drop \u003ccommit\u003e = remove commit\n# l, label \u003clabel\u003e = label current HEAD with a name\n# t, reset \u003clabel\u003e = reset HEAD to a label\n# m, merge [-C \u003ccommit\u003e | -c \u003ccommit\u003e] \u003clabel\u003e [# \u003coneline\u003e]\n# .       create a merge commit using the original merge commit's\n# .       message (or the oneline, if no original merge commit was\n# .       specified). Use -c \u003ccommit\u003e to reword the commit message.\n#\n\n# These lines can be re-ordered; they are executed from top to bottom.\n#\n# If you remove a line here THAT COMMIT WILL BE LOST.\n#\n# However, if you remove everything, the rebase will be aborted.\n#\n# Note that empty commits are commented out\n\n--\u003e [Edit the file and delete the entries for the commits to be removed]\npick 310154e Update README formatting and add blame\npick a5f4a0d Add cat-file\n\n--\u003e [Save and exit]"
     ],
     [
@@ -1457,7 +1460,7 @@
       "No",
       "\u003cSquashing Commits\u003e",
       "Squashing commits.\n\nThis takes a series of commits and squashes them down into a single commit with the interactive rebasing tool.\n\nGit applies all the squashed changes and the change directly before it and makes you merge the commit messages together.",
-      "https://git-scm.com/docs/git-rebase\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History\nhttps://git-rebase.io/",
+      "https://git-scm.com/docs/git-rebase\nhttps://git-scm.com/book/en/v2/Git-Tools-Rewriting-History\nhttps://git-rebase.io/\nhttps://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1",
       "$ git rebase -i HEAD~3\npick f7f3f6d Change my name a bit\npick 310154e Update README formatting and add blame\npick a5f4a0d Add cat-file\n\n# Rebase 710f0f8..a5f4a0d onto 710f0f8\n#\n# Commands:\n# p, pick \u003ccommit\u003e = use commit\n# r, reword \u003ccommit\u003e = use commit, but edit the commit message\n# e, edit \u003ccommit\u003e = use commit, but stop for amending\n# s, squash \u003ccommit\u003e = use commit, but meld into previous commit\n# f, fixup \u003ccommit\u003e = like \"squash\", but discard this commit's log message\n# x, exec \u003ccommand\u003e = run command (the rest of the line) using shell\n# b, break = stop here (continue rebase later with 'git rebase --continue')\n# d, drop \u003ccommit\u003e = remove commit\n# l, label \u003clabel\u003e = label current HEAD with a name\n# t, reset \u003clabel\u003e = reset HEAD to a label\n# m, merge [-C \u003ccommit\u003e | -c \u003ccommit\u003e] \u003clabel\u003e [# \u003coneline\u003e]\n# .       create a merge commit using the original merge commit's\n# .       message (or the oneline, if no original merge commit was\n# .       specified). Use -c \u003ccommit\u003e to reword the commit message.\n#\n\n# These lines can be re-ordered; they are executed from top to bottom.\n#\n# If you remove a line here THAT COMMIT WILL BE LOST.\n#\n# However, if you remove everything, the rebase will be aborted.\n#\n# Note that empty commits are commented out\n\n--\u003e [Edit the file and select what to squash]\npick f7f3f6d Change my name a bit\nsquash 310154e Update README formatting and add blame\nsquash a5f4a0d Add cat-file\n\n--\u003e [Save and exit]\n\n# This is a combination of 3 commits.\n# The first commit's message is:\nChange my name a bit\n\n# This is the 2nd commit message:\n\nUpdate README formatting and add blame\n\n# This is the 3rd commit message:\n\nAdd cat-file\n\n--\u003e [Edit, save and exit]"
     ],
     [
@@ -1556,7 +1559,7 @@
       "No",
       "\u003cCheckout vs. Reset\u003e",
       "Comparison of reset and checkout\n\nThe “HEAD” column reads “REF” if that command moves the reference (branch) that HEAD points to, and “HEAD” if it moves HEAD itself.   \nPay especial attention to the 'WD Safe?' column — if it says NO, take a second to think before running that command.\n\n|                           | Level  | HEAD | Index | Workdir | WD Safe? |\n|---------------------------|--------|:----:|:-----:|:-------:|:--------:|\n| `reset --soft [commit]`     | Commit | REF  | NO    | NO      | YES      |\n| `reset [commit]`            | Commit | REF  | YES   | NO      | YES      |\n| `reset --hard [commit]`     | Commit | REF  | YES   | YES     | NO       |\n| `checkout \u003ccommit\u003e`         | Commit | HEAD | YES   | YES     | YES      |\n| `reset [commit] \u003cpaths\u003e`    | File   | NO   | YES   | NO      | YES      |\n| `checkout [commit] \u003cpaths\u003e` | File   | NO   | YES   | YES     | NO       |\n\nReset Types:\n\n * `--soft`: Uncommit changes, changes are left staged (index).\n * `--mixed` (default): Uncommit + unstage changes, changes are left in working tree.\n * `--hard`: Uncommit + unstage + delete changes, nothing left.",
-      "https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified"
+      "https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified\nhttps://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1"
     ],
     [
       "Commands",
@@ -1695,6 +1698,46 @@
       "Create a shallow clone with a history after the specified time.",
       "https://git-scm.com/docs/git-clone",
       "$ git clone --shallow-since=\"3 months\" https://github.com/schacon/ticgit"
+    ],
+    [
+      "Commands",
+      "difftool",
+      "0",
+      "Yes",
+      "git difftool -d --merge-base \u003cbranch1\u003e \u003cbranch2\u003e",
+      "Use an external tool to compare two branches while considering their merge base.\n\n`-d` or `--dir-diff`: This option tells Git's difftool to perform a directory comparison. It compares the directory structures and contents, showing the differences between them. This option can be helpful when comparing entire branches.\n\n`--merge-base`: This option specifies that the difftool operation should use the merge base of the two branches being compared. The merge base is the common ancestor of two branches, where they diverged from each other. It's used as a reference point for understanding the changes made in each branch.",
+      "https://git-scm.com/docs/git-difftool",
+      "$ git difftool -d --merge-base origin/main origin/feature"
+    ],
+    [
+      "Commands",
+      "remote",
+      "50",
+      "No",
+      "git remote prune \u003cremote\u003e",
+      "Remove references to remote branches that have been deleted on the remote repository\n\nUse the `--dry-run` option to view the list of branches will be pruned.",
+      "https://git-scm.com/docs/git-remote",
+      "$ git remote prune origin"
+    ],
+    [
+      "Commands",
+      "push",
+      "70",
+      "Yes",
+      "git push --force",
+      "Force push your changes to the remote even if they conflict with the remote's existing state",
+      "https://git-scm.com/docs/git-push",
+      "$ git push\nTo /tmp/repo\n ! [rejected]        dev -\u003e dev (fetch first)\nerror: failed to push some refs to '/tmp/repo'\nhint: Updates were rejected because the remote contains work that you do\nhint: not have locally. This is usually caused by another repository pushing\nhint: to the same ref. You may want to first integrate the remote changes\nhint: (e.g., 'git pull ...') before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details.\n\n$ git push --force\nTo /tmp/repo\n + f82f59e...c27aff1 dev -\u003e dev (forced update)"
+    ],
+    [
+      "Commands",
+      "push",
+      "80",
+      "Yes",
+      "git push --force-with-lease",
+      "Force push to a remote only if no-one else has pushed changes up to the remote in the interim",
+      "https://git-scm.com/docs/git-push",
+      "$ git push\nTo /tmp/repo\n ! [rejected]        dev -\u003e dev (fetch first)\nerror: failed to push some refs to '/tmp/repo'\nhint: Updates were rejected because the remote contains work that you do\nhint: not have locally. This is usually caused by another repository pushing\nhint: to the same ref. You may want to first integrate the remote changes\nhint: (e.g., 'git pull ...') before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details.\n\n$ git push -n --force-with-lease\nTo /tmp/repo\n ! [rejected]        dev -\u003e dev (stale info)\nerror: failed to push some refs to '/tmp/repo'"
     ]
   ]
 }
